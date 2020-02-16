@@ -1,2 +1,2 @@
-const String homeRoute = 'home';
+const String homeScreenRoute = 'home';
 const String loginRoute ='login';

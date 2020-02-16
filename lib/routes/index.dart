@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:westcardapp/views/screens/login/loginScreen.dart';
+import 'package:westcardapp/views/screens/homeScreen.dart';
+import 'package:westcardapp/views/screens/loginScreen.dart';
 import 'const_routes.dart';
 
 class Router {
@@ -9,9 +10,9 @@ class Router {
     switch (routeSettings.name) {
             case loginRoute:
         return MaterialPageRoute(builder: (_) => loginScreen());
-      // case carouselRoute:
-      //   return MaterialPageRoute(builder: (_) => CarouselScreen(arguments));
-      //   break;
+      case homeScreenRoute:
+        return MaterialPageRoute(builder: (_) => HomeScreen());
+        break;
       default:
         return MaterialPageRoute(
             builder: (_) =>
