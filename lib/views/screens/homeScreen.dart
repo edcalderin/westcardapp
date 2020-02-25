@@ -11,9 +11,15 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(child: Navbar()),
-      
+    return Stack(
+      children: <Widget>[
+        Container(
+             width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+          child: Image(image: AssetImage('lib/assets/fondo_2.jpg')),
+        ),
+        Navbar(),
+      ],
     );
   }
 }

@@ -7,7 +7,7 @@ class Navbar extends StatefulWidget {
 }
 
 class _NavbarState extends State<Navbar> {
-  Choice _selectedChoice = choices[0]; 
+  Choice _selectedChoice = choices[0];
 
   void _select(Choice choice) {
     // Causes the app to rebuild with the new _selectedChoice.
@@ -21,7 +21,23 @@ class _NavbarState extends State<Navbar> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 24, 188, 156),
+          backgroundColor: Color.fromARGB(255, 45, 62, 80),
+          actions: <Widget>[
+            // overflow menu
+            PopupMenuButton<Choice>(
+              onSelected: _select,
+              itemBuilder: (BuildContext context) {
+                return choices.skip(0).map((Choice choice) {
+                  return PopupMenuItem<Choice>(
+                    value: choice,
+                    child: Text(
+                      choice.title,
+                    ),
+                  );
+                }).toList();
+              },
+            ),
+          ],
           title: Container(
             height: 30,
             width: 30,
@@ -31,24 +47,10 @@ class _NavbarState extends State<Navbar> {
                   fit: BoxFit.fitWidth),
             ),
           ),
-          actions: <Widget>[
-            // overflow menu
-            PopupMenuButton<Choice>(
-              onSelected: _select,
-              itemBuilder: (BuildContext context) {
-                return choices.skip(0).map((Choice choice) {
-                  return PopupMenuItem<Choice>(
-                    value: choice,
-                    child: Text(choice.title,),
-                  );
-                }).toList();
-              },
-            ),
-          ],
         ),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: ChoiceCard(choice: _selectedChoice),
+          // child: ChoiceCard(choice: _selectedChoice),
         ),
       ),
     );
@@ -66,31 +68,31 @@ const List<Choice> choices = const <Choice>[
   const Choice(title: 'Action'),
   const Choice(title: 'Another action'),
   const Choice(title: 'something else here'),
-  const Choice( title: 'Salir'),//icon: Icons.arrow_left,
+  const Choice(title: 'Salir'), //icon: Icons.arrow_left,
 ];
 
-class ChoiceCard extends StatelessWidget {
-  const ChoiceCard({Key key, this.choice}) : super(key: key);
+// class ChoiceCard extends StatelessWidget {
+//   const ChoiceCard({Key key, this.choice}) : super(key: key);
 
-  final Choice choice;
+//   final Choice choice;
 
-  @override
-  Widget build(BuildContext context) {
-    final TextStyle textStyle = Theme.of(context).textTheme.display1;
-    return Card(
-      color: Colors.white,
-      child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Text(choice.title, style: textStyle),
-          ],
-        ),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     final TextStyle textStyle = Theme.of(context).textTheme.display1;
+//     return Card(
+//       color: Colors.white,
+//       child: Center(
+//         child: Column(
+//           mainAxisSize: MainAxisSize.min,
+//           crossAxisAlignment: CrossAxisAlignment.center,
+//           children: <Widget>[
+//             Text(choice.title, style: textStyle),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 void main() {
   runApp(Navbar());
