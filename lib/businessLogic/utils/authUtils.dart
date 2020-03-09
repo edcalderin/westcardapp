@@ -10,13 +10,17 @@ class AuthUtils {
   AuthUtils() {
     flutterSecureStorage = FlutterSecureStorage();
   }
-  void writeSecureToken(String accessToken) async {
+  Future<void> writeSecureToken(String accessToken) async {
     await flutterSecureStorage.write(key: KEY_NAME, value: accessToken);
   }
 
   Future<String> readSecureToken() async {
     final String accessToken = await flutterSecureStorage.read(key: KEY_NAME);
     return accessToken;
+  }
+
+  Future<void> removeSecureToken() async {
+    await flutterSecureStorage.delete(key: KEY_NAME);
   }
 
   String convertToSha512(String plainPassword) {

@@ -20,7 +20,9 @@ class AuthenticationBloc
   Stream<AuthenticationState> mapEventToState(
     AuthenticationEvent event,
   ) async* {
-    if (event is AppStarted) yield* mapToEventAppStared(event);
+    if (event is AppStarted)
+      yield* mapToEventAppStared(event);
+    else if (event is SignedIn) yield* mapToEventSignedIn(event);
   }
 
   Stream<AuthenticationState> mapToEventAppStared(AppStarted event) async* {
@@ -46,5 +48,11 @@ class AuthenticationBloc
       }
     } else
       yield Unauthenticated();
+  }
+
+  Stream<AuthenticationState> mapToEventSignedIn(SignedIn event) async* {
+    yield AuthenticationLoading();
+    await authUtils.writeSecureToken(event.accessToken);
+    yield Authenticated();
   }
 }

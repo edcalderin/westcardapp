@@ -19,6 +19,11 @@ class Authenticated extends AuthenticationState {
   List<Object> get props => null;
 }
 
+class AuthenticationLoading extends AuthenticationState {
+  @override
+  List<Object> get props => null;
+}
+
 class AuthenticationFailed extends AuthenticationState {
   final String errorText;
   const AuthenticationFailed({@required this.errorText});
