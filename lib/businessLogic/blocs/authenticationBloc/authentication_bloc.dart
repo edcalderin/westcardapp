@@ -22,7 +22,9 @@ class AuthenticationBloc
   ) async* {
     if (event is AppStarted)
       yield* mapToEventAppStared(event);
-    else if (event is SignedIn) yield* mapToEventSignedIn(event);
+    else if (event is SignedIn)
+      yield* mapToEventSignedIn(event);
+    else if (event is SignedOut) yield* mapToEventSignedOut(event);
   }
 
   Stream<AuthenticationState> mapToEventAppStared(AppStarted event) async* {
@@ -54,5 +56,27 @@ class AuthenticationBloc
     yield AuthenticationLoading();
     await authUtils.writeSecureToken(event.accessToken);
     yield Authenticated();
+  }
+
+  Stream<AuthenticationState> mapToEventSignedOut(SignedOut event) async* {
+    yield AuthenticationLoading();
+    final String accessToken = await authUtils.readSecureToken();
+    final dynamic response =
+        await authRepository.signOut(event.email, accessToken);
+    switch (response) {
+      case 200:
+        yield Unauthenticated();
+        break;
+      case 400:
+        yield AuthenticationFailed(errorText: 'Bad credentials');
+        break;
+      case 500 | 503:
+        yield AuthenticationFailed(errorText: 'Server error');
+        break;
+      case -1:
+        yield AuthenticationFailed(errorText: 'Connection error');
+        break;
+      default:
+    }
   }
 }

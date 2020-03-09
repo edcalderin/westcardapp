@@ -17,6 +17,8 @@ class SignedIn extends AuthenticationEvent {
 }
 
 class SignedOut extends AuthenticationEvent {
+  final String email;
+  const SignedOut({@required this.email});
   @override
-  List<Object> get props => null;
+  List<Object> get props => [email];
 }

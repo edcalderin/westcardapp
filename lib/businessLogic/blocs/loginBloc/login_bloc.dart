@@ -26,11 +26,14 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     yield LoginLoading();
     final dynamic response =
         await authRepository.signIn(event.email, event.password);
-    switch (response) {
-      case 200:
-        authenticationBloc.add(SignedIn(accessToken: '22'));
-        break;
-      default:
-    }
+    if (response == -1)
+      yield LoginFailed(errorText: 'Connection error');
+    else if (response.statusCode == 200)
+      authenticationBloc.add(SignedIn(accessToken: response.body.accessToken));
+    else if (response.statusCode == 400)
+      yield LoginFailed(errorText: 'Bad credentials');
+    else if (response.statusCode == 500 || response == 503)
+      yield LoginFailed(errorText: 'Server error');
+    else if (response == -1) yield LoginFailed(errorText: 'Connection error');
   }
 }
