@@ -9,7 +9,7 @@ class Router {
     final arguments = routeSettings.arguments;
     switch (routeSettings.name) {
             case loginRoute:
-        return MaterialPageRoute(builder: (_) => loginScreen());
+        return MaterialPageRoute(builder: (_) => LoginScreen());
       case homeScreenRoute:
         return MaterialPageRoute(builder: (_) => HomeScreen());
         break;

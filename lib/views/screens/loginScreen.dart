@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:westcardapp/routes/const_routes.dart';
 import 'package:beauty_textfield/beauty_textfield.dart';
 
-class loginScreen extends StatefulWidget {
-  loginScreen({Key key}) : super(key: key);
+class LoginScreen extends StatefulWidget {
+  LoginScreen({Key key}) : super(key: key);
 
   @override
-  _loginScreenState createState() => _loginScreenState();
+  _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _loginScreenState extends State<loginScreen> {
+class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Material(

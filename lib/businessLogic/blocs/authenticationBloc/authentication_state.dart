@@ -1,4 +1,4 @@
-part of 'authenticationbloc_bloc.dart';
+part of 'authentication_bloc.dart';
 
 abstract class AuthenticationState extends Equatable {
   const AuthenticationState();
@@ -15,10 +15,8 @@ class Unauthenticated extends AuthenticationState {
 }
 
 class Authenticated extends AuthenticationState {
-  final String accessToken;
-  const Authenticated({@required this.accessToken});
   @override
-  List<Object> get props => [accessToken];
+  List<Object> get props => null;
 }
 
 class AuthenticationFailed extends AuthenticationState {

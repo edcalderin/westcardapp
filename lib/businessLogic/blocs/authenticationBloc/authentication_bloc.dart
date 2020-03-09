@@ -5,8 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:westcardapp/businessLogic/repositories/authRepository.dart';
 import 'package:westcardapp/businessLogic/utils/authUtils.dart';
 
-part 'authenticationbloc_event.dart';
-part 'authenticationbloc_state.dart';
+part 'authentication_event.dart';
+part 'authentication_state.dart';
 
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
