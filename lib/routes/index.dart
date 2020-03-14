@@ -1,17 +1,28 @@
-
 import 'package:flutter/material.dart';
 import 'package:westcardapp/views/screens/homeScreen.dart';
 import 'package:westcardapp/views/screens/loginScreen.dart';
+import 'package:westcardapp/views/screens/registerScreen/nextRegisterScreen.dart';
+import 'package:westcardapp/views/screens/registerScreen/registerConfirmScreen.dart';
+import 'package:westcardapp/views/screens/registerScreen/userRegisterScreen.dart';
 import 'const_routes.dart';
 
 class Router {
   static Route<dynamic> generateRoutes(RouteSettings routeSettings) {
     final arguments = routeSettings.arguments;
     switch (routeSettings.name) {
-            case loginRoute:
+      case loginRoute:
         return MaterialPageRoute(builder: (_) => loginScreen());
       case homeScreenRoute:
         return MaterialPageRoute(builder: (_) => HomeScreen());
+        break;
+      case userRegisterRoute:
+        return MaterialPageRoute(builder: (_) => UserRegisterScreen());
+        break;
+      case nextRegisterRoute:
+        return MaterialPageRoute(builder: (_) => NextRegisterScreen());
+        break;
+      case registerConfirmRoute:
+        return MaterialPageRoute(builder: (_) => RegisterConfirmScreen());
         break;
       default:
         return MaterialPageRoute(

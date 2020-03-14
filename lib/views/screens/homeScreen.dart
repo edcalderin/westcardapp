@@ -18,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
               height: MediaQuery.of(context).size.height,
           child: Image(image: AssetImage('lib/assets/fondo_2.jpg')),
         ),
-        Navbar(),
+      Navbar(),
       ],
     );
   }

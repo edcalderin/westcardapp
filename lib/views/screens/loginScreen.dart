@@ -33,125 +33,139 @@ class _loginScreenState extends State<loginScreen> {
               height: MediaQuery.of(context).size.height,
               child: Image(
                   image: AssetImage('lib/assets/fondo_1.jpg'),
-                  fit: BoxFit.fill),
+                  fit: BoxFit.none),
             ),
           ),
-          SingleChildScrollView(
-            padding: EdgeInsets.only(bottom: 150),
+          Center(
             child: Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      margin: EdgeInsets.only(top: 10, bottom: 5),
-                      height: 100,
-                      width: 130,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: ExactAssetImage('lib/assets/main-icon.png'),
-                            fit: BoxFit.fill),
-                      ),
+              width: MediaQuery.of(context).size.width * 0.90,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.only(bottom: 10),
+                    height: 100,
+                    width: 130,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: ExactAssetImage('lib/assets/main-icon.png'),
+                          fit: BoxFit.fill),
                     ),
-                    Container(
-                      margin: EdgeInsets.only(top: 5, bottom: 20),
-                      child: Text('WesterCardApp',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 25.0,
-                              fontWeight: FontWeight.w500)),
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width * 0.70,
-                      margin: EdgeInsets.only(top: 10, bottom: 0),
-                      child: TextFormField(
-                        keyboardType: TextInputType.emailAddress,
-                        strutStyle: StrutStyle(
-                          fontSize: 30,
-                        ),
+                  ),
+                  Text('WestCardApp',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 25,
+                          fontWeight: FontWeight.w400)),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text('Inicio de sesion',
+                      style: TextStyle(color: Colors.white, fontSize: 18)),
+                  Container(
+                    margin: EdgeInsets.only(top: 20),
+                    height: 40,
+                    child: Theme(
+                      data: Theme.of(context)
+                          .copyWith(splashColor: Colors.transparent),
+                      child: TextField(
+                        autofocus: false,
+                        style: TextStyle(fontSize: 22.0, color: Colors.black),
                         decoration: InputDecoration(
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            labelStyle:
-                                TextStyle(color: Colors.white, fontSize: 20.0),
-                            labelText: 'Nombre de Usuario',
-                            // alignLabelWithHint:false ,
-                            // hintText: 'Ingrese su e-mail',
-                            hintStyle: TextStyle(
-                                fontSize: 20.0, color: Colors.grey[200]),
-                            fillColor: Colors.white,
-                            prefixIcon: Icon(Icons.perm_identity,
-                                color: Colors.white, size: 35)),
-                        cursorColor: Colors.white,
-                        controller: _controller,
+                          filled: true,
+                          fillColor: Colors.white,
+                          hintText: 'Correo Electronico',
+                          contentPadding: const EdgeInsets.only(
+                              left: 20.0, bottom: 8.0, top: 8.0),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(18),
+                          ),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(18),
+                          ),
+                        ),
                       ),
                     ),
-                    Container(
-                      width: MediaQuery.of(context).size.width * 0.70,
-                      margin: EdgeInsets.only(top: 10, bottom: 0),
-                      child: TextFormField(
-                        obscureText: true,
-                        strutStyle: StrutStyle(
-                          fontSize: 30,
-                        ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(bottom: 10),
+                    height: 40,
+                    child: Theme(
+                      data: Theme.of(context)
+                          .copyWith(splashColor: Colors.transparent),
+                      child: TextField(
+                        autofocus: false,
+                        style: TextStyle(fontSize: 22.0, color: Colors.black),
                         decoration: InputDecoration(
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            labelStyle:
-                                TextStyle(color: Colors.white, fontSize: 20.0),
-                            labelText: 'Contraseña',
-                            // alignLabelWithHint:false ,
-                            // hintText: 'Ingrese su Contraseña',
-                            hintStyle: TextStyle(
-                                fontSize: 20.0, color: Colors.grey[200]),
-                            fillColor: Colors.white,
-                            prefixIcon: Icon(Icons.lock_outline,
-                                color: Colors.white, size: 35)),
-                        cursorColor: Colors.white,
-                        controller: _controller,
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(top: 30, bottom: 10),
-                      height: 55,
-                      width: MediaQuery.of(context).size.width * 0.60,
-                      child: RaisedButton(
-                        color: Colors.white,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(25)),
-                        onPressed: () {
-                          Navigator.pushNamed(context, homeScreenRoute);
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Text('Ingresar',
-                                style: TextStyle(
-                                    fontSize: 20.0,
-                                    color: Color.fromARGB(255, 45, 62, 80))),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Icon(Icons.arrow_forward,
-                                color: Color.fromARGB(255, 45, 62, 80))
-                          ],
+                          filled: true,
+                          fillColor: Colors.white,
+                          hintText: 'Contraseña',
+                          contentPadding: const EdgeInsets.only(
+                              left: 20.0, bottom: 8.0, top: 8.0),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(18),
+                          ),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(18),
+                          ),
                         ),
                       ),
                     ),
-                    InkWell(
-                      child: Text('Aun no estoy registrado',
-                          style:
-                              TextStyle(color: Colors.white, fontSize: 16.0)),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: 15, bottom: 5),
+                    height: 40,
+                    width: MediaQuery.of(context).size.width * 0.95,
+                    child: RaisedButton(
+                      color: Color.fromARGB(255, 45, 62, 80),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25)),
+                      onPressed: () {
+                        Navigator.pushNamed(context, nextRegisterRoute);
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text('Ingresar',
+                              style: TextStyle(
+                                  fontSize: 20.0, color: Colors.white)),
+                          Icon(Icons.arrow_right,
+                              size: 40, color: Colors.white),
+                        ],
+                      ),
                     ),
-                  ],
-                ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  InkWell(
+                    child: Text('Aun no estoy registrado',
+                        style: TextStyle(color: Colors.white, fontSize: 18.0)),
+                    onTap: () {
+                      Navigator.pushNamed(context, userRegisterRoute);
+                    },
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  InkWell(
+                    child: Text('¿Olvidaste tu contraseña?',
+                        style: TextStyle(color: Colors.white, fontSize: 16.0)),
+                  ),
+                ],
               ),
             ),
-          ),
+          )
         ],
       ),
     );

@@ -15,6 +15,7 @@ class _NavbarState extends State<Navbar> {
       _selectedChoice = choice;
     });
   }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -70,6 +71,7 @@ const List<Choice> choices = const <Choice>[
   const Choice(title: 'something else here'),
   const Choice(title: 'Salir'), //icon: Icons.arrow_left,
 ];
+
 
 // class ChoiceCard extends StatelessWidget {
 //   const ChoiceCard({Key key, this.choice}) : super(key: key);
