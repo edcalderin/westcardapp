@@ -65,7 +65,7 @@ class _RegisterConfirmScreenState extends State<RegisterConfirmScreen> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5)),
                     onPressed: () {
-                      Navigator.pushNamed(context, nextRegisterRoute);
+                      Navigator.pushNamed(context, loginRoute);
                     },
                     child: Text('Ir al inicio',
                         style: TextStyle(fontSize: 20.0, color: Colors.white)),
