@@ -131,7 +131,7 @@ class _loginScreenState extends State<loginScreen> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(25)),
                       onPressed: () {
-                        Navigator.pushNamed(context, nextRegisterRoute);
+                        Navigator.pushNamed(context, homeScreenRoute);
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
