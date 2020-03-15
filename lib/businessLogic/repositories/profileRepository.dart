@@ -1,4 +1,4 @@
-import 'package:westcardapp/models/profile.dart';
+import 'package:westcardapp/models/profileModel.dart';
 
 abstract class BaseProfileRepository {
   Future<ProfileModel> getProfileData(String param);
