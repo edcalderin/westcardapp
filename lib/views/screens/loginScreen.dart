@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:westcardapp/businessLogic/blocs/authenticationBloc/authentication_bloc.dart';
+import 'package:westcardapp/businessLogic/blocs/loginBloc/login_bloc.dart';
+import 'package:westcardapp/businessLogic/repositories/authRepository.dart';
 import 'package:westcardapp/routes/const_routes.dart';
 import 'package:beauty_textfield/beauty_textfield.dart';
 
@@ -10,6 +13,17 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  AuthenticationBloc authenticationBloc;
+  AuthRepository authRepository;
+  String email, plainPassword;
+  @override
+  void initState() {
+    super.initState();
+    this.authRepository = AuthRepository();
+    this.authenticationBloc =
+        AuthenticationBloc(authRepository: authRepository);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -22,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
-                margin: EdgeInsets.only(top:10, bottom:5),
+                margin: EdgeInsets.only(top: 10, bottom: 5),
                 height: 80,
                 width: 100,
                 decoration: BoxDecoration(
@@ -32,7 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               Container(
-                  margin: EdgeInsets.only(top:5, bottom:5),
+                margin: EdgeInsets.only(top: 5, bottom: 5),
                 child: Text('Westercardapp',
                     style: TextStyle(
                         color: Colors.white,
@@ -40,16 +54,16 @@ class _LoginScreenState extends State<LoginScreen> {
                         fontWeight: FontWeight.w500)),
               ),
               Container(
-                  margin: EdgeInsets.only(top:0, bottom:10),
+                margin: EdgeInsets.only(top: 0, bottom: 10),
                 child: Text(
                   'Inicio de sesión',
                   style: TextStyle(color: Colors.white, fontSize: 16.0),
                 ),
               ),
               Container(
-                  margin: EdgeInsets.only(top:10, bottom:0),
+                margin: EdgeInsets.only(top: 10, bottom: 0),
                 child: BeautyTextfield(
-                  width: MediaQuery.of(context).size.width *0.95,
+                  width: MediaQuery.of(context).size.width * 0.95,
                   height: 50,
                   cornerRadius: BorderRadius.circular(5),
                   duration: Duration(milliseconds: 300),
@@ -61,7 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     print('Click');
                   },
                   onChanged: (text) {
-                    print(text);
+                    this.email = text;
                   },
                   onSubmitted: (data) {
                     print(data.length);
@@ -69,9 +83,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               Container(
-                  margin: EdgeInsets.only(top:0, bottom:10),
+                margin: EdgeInsets.only(top: 0, bottom: 10),
                 child: BeautyTextfield(
-                  width: MediaQuery.of(context).size.width *0.95,
+                  width: MediaQuery.of(context).size.width * 0.95,
                   height: 50,
                   cornerRadius: BorderRadius.circular(5),
                   duration: Duration(milliseconds: 300),
@@ -84,7 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     print('Click');
                   },
                   onChanged: (text) {
-                    print(text);
+                    this.plainPassword = text;
                   },
                   onSubmitted: (data) {
                     print(data.length);
@@ -92,15 +106,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(top:0, bottom:10),
+                margin: EdgeInsets.only(top: 0, bottom: 10),
                 height: 55,
-                width: MediaQuery.of(context).size.width *0.95,
+                width: MediaQuery.of(context).size.width * 0.95,
                 child: RaisedButton(
                   color: Color.fromARGB(255, 44, 62, 80),
-                  shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-                  onPressed: () {
-                    Navigator.pushNamed(context, homeScreenRoute);
-                  },
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5)),
+                  onPressed: () => this.signInOnPress(),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -124,5 +137,12 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  void signInOnPress() {
+    LoginBloc(
+            authRepository: this.authRepository,
+            authenticationBloc: this.authenticationBloc)
+        .add(SignInPressed(email: this.email, password: this.plainPassword));
   }
 }
