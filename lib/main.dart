@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:westcardapp/businessLogic/blocs/authenticationBloc/authentication_bloc.dart';
+import 'package:westcardapp/businessLogic/blocs/auth/authenticationBloc/authentication_bloc.dart';
 import 'package:westcardapp/businessLogic/repositories/authRepository.dart';
 import 'package:westcardapp/views/screens/splashScreen.dart';
 

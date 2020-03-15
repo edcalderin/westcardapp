@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:westcardapp/businessLogic/blocs/authenticationBloc/authentication_bloc.dart';
+import 'package:westcardapp/businessLogic/blocs/auth/authenticationBloc/authentication_bloc.dart';
 import 'package:westcardapp/businessLogic/repositories/authRepository.dart';
 
 part 'login_event.dart';
