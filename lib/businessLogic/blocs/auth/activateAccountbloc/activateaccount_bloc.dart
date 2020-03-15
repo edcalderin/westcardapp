@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
 
 part 'activateaccount_event.dart';
 part 'activateaccount_state.dart';

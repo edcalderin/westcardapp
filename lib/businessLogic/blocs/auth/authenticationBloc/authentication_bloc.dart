@@ -3,7 +3,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:westcardapp/businessLogic/repositories/authRepository.dart';
-import 'package:westcardapp/businessLogic/utils/authUtils.dart';
+import 'package:westcardapp/utils/authUtils.dart';
 
 part 'authentication_event.dart';
 part 'authentication_state.dart';

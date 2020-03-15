@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:westcardapp/businessLogic/utils/authUtils.dart';
-import 'package:westcardapp/businessLogic/utils/common.dart';
+import 'package:westcardapp/utils/authUtils.dart';
+import 'package:westcardapp/utils/common.dart';
 import 'package:westcardapp/global.dart';
 
 abstract class BaseAuthRepository {
