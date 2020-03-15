@@ -122,7 +122,6 @@ class _UserRegisterScreenState extends State<UserRegisterScreen> {
                                 decoration: InputDecoration(
                                   filled: true,
                                   fillColor: Colors.white,
-                                  //
                                   contentPadding: const EdgeInsets.only(
                                       left: 14.0, bottom: 8.0, top: 8.0),
                                   focusedBorder: OutlineInputBorder(

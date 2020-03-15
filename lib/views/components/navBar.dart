@@ -15,63 +15,65 @@ class _NavbarState extends State<Navbar> {
       _selectedChoice = choice;
     });
   }
-  
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
+    return Scaffold(
+      appBar: AppBar(
+          elevation: 5,
+          automaticallyImplyLeading: false,
           backgroundColor: Color.fromARGB(255, 45, 62, 80),
           actions: <Widget>[
-            // overflow menu
-            PopupMenuButton<Choice>(
+            Container(
+              margin: EdgeInsets.only(left: 10, right: 10),
+              height: 45,
+              width: 45,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: ExactAssetImage('lib/assets/main-icon.png'),
+                    fit: BoxFit.fitWidth),
+              ),
+            ),
+          ],
+          title: Text('               WestCardApp'),
+          leading: Container(
+            child: PopupMenuButton<Choice>(
               onSelected: _select,
               itemBuilder: (BuildContext context) {
                 return choices.skip(0).map((Choice choice) {
                   return PopupMenuItem<Choice>(
                     value: choice,
-                    child: Text(
-                      choice.title,
+                    child: Row(
+                      children: <Widget>[
+                        Icon(choice.icon,color:Colors.black,size:28),
+                        SizedBox(width: 10),
+                        Text(choice.title,style: TextStyle(fontSize:18),),
+                      ],
                     ),
                   );
                 }).toList();
               },
             ),
-          ],
-          title: Container(
-            height: 30,
-            width: 30,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: ExactAssetImage('lib/assets/main-icon.png'),
-                  fit: BoxFit.fitWidth),
-            ),
-          ),
-        ),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          // child: ChoiceCard(choice: _selectedChoice),
-        ),
-      ),
+          )),
+      // child: ChoiceCard(choice: _selectedChoice),
     );
   }
 }
 
 class Choice {
   const Choice({this.title, this.icon});
-
   final String title;
   final IconData icon;
 }
 
 const List<Choice> choices = const <Choice>[
-  const Choice(title: 'Action'),
-  const Choice(title: 'Another action'),
-  const Choice(title: 'something else here'),
-  const Choice(title: 'Salir'), //icon: Icons.arrow_left,
+  const Choice(icon: Icons.person, title: 'Mi Perfil'),
+  const Choice(icon: Icons.portrait,title: 'Ver mis Tarjetas'),
+  const Choice(icon: Icons.add,title: 'Crear nueva Tarjeta'),
+  const Choice(icon: Icons.share,title: 'Tarjetas compartidas'),
+  const Choice(icon: Icons.border_clear,title: 'Escanear nueva'),
+  const Choice(icon: Icons.arrow_right,title: 'Salir'), //icon: Icons.arrow_left,
 ];
-
 
 // class ChoiceCard extends StatelessWidget {
 //   const ChoiceCard({Key key, this.choice}) : super(key: key);
