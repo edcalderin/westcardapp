@@ -12,7 +12,6 @@ dependencies:
   equatable: ^1.1.1
   flutter_bloc: ^3.2.0
   http: ^0.12.0+4
-  connectivity: ^0.4.8+1
   cupertino_icons: ^0.1.2
   beauty_textfield: ^0.0.1
   flutter_secure_storage: ^3.3.1+1

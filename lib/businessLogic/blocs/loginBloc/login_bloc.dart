@@ -34,6 +34,5 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       yield LoginFailed(errorText: 'Bad credentials');
     else if (response.statusCode == 500 || response == 503)
       yield LoginFailed(errorText: 'Server error');
-    else if (response == -1) yield LoginFailed(errorText: 'Connection error');
   }
 }
