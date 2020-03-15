@@ -1,25 +1,27 @@
 part of 'activateaccount_bloc.dart';
 
-abstract class ActivateaccountState extends Equatable {
-  const ActivateaccountState();
+abstract class ActivateAccountState extends Equatable {
+  const ActivateAccountState();
 }
 
-class ActivateaccountInitial extends ActivateaccountState {
+class ActivateAccountInitial extends ActivateAccountState {
   @override
   List<Object> get props => [];
 }
 
-class ActivateAccountLoading extends ActivateaccountState {
+class ActivateAccountLoading extends ActivateAccountState {
   @override
   List<Object> get props => null;
 }
 
-class ActivateAccountLoaded extends ActivateaccountState {
+class ActivateAccountLoaded extends ActivateAccountState {
   @override
   List<Object> get props => null;
 }
 
-class ActivateAccountFailed extends ActivateaccountState {
+class ActivateAccountFailed extends ActivateAccountState {
+  final String errorText;
+  const ActivateAccountFailed({@required this.errorText});
   @override
-  List<Object> get props => null;
+  List<Object> get props => [errorText];
 }

@@ -1,10 +1,10 @@
 part of 'activateaccount_bloc.dart';
 
-abstract class ActivateaccountEvent extends Equatable {
-  const ActivateaccountEvent();
+abstract class ActivateAccountEvent extends Equatable {
+  const ActivateAccountEvent();
 }
 
-class ActivateAccountPressed extends ActivateaccountEvent {
+class ActivateAccountPressed extends ActivateAccountEvent {
   final String email;
   final String activationCode;
   const ActivateAccountPressed(
