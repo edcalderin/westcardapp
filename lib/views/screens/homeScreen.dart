@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:westcardapp/routes/const_routes.dart';
 import 'package:westcardapp/views/components/navBar.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -41,9 +42,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: InkWell(
                         splashColor: Colors.white,
                         onTap: () {
-                          print("");
+                          Navigator.pushNamed(context, myCardsRoute);
                         },
                         child: Container(
+                          width: MediaQuery.of(context).size.width * 0.40,
+                          height: MediaQuery.of(context).size.width * 0.40,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               border: Border(
@@ -63,23 +66,23 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Column(
                             children: <Widget>[
                               Container(
-                                margin: EdgeInsets.only(top: 14, bottom: 14),
+                                margin: EdgeInsets.only(top:19 , bottom: 19.5),
                                 child: Icon(
                                   Icons.portrait,
-                                  size: 100,
+                                  size: 80,
                                   color: Colors.white,
                                 ),
                               ),
                               Container(
                                 height: 40,
-                                width: 160,
+                                width: MediaQuery.of(context).size.width * 0.40,
                                 color: Color.fromARGB(255, 45, 62, 80),
                                 child: Container(
                                   margin: EdgeInsets.symmetric(vertical: 8),
                                   child: Text(
                                     'Mis Tarjetas',
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 20),
+                                        color: Colors.white, fontSize: 16),
                                     textAlign: TextAlign.center,
                                   ),
                                 ),
@@ -94,9 +97,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: InkWell(
                         splashColor: Colors.white,
                         onTap: () {
-                          print("tapped");
+                          Navigator.pushNamed(context, sharedCardsRoute);
                         },
                         child: Container(
+                          width: MediaQuery.of(context).size.width * 0.40,
+                          height: MediaQuery.of(context).size.width * 0.40,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               border: Border(
@@ -116,23 +121,23 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Column(
                             children: <Widget>[
                               Container(
-                                margin: EdgeInsets.only(top: 14, bottom: 14),
+                                margin: EdgeInsets.only(top:19 , bottom: 19.5),
                                 child: Icon(
                                   Icons.share,
-                                  size: 100,
+                                  size: 80,
                                   color: Colors.white,
                                 ),
                               ),
                               Container(
                                 height: 40,
-                                width: 160,
+                                width: MediaQuery.of(context).size.width * 0.40,
                                 color: Color.fromARGB(255, 45, 62, 80),
                                 child: Container(
                                   margin: EdgeInsets.symmetric(vertical: 8),
                                   child: Text(
                                     'Mis Almacen',
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 20),
+                                        color: Colors.white, fontSize: 16),
                                     textAlign: TextAlign.center,
                                   ),
                                 ),
@@ -153,9 +158,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: InkWell(
                         splashColor: Colors.white,
                         onTap: () {
-                          print("tapped");
+                          print("nueva");
                         },
                         child: Container(
+                          width: MediaQuery.of(context).size.width * 0.40,
+                          height: MediaQuery.of(context).size.width * 0.40,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               border: Border(
@@ -175,23 +182,23 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Column(
                             children: <Widget>[
                               Container(
-                                margin: EdgeInsets.only(top: 14, bottom: 14),
+                                margin: EdgeInsets.only(top:19 , bottom: 19.5),
                                 child: Icon(
                                   Icons.add,
-                                  size: 100,
+                                  size: 80,
                                   color: Colors.white,
                                 ),
                               ),
                               Container(
                                 height: 40,
-                                width: 160,
+                                width: MediaQuery.of(context).size.width * 0.40,
                                 color: Color.fromARGB(255, 45, 62, 80),
                                 child: Container(
                                   margin: EdgeInsets.symmetric(vertical: 8),
                                   child: Text(
                                     'Nueva Tarjeta',
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 20),
+                                        color: Colors.white, fontSize: 16),
                                     textAlign: TextAlign.center,
                                   ),
                                 ),
@@ -206,9 +213,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: InkWell(
                         splashColor: Colors.white,
                         onTap: () {
-                          print("tapped");
+                          print("scaner");
                         },
                         child: Container(
+                          width: MediaQuery.of(context).size.width * 0.40,
+                          height: MediaQuery.of(context).size.width * 0.40,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               border: Border(
@@ -228,23 +237,23 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Column(
                             children: <Widget>[
                               Container(
-                                margin: EdgeInsets.only(top: 14, bottom: 14),
+                                margin: EdgeInsets.only(top:19 , bottom: 19.5),
                                 child: Icon(
                                   Icons.border_clear,
-                                  size: 100,
+                                  size: 80,
                                   color: Colors.white,
                                 ),
                               ),
                               Container(
                                 height: 40,
-                                width: 160,
+                                width: MediaQuery.of(context).size.width * 0.40,
                                 color: Color.fromARGB(255, 45, 62, 80),
                                 child: Container(
                                   margin: EdgeInsets.symmetric(vertical: 8),
                                   child: Text(
                                     'Escanear QR',
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 20),
+                                        color: Colors.white, fontSize: 16),
                                     textAlign: TextAlign.center,
                                   ),
                                 ),

@@ -2,14 +2,14 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:westcardapp/routes/const_routes.dart';
 
-class loginScreen extends StatefulWidget {
-  loginScreen({Key key}) : super(key: key);
+class LoginScreen extends StatefulWidget {
+  LoginScreen({Key key}) : super(key: key);
 
   @override
   _loginScreenState createState() => _loginScreenState();
 }
 
-class _loginScreenState extends State<loginScreen> {
+class _loginScreenState extends State<LoginScreen> {
   TextEditingController _controller;
 
   void initState() {
@@ -70,13 +70,13 @@ class _loginScreenState extends State<loginScreen> {
                           .copyWith(splashColor: Colors.transparent),
                       child: TextField(
                         autofocus: false,
-                        style: TextStyle(fontSize: 22.0, color: Colors.black),
+                        style: TextStyle(fontSize: 18.0, color: Colors.black),
                         decoration: InputDecoration(
                           filled: true,
                           fillColor: Colors.white,
                           hintText: 'Correo Electronico',
                           contentPadding: const EdgeInsets.only(
-                              left: 20.0, bottom: 8.0, top: 8.0),
+                              left: 20.0, bottom: 10, top: 10),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.white),
                             borderRadius: BorderRadius.circular(18),
@@ -94,19 +94,19 @@ class _loginScreenState extends State<loginScreen> {
                   ),
                   Container(
                     margin: EdgeInsets.only(bottom: 10),
-                    height: 40,
+                    height: 35,
                     child: Theme(
                       data: Theme.of(context)
                           .copyWith(splashColor: Colors.transparent),
                       child: TextField(
                         autofocus: false,
-                        style: TextStyle(fontSize: 22.0, color: Colors.black),
+                        style: TextStyle(fontSize: 18.0, color: Colors.black),
                         decoration: InputDecoration(
                           filled: true,
                           fillColor: Colors.white,
                           hintText: 'Contraseña',
                           contentPadding: const EdgeInsets.only(
-                              left: 20.0, bottom: 8.0, top: 8.0),
+                              left: 20.0, bottom: 10.0, top: 10.0),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.white),
                             borderRadius: BorderRadius.circular(18),
@@ -124,9 +124,10 @@ class _loginScreenState extends State<loginScreen> {
                   ),
                   Container(
                     margin: EdgeInsets.only(top: 15, bottom: 5),
-                    height: 40,
+                    height:36,
                     width: MediaQuery.of(context).size.width * 0.95,
                     child: RaisedButton(
+                      elevation: 4,
                       color: Color.fromARGB(255, 45, 62, 80),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(25)),

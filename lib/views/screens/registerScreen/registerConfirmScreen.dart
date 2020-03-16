@@ -31,7 +31,7 @@ class _RegisterConfirmScreenState extends State<RegisterConfirmScreen> {
                 margin: EdgeInsets.only(top: 20, right: 20),
                 child: Text(
                   'Confirmacion de registro',
-                  style: TextStyle(fontSize: 16),
+                  style: TextStyle(fontSize: 18),
                 )),
           ],
         ),
@@ -58,17 +58,17 @@ class _RegisterConfirmScreenState extends State<RegisterConfirmScreen> {
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 15, bottom: 5),
-                  height: 50,
-                  width: MediaQuery.of(context).size.width * 0.30,
+                  height: 40,
+                  width: MediaQuery.of(context).size.width * 0.35,
                   child: RaisedButton(
                     color: Color.fromARGB(255, 24, 188, 156),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5)),
                     onPressed: () {
-                      Navigator.pushNamed(context, loginRoute);
+                      Navigator.pushReplacementNamed(context, loginRoute);
                     },
                     child: Text('Ir al inicio',
-                        style: TextStyle(fontSize: 20.0, color: Colors.white)),
+                        style: TextStyle(fontSize: 18.0, color: Colors.white)),
                   ),
                 ),
               ],

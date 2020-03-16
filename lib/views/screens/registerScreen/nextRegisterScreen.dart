@@ -31,7 +31,7 @@ class _NextRegisterScreenState extends State<NextRegisterScreen> {
                 margin: EdgeInsets.only(top: 20, right: 20),
                 child: Text(
                   'Registro de nuevo usuario',
-                  style: TextStyle(fontSize: 16),
+                  style: TextStyle(fontSize: 18),
                 )),
           ],
         ),
@@ -68,10 +68,10 @@ class _NextRegisterScreenState extends State<NextRegisterScreen> {
                         children: <Widget>[
                           Text('Codigo de activacion',
                               style:
-                                  TextStyle(color: Colors.white, fontSize: 20)),
+                                  TextStyle(color: Colors.white, fontSize: 16)),
                           Container(
                             margin: EdgeInsets.only(bottom: 15, top: 10),
-                            height: 40,
+                            height: 35,
                             child: Theme(
                               data: Theme.of(context)
                                   .copyWith(splashColor: Colors.transparent),
@@ -103,7 +103,7 @@ class _NextRegisterScreenState extends State<NextRegisterScreen> {
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 15, bottom: 5),
-                  height: 50,
+                  height: 40,
                   width: MediaQuery.of(context).size.width * 0.95,
                   child: RaisedButton(
                     color: Color.fromARGB(255, 45, 62, 80),
@@ -115,9 +115,9 @@ class _NextRegisterScreenState extends State<NextRegisterScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Text('   Enviar',
+                        Text('Enviar',
                             style:
-                                TextStyle(fontSize: 20.0, color: Colors.white)),
+                                TextStyle(fontSize: 18.0, color: Colors.white)),
                         Icon(Icons.arrow_right, size: 40, color: Colors.white),
                       ],
                     ),
@@ -125,7 +125,7 @@ class _NextRegisterScreenState extends State<NextRegisterScreen> {
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 5, bottom: 5),
-                  height: 50,
+                  height: 40,
                   width: MediaQuery.of(context).size.width * 0.95,
                   child: RaisedButton(
                     color: Colors.grey,
@@ -140,7 +140,7 @@ class _NextRegisterScreenState extends State<NextRegisterScreen> {
                         Icon(Icons.arrow_left, size: 40, color: Colors.white),
                         Text('Cancelar     ',
                             style:
-                                TextStyle(fontSize: 20.0, color: Colors.white)),
+                                TextStyle(fontSize: 18.0, color: Colors.white)),
                       ],
                     ),
                   ),

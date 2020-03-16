@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:westcardapp/views/screens/homeScreen.dart';
 import 'package:westcardapp/views/screens/loginScreen.dart';
+import 'package:westcardapp/views/screens/myCardsScreen.dart';
 import 'package:westcardapp/views/screens/registerScreen/nextRegisterScreen.dart';
 import 'package:westcardapp/views/screens/registerScreen/registerConfirmScreen.dart';
 import 'package:westcardapp/views/screens/registerScreen/userRegisterScreen.dart';
+import 'package:westcardapp/views/screens/sharedCardsScreen.dart';
+import 'package:westcardapp/views/screens/userProfileScreen.dart';
 import 'const_routes.dart';
 
 class Router {
@@ -11,7 +14,7 @@ class Router {
     final arguments = routeSettings.arguments;
     switch (routeSettings.name) {
       case loginRoute:
-        return MaterialPageRoute(builder: (_) => loginScreen());
+        return MaterialPageRoute(builder: (_) => LoginScreen());
       case homeScreenRoute:
         return MaterialPageRoute(builder: (_) => HomeScreen());
         break;
@@ -24,6 +27,15 @@ class Router {
       case registerConfirmRoute:
         return MaterialPageRoute(builder: (_) => RegisterConfirmScreen());
         break;
+      case userProfileRoute:
+        return MaterialPageRoute(builder: (_) => UserProfileScreen());
+        break;
+      case myCardsRoute:
+        return MaterialPageRoute(builder: (_) => MyCardsScreen());
+        break;
+      case sharedCardsRoute:
+        return MaterialPageRoute(builder: (_) => SharerdCardsScreen());
+        break;
       default:
         return MaterialPageRoute(
             builder: (_) =>
@@ -31,3 +43,4 @@ class Router {
     }
   }
 }
+
