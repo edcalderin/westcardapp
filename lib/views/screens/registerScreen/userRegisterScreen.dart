@@ -86,6 +86,7 @@ class _UserRegisterScreenState extends State<UserRegisterScreen> {
                               data: Theme.of(context)
                                   .copyWith(splashColor: Colors.transparent),
                               child: TextField(
+                                keyboardType: TextInputType.emailAddress,
                                 autofocus: false,
                                 style: TextStyle(
                                     fontSize: 22.0, color: Colors.black),

@@ -69,6 +69,7 @@ class _loginScreenState extends State<LoginScreen> {
                       data: Theme.of(context)
                           .copyWith(splashColor: Colors.transparent),
                       child: TextField(
+                        keyboardType: TextInputType.emailAddress,
                         autofocus: false,
                         style: TextStyle(fontSize: 18.0, color: Colors.black),
                         decoration: InputDecoration(
@@ -99,6 +100,7 @@ class _loginScreenState extends State<LoginScreen> {
                       data: Theme.of(context)
                           .copyWith(splashColor: Colors.transparent),
                       child: TextField(
+                        obscureText: true,
                         autofocus: false,
                         style: TextStyle(fontSize: 18.0, color: Colors.black),
                         decoration: InputDecoration(
@@ -124,7 +126,7 @@ class _loginScreenState extends State<LoginScreen> {
                   ),
                   Container(
                     margin: EdgeInsets.only(top: 15, bottom: 5),
-                    height:36,
+                    height: 36,
                     width: MediaQuery.of(context).size.width * 0.95,
                     child: RaisedButton(
                       elevation: 4,
