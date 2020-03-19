@@ -35,6 +35,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
     return BlocProvider<AuthenticationBloc>(
         create: (context) => authenticationBloc,
         child: MaterialApp(
@@ -52,5 +53,16 @@ class _MyAppState extends State<MyApp> {
                 else if (state is Unauthenticated) return LoginScreen();
               },
             )));
+=======
+    return MaterialApp(
+        title: '',
+        debugShowCheckedModeBanner: false  ,
+        theme: ThemeData(
+        primarySwatch: Colors.blue,
+        ),
+        onGenerateRoute: Router.generateRoutes,
+        initialRoute: loginRoute);
+       
+>>>>>>> 03e6b5e3f7b6ce2b2a45308c9bdde9cf6c52f81b
   }
 }
