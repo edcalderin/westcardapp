@@ -1,8 +1,10 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:westcardapp/businessLogic/blocs/auth/authenticationBloc/authentication_bloc.dart';
+import 'package:westcardapp/businessLogic/blocs/auth/loginBloc/login_string.dart';
 import 'package:westcardapp/businessLogic/repositories/authRepository.dart';
 
 part 'login_event.dart';
@@ -26,13 +28,28 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     yield LoginLoading();
     final dynamic response =
         await authRepository.signIn(event.email, event.password);
-    if (response == -1)
-      yield LoginFailed(errorText: 'Connection error');
-    else if (response.statusCode == 200)
-      authenticationBloc.add(SignedIn(accessToken: response.body.accessToken));
-    else if (response.statusCode == 400)
-      yield LoginFailed(errorText: 'Bad credentials');
+    if (response == null)
+      yield LoginFailed(errorText: CONNECTION_ERROR);
+    else if (response.statusCode == 200) {
+      dynamic responseStatus = await this
+          .authRepository
+          .accountStatus(event.email, jsonDecode(response.body)['accessToken']);
+      if (responseStatus.statusCode == 200) {
+        if (this.isActiveAccount(responseStatus))
+          authenticationBloc
+              .add(SignedIn(accessToken: response.body.accessToken));
+        else
+          yield LoginFailed(errorText: INVALID_STATUS);
+      } else
+        yield LoginFailed(errorText: SERVER_ERROR);
+    } else if (response.statusCode == 400)
+      yield LoginFailed(errorText: BAD_CREDENTIALS);
     else if (response.statusCode == 500 || response == 503)
-      yield LoginFailed(errorText: 'Server error');
+      yield LoginFailed(errorText: SERVER_ERROR);
+  }
+
+  bool isActiveAccount(dynamic response) {
+    dynamic responseDecoded = jsonDecode(response.body);
+    return responseDecoded['message'] == 'active';
   }
 }

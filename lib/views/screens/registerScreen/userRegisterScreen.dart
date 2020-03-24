@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:westcardapp/routes/const_routes.dart';
-import 'package:westcardapp/views/screens/loginScreen.dart';
+import 'package:westcardapp/businessLogic/blocs/auth/authenticationBloc/authentication_bloc.dart';
+import 'package:westcardapp/businessLogic/blocs/auth/registerBloc/register_bloc.dart';
+import 'package:westcardapp/businessLogic/repositories/authRepository.dart';
 
 class UserRegisterScreen extends StatefulWidget {
   UserRegisterScreen({Key key}) : super(key: key);
@@ -12,6 +13,18 @@ class UserRegisterScreen extends StatefulWidget {
 bool isSwitched = false;
 
 class _UserRegisterScreenState extends State<UserRegisterScreen> {
+  RegisterBloc registerBloc;
+  AuthenticationBloc authenticationBloc;
+  AuthRepository authRepository;
+  @override
+  void initState() {
+    super.initState();
+    this.authRepository = AuthRepository();
+    this.registerBloc = RegisterBloc();
+    this.authenticationBloc =
+        AuthenticationBloc(authRepository: this.authRepository);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -136,21 +149,7 @@ class _UserRegisterScreenState extends State<UserRegisterScreen> {
                                 ),
                               ),
                             ),
-                          ),
-                          // Row(
-                          //   children: <Widget>[
-                          //     Switch(
-                          //       value: isSwitched,
-                          //       onChanged: (value) {
-                          //         setState(() {
-                          //           isSwitched = value;
-                          //           print(isSwitched);
-                          //         });
-                          //       },
-                          //     ),
-                          //     Text('¿Soy una persona?')
-                          //   ],
-                          // )
+                          )
                         ],
                       )),
                 ),
@@ -162,9 +161,7 @@ class _UserRegisterScreenState extends State<UserRegisterScreen> {
                     color: Color.fromARGB(255, 45, 62, 80),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5)),
-                    onPressed: () {
-                      Navigator.pushNamed(context, nextRegisterRoute);
-                    },
+                    onPressed: () => registerButtonPressed(),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -185,7 +182,7 @@ class _UserRegisterScreenState extends State<UserRegisterScreen> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5)),
                     onPressed: () {
-                      Navigator.pushNamed(context,loginRoute);
+                      Navigator.of(context).pop();
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -203,4 +200,6 @@ class _UserRegisterScreenState extends State<UserRegisterScreen> {
           ],
         ));
   }
+
+  void registerButtonPressed() {}
 }

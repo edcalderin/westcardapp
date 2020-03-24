@@ -13,6 +13,8 @@ abstract class BaseAuthRepository {
   Future<dynamic> forgotPassword(String email);
   Future<dynamic> resetPassword(
       String email, String resetCode, String password);
+  Future<dynamic> accountStatus(String email, String token);
+  Future<dynamic> newActivationCode(String email);
 }
 
 class AuthRepository extends BaseAuthRepository {
@@ -47,7 +49,7 @@ class AuthRepository extends BaseAuthRepository {
           await http.post(url, headers: _headers, body: jsonEncode(_body));
       return response;
     } catch (e) {
-      return -1;
+      return null;
     }
   }
 
@@ -132,5 +134,29 @@ class AuthRepository extends BaseAuthRepository {
     } catch (e) {
       return -1;
     }
+  }
+
+  @override
+  Future<dynamic> accountStatus(String email, String token) async {
+    try {
+      final String url = '${BASE_URL}api/account/status/$email';
+      final Map<String, String> _headers = {
+        'content-type': 'application/json',
+        'Authorization': 'Bearer $token'
+      };
+      final response = await http.get(
+        url,
+        headers: _headers,
+      );
+      return response;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  @override
+  Future newActivationCode(String email) {
+    // TODO: implement newActivationCode
+    return null;
   }
 }

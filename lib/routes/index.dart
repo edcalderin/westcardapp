@@ -13,11 +13,7 @@ class Router {
   static Route<dynamic> generateRoutes(RouteSettings routeSettings) {
     final arguments = routeSettings.arguments;
     switch (routeSettings.name) {
-<<<<<<< HEAD
-            case loginRoute:
-=======
       case loginRoute:
->>>>>>> 03e6b5e3f7b6ce2b2a45308c9bdde9cf6c52f81b
         return MaterialPageRoute(builder: (_) => LoginScreen());
       case homeScreenRoute:
         return MaterialPageRoute(builder: (_) => HomeScreen());

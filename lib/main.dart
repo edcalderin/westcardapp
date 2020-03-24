@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:westcardapp/businessLogic/blocs/auth/authenticationBloc/authentication_bloc.dart';
 import 'package:westcardapp/businessLogic/repositories/authRepository.dart';
+import 'package:westcardapp/routes/const_routes.dart';
+import 'package:westcardapp/routes/index.dart';
 import 'package:westcardapp/views/screens/splashScreen.dart';
 
 import 'views/screens/homeScreen.dart';
@@ -35,7 +37,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
     return BlocProvider<AuthenticationBloc>(
         create: (context) => authenticationBloc,
         child: MaterialApp(
@@ -43,6 +44,7 @@ class _MyAppState extends State<MyApp> {
             theme: ThemeData(
               primarySwatch: Colors.blue,
             ),
+            onGenerateRoute: Router.generateRoutes,
             home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
               bloc: authenticationBloc,
               builder: (context, state) {
@@ -53,16 +55,5 @@ class _MyAppState extends State<MyApp> {
                 else if (state is Unauthenticated) return LoginScreen();
               },
             )));
-=======
-    return MaterialApp(
-        title: '',
-        debugShowCheckedModeBanner: false  ,
-        theme: ThemeData(
-        primarySwatch: Colors.blue,
-        ),
-        onGenerateRoute: Router.generateRoutes,
-        initialRoute: loginRoute);
-       
->>>>>>> 03e6b5e3f7b6ce2b2a45308c9bdde9cf6c52f81b
   }
 }
