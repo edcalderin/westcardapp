@@ -14,11 +14,9 @@ class RegisterLoading extends RegisterState {
   List<Object> get props => null;
 }
 
-class RegisterLoaded extends RegisterState {
-  final String accessToken;
-  const RegisterLoaded({@required this.accessToken});
+class RegisterSuccessfull extends RegisterState {
   @override
-  List<Object> get props => [accessToken];
+  List<Object> get props => null;
 }
 
 class RegisterFailed extends RegisterState {
