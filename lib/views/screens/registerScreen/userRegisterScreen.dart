@@ -1,7 +1,14 @@
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:westcardapp/businessLogic/blocs/auth/authenticationBloc/authentication_bloc.dart';
 import 'package:westcardapp/businessLogic/blocs/auth/registerBloc/register_bloc.dart';
 import 'package:westcardapp/businessLogic/repositories/authRepository.dart';
+import 'package:westcardapp/routes/const_routes.dart';
+import 'package:westcardapp/utils/authUtils.dart';
+import 'package:westcardapp/utils/common.dart';
+import 'package:westcardapp/views/components/loadingProgress.dart';
+import 'package:westcardapp/views/components/registerForm.dart';
 
 class UserRegisterScreen extends StatefulWidget {
   UserRegisterScreen({Key key}) : super(key: key);
@@ -16,13 +23,22 @@ class _UserRegisterScreenState extends State<UserRegisterScreen> {
   RegisterBloc registerBloc;
   AuthenticationBloc authenticationBloc;
   AuthRepository authRepository;
+  String email;
+  String plainPassword;
   @override
   void initState() {
     super.initState();
     this.authRepository = AuthRepository();
-    this.registerBloc = RegisterBloc();
+    this.registerBloc = RegisterBloc(authRepository: this.authRepository);
     this.authenticationBloc =
         AuthenticationBloc(authRepository: this.authRepository);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    this.registerBloc.close();
+    this.authenticationBloc.close();
   }
 
   @override
@@ -51,155 +67,36 @@ class _UserRegisterScreenState extends State<UserRegisterScreen> {
                 )),
           ],
         ),
-        body: Stack(
-          children: <Widget>[
-            Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('lib/assets/fondo_1.jpg'),
-                  fit: BoxFit.none,
-                ),
-              ),
-            ),
-            Column(
-              //  mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  margin: EdgeInsets.only(top: 30, bottom: 20),
-                  child: Center(
-                    child: Text('Ingrese sus datos para crear su usuario',
-                        style: TextStyle(fontSize: 18, color: Colors.white)),
+        body: BlocListener<RegisterBloc, RegisterState>(
+          bloc: this.registerBloc,
+          listener: (context, state) {
+            if (state is RegisterSuccessfull)
+              Navigator.of(context).pushNamed(nextRegisterRoute);
+            else if (state is RegisterFailed)
+              Common().showFlushBar(context: context, message: state.errorText);
+          },
+          child: BlocBuilder<RegisterBloc, RegisterState>(
+            builder: (context, state) {
+              return Stack(
+                children: <Widget>[
+                  Opacity(
+                    opacity: 0.5,
+                    child: RegisterForm(
+                        registerButtonPressed: () =>
+                            this.registerButtonPressed()),
                   ),
-                ),
-                Center(
-                  child: Container(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                      width: MediaQuery.of(context).size.width * 0.95,
-                      //height: MediaQuery.of(context).size.height * 0.40,
-                      decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.3),
-                          borderRadius: BorderRadius.all(Radius.circular(5.0))),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text('Informacion personal',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 18)),
-                          SizedBox(
-                            height: 15,
-                          ),
-                          Text('Email',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 16)),
-                          Container(
-                            margin: EdgeInsets.only(bottom: 15, top: 5),
-                            height: 35,
-                            child: Theme(
-                              data: Theme.of(context)
-                                  .copyWith(splashColor: Colors.transparent),
-                              child: TextField(
-                                keyboardType: TextInputType.emailAddress,
-                                autofocus: false,
-                                style: TextStyle(
-                                    fontSize: 22.0, color: Colors.black),
-                                decoration: InputDecoration(
-                                  filled: true,
-                                  fillColor: Colors.white,
-                                  contentPadding: const EdgeInsets.only(
-                                      left: 14.0, bottom: 8.0, top: 8.0),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.white),
-                                    borderRadius: BorderRadius.circular(18),
-                                  ),
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.white),
-                                    borderRadius: BorderRadius.circular(18),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Text('Contraseña',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 16)),
-                          Container(
-                            margin: EdgeInsets.only(bottom: 10, top: 5),
-                            height: 35,
-                            child: Theme(
-                              data: Theme.of(context)
-                                  .copyWith(splashColor: Colors.transparent),
-                              child: TextField(
-                                autofocus: false,
-                                style: TextStyle(
-                                    fontSize: 22.0, color: Colors.black),
-                                decoration: InputDecoration(
-                                  filled: true,
-                                  fillColor: Colors.white,
-                                  contentPadding: const EdgeInsets.only(
-                                      left: 14.0, bottom: 8.0, top: 8.0),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.white),
-                                    borderRadius: BorderRadius.circular(18),
-                                  ),
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.white),
-                                    borderRadius: BorderRadius.circular(18),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          )
-                        ],
-                      )),
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: 15, bottom: 5),
-                  height: 40,
-                  width: MediaQuery.of(context).size.width * 0.95,
-                  child: RaisedButton(
-                    color: Color.fromARGB(255, 45, 62, 80),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5)),
-                    onPressed: () => registerButtonPressed(),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text('Enviar informacion',
-                            style:
-                                TextStyle(fontSize: 18.0, color: Colors.white)),
-                        Icon(Icons.arrow_right, size: 40, color: Colors.white),
-                      ],
-                    ),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: 5, bottom: 5),
-                  height: 40,
-                  width: MediaQuery.of(context).size.width * 0.95,
-                  child: RaisedButton(
-                    color: Colors.grey,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5)),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Icon(Icons.arrow_left, size: 40, color: Colors.white),
-                        Text('Cancelar     ',
-                            style:
-                                TextStyle(fontSize: 18.0, color: Colors.white)),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ],
+                  LoadingProgress()
+                ],
+              );
+            },
+          ),
         ));
   }
 
-  void registerButtonPressed() {}
+  void registerButtonPressed() {
+    final String password = AuthUtils().convertToSha512(this.plainPassword);
+    this
+        .registerBloc
+        .add(RegisterPressed(email: this.email.trim(), password: password));
+  }
 }

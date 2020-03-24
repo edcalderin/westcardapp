@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:westcardapp/businessLogic/blocs/auth/authenticationBloc/authentication_bloc.dart';
 import 'package:westcardapp/businessLogic/blocs/auth/loginBloc/login_bloc.dart';
 import 'package:westcardapp/businessLogic/repositories/authRepository.dart';
+import 'package:westcardapp/views/components/loadingProgress.dart';
 import 'package:westcardapp/views/components/loginForm.dart';
 import 'package:flushbar/flushbar.dart';
 
@@ -68,9 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           email: this.email,
                           plainPassword: this.plainPassword,
                           buttonPressed: () => this.signInOnPress(context))),
-                  (state is LoginLoading)
-                      ? Center(child: CircularProgressIndicator())
-                      : Container()
+                  (state is LoginLoading) ? LoadingProgress() : Container()
                 ]);
               })),
     );
