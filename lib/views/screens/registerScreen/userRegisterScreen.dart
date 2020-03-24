@@ -76,16 +76,21 @@ class _UserRegisterScreenState extends State<UserRegisterScreen> {
               Common().showFlushBar(context: context, message: state.errorText);
           },
           child: BlocBuilder<RegisterBloc, RegisterState>(
+            bloc: this.registerBloc,
             builder: (context, state) {
               return Stack(
                 children: <Widget>[
                   Opacity(
-                    opacity: 0.5,
+                    opacity: (state is RegisterLoading) ? 0.5 : 1,
                     child: RegisterForm(
+                        changeEmailText: (emailText) =>
+                            this.changeEmailText(emailText),
+                        changePasswordText: (passwordText) =>
+                            this.changePasswordText(passwordText),
                         registerButtonPressed: () =>
                             this.registerButtonPressed()),
                   ),
-                  LoadingProgress()
+                  (state is RegisterLoading) ? LoadingProgress() : Container()
                 ],
               );
             },
@@ -93,10 +98,18 @@ class _UserRegisterScreenState extends State<UserRegisterScreen> {
         ));
   }
 
+  void changeEmailText(String email) {
+    this.email = email;
+    setState(() {});
+  }
+
+  void changePasswordText(String plainPassword) {
+    this.plainPassword = plainPassword;
+    setState(() {});
+  }
+
   void registerButtonPressed() {
-    final String password = AuthUtils().convertToSha512(this.plainPassword);
-    this
-        .registerBloc
-        .add(RegisterPressed(email: this.email.trim(), password: password));
+    this.registerBloc.add(RegisterPressed(
+        email: this.email.trim(), password: this.plainPassword.trim()));
   }
 }

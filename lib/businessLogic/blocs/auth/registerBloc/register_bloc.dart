@@ -28,8 +28,10 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
         yield RegisterFailed(errorText: 'Error de servidor');
       else if (responseRegister == 201)
         yield RegisterSuccessfull();
+      else if (responseRegister == 400)
+        yield RegisterFailed(errorText: 'Solicitud inválida');
       else
-        RegisterFailed(errorText: 'Error desconocido');
+        yield RegisterFailed(errorText: 'Error desconocido');
     }
   }
 }

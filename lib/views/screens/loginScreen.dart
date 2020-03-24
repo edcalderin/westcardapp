@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:westcardapp/businessLogic/blocs/auth/authenticationBloc/authentication_bloc.dart';
 import 'package:westcardapp/businessLogic/blocs/auth/loginBloc/login_bloc.dart';
 import 'package:westcardapp/businessLogic/repositories/authRepository.dart';
+import 'package:westcardapp/routes/const_routes.dart';
+import 'package:westcardapp/utils/common.dart';
 import 'package:westcardapp/views/components/loadingProgress.dart';
 import 'package:westcardapp/views/components/loginForm.dart';
 import 'package:flushbar/flushbar.dart';
@@ -46,14 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
           bloc: this.loginBloc,
           listener: (context, state) {
             if (state is LoginFailed)
-              Flushbar(
-                duration: Duration(seconds: 2),
-                messageText: Text(state.errorText,
-                    style: TextStyle(color: Colors.black)),
-                flushbarPosition: FlushbarPosition.BOTTOM,
-                backgroundColor: Colors.white,
-                isDismissible: true,
-              )..show(context);
+              Common().showFlushBar(context: context, message: state.errorText);
           },
           child: BlocBuilder<LoginBloc, LoginState>(
               bloc: this.loginBloc,

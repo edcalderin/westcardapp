@@ -80,9 +80,11 @@ class AuthRepository extends BaseAuthRepository {
       final Map<String, String> _headers = {'content-type': 'application/json'};
       final Map<String, String> _body = {
         'email': email,
-        'password': passSha512
+        'password': passSha512,
+        "role": jsonEncode(['FREE_USER'].toList())
       };
-      final response = await http.post(url, headers: _headers, body: _body);
+      final response =
+          await http.post(url, headers: _headers, body: jsonEncode(_body));
       return response.statusCode;
     } catch (e) {
       return null;
@@ -96,12 +98,12 @@ class AuthRepository extends BaseAuthRepository {
       final Map<String, String> _headers = {'content-type': 'application/json'};
       final Map<String, String> _body = {
         'email': email,
-        'activation_code': activationCode
+        'activationCode': activationCode
       };
       final response = await http.post(url, headers: _headers, body: _body);
       return response;
     } catch (e) {
-      return -1;
+      return null;
     }
   }
 
