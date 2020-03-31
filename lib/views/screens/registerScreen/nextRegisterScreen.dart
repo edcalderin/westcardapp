@@ -2,13 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:westcardapp/routes/const_routes.dart';
 
 class NextRegisterScreen extends StatefulWidget {
-  NextRegisterScreen({Key key}) : super(key: key);
-
+  final String email;
+  NextRegisterScreen({Key key, this.email}) : super(key: key);
   @override
   _NextRegisterScreenState createState() => _NextRegisterScreenState();
 }
 
 class _NextRegisterScreenState extends State<NextRegisterScreen> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,13 +64,15 @@ class _NextRegisterScreenState extends State<NextRegisterScreen> {
                       padding:
                           EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                       width: MediaQuery.of(context).size.width * 0.95,
-                      //height: MediaQuery.of(context).size.height * 0.40,
                       decoration: BoxDecoration(
                           color: Colors.white.withOpacity(0.3),
                           borderRadius: BorderRadius.all(Radius.circular(5.0))),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
+                          this.widget.email == null
+                              ? this.mailWidget()
+                              : Container(),
                           Text('Codigo de activacion',
                               style:
                                   TextStyle(color: Colors.white, fontSize: 16)),
@@ -77,7 +84,6 @@ class _NextRegisterScreenState extends State<NextRegisterScreen> {
                                   .copyWith(splashColor: Colors.transparent),
                               child: TextField(
                                 autofocus: false,
-                                
                                 style: TextStyle(
                                     fontSize: 16.0, color: Colors.black),
                                 decoration: InputDecoration(
@@ -132,7 +138,7 @@ class _NextRegisterScreenState extends State<NextRegisterScreen> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5)),
                     onPressed: () {
-                      Navigator.pushNamed(context, loginRoute);
+                      Navigator.pop(context);
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -149,5 +155,38 @@ class _NextRegisterScreenState extends State<NextRegisterScreen> {
             ),
           ],
         ));
+  }
+
+  Column mailWidget() {
+    return Column(children: <Widget>[
+      Text('Correo electrónico',
+          style: TextStyle(color: Colors.white, fontSize: 16)),
+      Container(
+        margin: EdgeInsets.only(bottom: 15, top: 10),
+        height: 35,
+        child: Theme(
+          data: Theme.of(context).copyWith(splashColor: Colors.transparent),
+          child: TextField(
+            autofocus: false,
+            style: TextStyle(fontSize: 16.0, color: Colors.black),
+            decoration: InputDecoration(
+              filled: true,
+              fillColor: Colors.white,
+              //hintText: 'ingresar codigo',
+              contentPadding:
+                  const EdgeInsets.only(left: 14.0, bottom: 8.0, top: 8.0),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.white),
+                borderRadius: BorderRadius.circular(18),
+              ),
+              enabledBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: Colors.white),
+                borderRadius: BorderRadius.circular(18),
+              ),
+            ),
+          ),
+        ),
+      ),
+    ]);
   }
 }

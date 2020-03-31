@@ -71,7 +71,8 @@ class _UserRegisterScreenState extends State<UserRegisterScreen> {
           bloc: this.registerBloc,
           listener: (context, state) {
             if (state is RegisterSuccessfull)
-              Navigator.of(context).pushNamed(nextRegisterRoute);
+              Navigator.of(context)
+                  .pushNamed(nextRegisterRoute, arguments: this.email);
             else if (state is RegisterFailed)
               Common().showFlushBar(context: context, message: state.errorText);
           },

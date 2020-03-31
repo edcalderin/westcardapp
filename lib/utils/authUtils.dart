@@ -32,4 +32,13 @@ class AuthUtils {
     var digest = output.events.single;
     return digest.toString();
   }
+
+  bool isUsernameTaken(dynamic response) {
+    if (response.statusCode == 400) {
+      final dynamic body = jsonDecode(response.body);
+      return body['status'] == 'error' &&
+          body['message'] == 'username is already taken';
+    }
+    return false;
+  }
 }

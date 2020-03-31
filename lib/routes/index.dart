@@ -22,7 +22,8 @@ class Router {
         return MaterialPageRoute(builder: (_) => UserRegisterScreen());
         break;
       case nextRegisterRoute:
-        return MaterialPageRoute(builder: (_) => NextRegisterScreen());
+        return MaterialPageRoute(
+            builder: (_) => NextRegisterScreen(email: arguments));
         break;
       case registerConfirmRoute:
         return MaterialPageRoute(builder: (_) => RegisterConfirmScreen());
@@ -43,4 +44,3 @@ class Router {
     }
   }
 }
-

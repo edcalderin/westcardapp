@@ -154,6 +154,15 @@ class LoginForm extends StatelessWidget {
                   child: Text('¿Olvidaste tu contraseña?',
                       style: TextStyle(color: Colors.white, fontSize: 16.0)),
                 ),
+                SizedBox(
+                  height: 45,
+                ),
+                InkWell(
+                  onTap: () =>
+                      Navigator.of(context).pushNamed(userRegisterRoute),
+                  child: Text('Activar cuenta',
+                      style: TextStyle(color: Colors.white, fontSize: 16.0)),
+                ),
               ],
             ),
           ),

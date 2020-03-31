@@ -7,7 +7,7 @@ import 'package:westcardapp/global.dart';
 abstract class BaseAuthRepository {
   Future<int> hasToken(String accessToken);
   Future<dynamic> signIn(String email, String password);
-  Future<int> signUp(String email, String password);
+  Future<dynamic> signUp(String email, String password);
   Future<dynamic> signOut(String email, String accessToken);
   Future<dynamic> activateAccount(String email, String activationCode);
   Future<dynamic> forgotPassword(String email);
@@ -73,19 +73,19 @@ class AuthRepository extends BaseAuthRepository {
   }
 
   @override
-  Future<int> signUp(String email, String password) async {
+  Future<dynamic> signUp(String email, String password) async {
     try {
       final String passSha512 = authUtils.convertToSha512(password);
       final String url = '${BASE_URL}api/account/signup';
       final Map<String, String> _headers = {'content-type': 'application/json'};
-      final Map<String, String> _body = {
+      final dynamic body = {
         'email': email,
         'password': passSha512,
-        "role": jsonEncode(['FREE_USER'].toList())
+        "role": ['FREE_USER']
       };
       final response =
-          await http.post(url, headers: _headers, body: jsonEncode(_body));
-      return response.statusCode;
+          await http.post(url, headers: _headers, body: jsonEncode(body));
+      return response;
     } catch (e) {
       return null;
     }
@@ -116,7 +116,7 @@ class AuthRepository extends BaseAuthRepository {
       final response = await http.post(url, headers: _headers, body: _body);
       return response;
     } catch (e) {
-      return -1;
+      return null;
     }
   }
 
