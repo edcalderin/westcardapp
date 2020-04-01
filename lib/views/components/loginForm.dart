@@ -159,7 +159,7 @@ class LoginForm extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () =>
-                      Navigator.of(context).pushNamed(userRegisterRoute),
+                      Navigator.of(context).pushNamed(nextRegisterRoute),
                   child: Text('Activar cuenta',
                       style: TextStyle(color: Colors.white, fontSize: 16.0)),
                 ),

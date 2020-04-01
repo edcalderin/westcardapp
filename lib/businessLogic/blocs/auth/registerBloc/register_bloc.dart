@@ -32,9 +32,10 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
         yield RegisterFailed(errorText: 'Error de conexion');
       else if (statusCode == 500 || statusCode == 503)
         yield RegisterFailed(errorText: 'Error de servidor');
-      else if (statusCode == 201)
+      else if (statusCode == 201) {
+        this.authUtils.writeSecureToken(responseRegister.accessToken);
         yield RegisterSuccessfull();
-      else if (statusCode == 400)
+      } else if (statusCode == 400)
         yield RegisterFailed(errorText: 'Solicitud inválida');
       else
         yield RegisterFailed(errorText: 'Error desconocido');
