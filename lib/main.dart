@@ -52,7 +52,8 @@ class _MyAppState extends State<MyApp> {
                   return SplashScreen();
                 else if (state is Authenticated)
                   return HomeScreen();
-                else if (state is Unauthenticated) return LoginScreen();
+                else
+                  return LoginScreen();
               },
             )));
   }

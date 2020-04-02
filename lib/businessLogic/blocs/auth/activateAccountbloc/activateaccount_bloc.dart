@@ -31,8 +31,7 @@ class ActivateAccountBloc
           .activateAccount(event.email, event.activationCode);
 
       if (response == 200) {
-        final String accessToken = await AuthUtils().readSecureToken();
-        this.authenticationBloc.add(SignedIn(accessToken: accessToken));
+        ActivateAccountLoaded();
       } else if (response == 500 || response == 503)
         ActivateAccountFailed(errorText: 'Server error');
       else if (response == null)

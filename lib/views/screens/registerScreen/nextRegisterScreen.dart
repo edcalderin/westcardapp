@@ -51,8 +51,8 @@ class _NextRegisterScreenState extends State<NextRegisterScreen> {
           listener: (context, state) {
             if (state is ActivateAccountFailed)
               Common().showFlushBar(context: context, message: state.errorText);
-            else if (state is Authenticated)
-              Navigator.of(context).pushReplacementNamed(homeScreenRoute);
+            else if (state is ActivateAccountLoaded)
+              Navigator.of(context).pushReplacementNamed(loginRoute);
           },
           child: BlocBuilder<ActivateAccountBloc, ActivateAccountState>(
             builder: (context, state) {

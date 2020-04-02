@@ -28,6 +28,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     yield LoginLoading();
     final dynamic response =
         await authRepository.signIn(event.email, event.password);
+    final dynamic responseBody = jsonDecode(response.body);
     if (response == null)
       yield LoginFailed(errorText: CONNECTION_ERROR);
     else if (response.statusCode == 200) {
@@ -36,8 +37,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           .accountStatus(event.email, jsonDecode(response.body)['accessToken']);
       if (responseStatus.statusCode == 200) {
         if (this.isActiveAccount(responseStatus))
-          authenticationBloc
-              .add(SignedIn(accessToken: response.body.accessToken));
+          this.authenticationBloc
+              .add(SignedIn(accessToken: responseBody['accessToken']));
         else
           yield LoginFailed(errorText: INVALID_STATUS);
       } else

@@ -33,20 +33,20 @@ class AuthenticationBloc
       final int response =
           await this.authRepository.hasToken(tokenSecureStorage);
       switch (response) {
-        case 200:
-          Authenticated();
+        case 202:
+          yield Authenticated();
           break;
         case 401:
-          Unauthenticated();
+          yield Unauthenticated();
           break;
         case 500 | 503:
-          AuthenticationFailed(errorText: 'Server error');
+          yield AuthenticationFailed(errorText: 'Server error');
           break;
         case -1:
-          AuthenticationFailed(errorText: 'Connection error');
+          yield AuthenticationFailed(errorText: 'Connection error');
           break;
         default:
-          AuthenticationFailed(errorText: 'Unknown error');
+          yield AuthenticationFailed(errorText: 'Unknown error');
       }
     } else
       yield Unauthenticated();
