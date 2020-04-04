@@ -101,12 +101,10 @@ class _UserRegisterScreenState extends State<UserRegisterScreen> {
 
   void changeEmailText(String email) {
     this.email = email;
-    setState(() {});
   }
 
   void changePasswordText(String plainPassword) {
     this.plainPassword = plainPassword;
-    setState(() {});
   }
 
   void registerButtonPressed() {

@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:westcardapp/routes/const_routes.dart';
 
-class ActivateAccountForm extends StatefulWidget {
-  String email;
-  ActivateAccountForm({@required this.email});
-  @override
-  _ActivateAccountFormState createState() => _ActivateAccountFormState();
-}
+class ActivateAccountForm extends StatelessWidget {
+  final String email;
+  final Function changeEmail;
+  final Function activateOnPressed;
+  final Function changeCode;
+  ActivateAccountForm(
+      {@required this.email,
+      @required this.activateOnPressed,
+      @required this.changeEmail,
+      @required this.changeCode});
 
-class _ActivateAccountFormState extends State<ActivateAccountForm> {
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -40,8 +43,8 @@ class _ActivateAccountFormState extends State<ActivateAccountForm> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      this.widget.email == null
-                          ? this.mailWidget()
+                      this.email == null
+                          ? this.mailWidget(context)
                           : Container(),
                       Text('Codigo de activacion',
                           style: TextStyle(color: Colors.white, fontSize: 16)),
@@ -52,6 +55,7 @@ class _ActivateAccountFormState extends State<ActivateAccountForm> {
                           data: Theme.of(context)
                               .copyWith(splashColor: Colors.transparent),
                           child: TextField(
+                            onChanged: (code) => this.changeCode(code),
                             autofocus: false,
                             style:
                                 TextStyle(fontSize: 16.0, color: Colors.black),
@@ -84,9 +88,7 @@ class _ActivateAccountFormState extends State<ActivateAccountForm> {
                 color: Color.fromARGB(255, 45, 62, 80),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(5)),
-                onPressed: () {
-                  Navigator.pushNamed(context, registerConfirmRoute);
-                },
+                onPressed: this.activateOnPressed,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -124,7 +126,7 @@ class _ActivateAccountFormState extends State<ActivateAccountForm> {
     );
   }
 
-  Column mailWidget() {
+  Column mailWidget(BuildContext context) {
     return Column(children: <Widget>[
       Text('Correo electrónico',
           style: TextStyle(color: Colors.white, fontSize: 16)),
@@ -134,6 +136,7 @@ class _ActivateAccountFormState extends State<ActivateAccountForm> {
         child: Theme(
           data: Theme.of(context).copyWith(splashColor: Colors.transparent),
           child: TextField(
+            onChanged: (email) => this.changeEmail(email),
             autofocus: false,
             style: TextStyle(fontSize: 16.0, color: Colors.black),
             decoration: InputDecoration(

@@ -100,7 +100,8 @@ class AuthRepository extends BaseAuthRepository {
         'email': email,
         'activationCode': activationCode
       };
-      final response = await http.post(url, headers: _headers, body: _body);
+      final response =
+          await http.post(url, headers: _headers, body: jsonEncode(_body));
       return response;
     } catch (e) {
       return null;

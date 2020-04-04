@@ -2,23 +2,41 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:westcardapp/businessLogic/blocs/auth/activateAccountbloc/activateaccount_bloc.dart';
 import 'package:westcardapp/businessLogic/blocs/auth/authenticationBloc/authentication_bloc.dart';
+import 'package:westcardapp/businessLogic/repositories/authRepository.dart';
 import 'package:westcardapp/routes/const_routes.dart';
 import 'package:westcardapp/utils/common.dart';
 import 'package:westcardapp/views/components/activateAccountForm.dart';
 import 'package:westcardapp/views/components/loadingProgress.dart';
 
-class NextRegisterScreen extends StatefulWidget {
+class ActivateAccountScreen extends StatefulWidget {
   final String email;
-  NextRegisterScreen({Key key, this.email}) : super(key: key);
+  ActivateAccountScreen({Key key, this.email}) : super(key: key);
   @override
-  _NextRegisterScreenState createState() => _NextRegisterScreenState();
+  _ActivateAccountScreenState createState() => _ActivateAccountScreenState();
 }
 
-class _NextRegisterScreenState extends State<NextRegisterScreen> {
+class _ActivateAccountScreenState extends State<ActivateAccountScreen> {
   AuthenticationBloc authenticationBloc;
+  ActivateAccountBloc activateAccountBloc;
+  AuthRepository authRepository;
+  String email;
+  String activationCode;
   @override
   void initState() {
     super.initState();
+    this.authRepository = AuthRepository();
+    this.authenticationBloc =
+        AuthenticationBloc(authRepository: this.authRepository);
+    this.activateAccountBloc = ActivateAccountBloc(
+        authRepository: this.authRepository,
+        authenticationBloc: this.authenticationBloc);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    this.authenticationBloc.close();
+    this.activateAccountBloc.close();
   }
 
   @override
@@ -48,24 +66,46 @@ class _NextRegisterScreenState extends State<NextRegisterScreen> {
           ],
         ),
         body: BlocListener<ActivateAccountBloc, ActivateAccountState>(
+          bloc: this.activateAccountBloc,
           listener: (context, state) {
             if (state is ActivateAccountFailed)
               Common().showFlushBar(context: context, message: state.errorText);
             else if (state is ActivateAccountLoaded)
-              Navigator.of(context).pushReplacementNamed(loginRoute);
+              Navigator.of(context).pushReplacementNamed(registerConfirmRoute);
           },
           child: BlocBuilder<ActivateAccountBloc, ActivateAccountState>(
+            bloc: this.activateAccountBloc,
             builder: (context, state) {
               return Stack(
                 children: <Widget>[
-                  ActivateAccountForm(email: this.widget.email),
+                  Opacity(
+                      opacity: (state is ActivateAccountLoading) ? 0.5 : 1,
+                      child: ActivateAccountForm(
+                          email: widget.email,
+                          changeEmail: (email) => this.changeEmailEvent(email),
+                          changeCode: (code) => this.changeCodeEvent(code),
+                          activateOnPressed: this.activateOnPressed)),
                   (state is ActivateAccountLoading)
-                      ? Opacity(opacity: 0.5, child: LoadingProgress())
+                      ? LoadingProgress()
                       : Container()
                 ],
               );
             },
           ),
         ));
+  }
+
+  void activateOnPressed() {
+    final String email = widget.email ?? this.email;
+    this.activateAccountBloc.add(ActivateAccountPressed(
+        email: email.trim(), activationCode: this.activationCode.trim()));
+  }
+
+  void changeEmailEvent(String email) {
+    this.email = email;
+  }
+
+  void changeCodeEvent(String code) {
+    this.activationCode = code;
   }
 }

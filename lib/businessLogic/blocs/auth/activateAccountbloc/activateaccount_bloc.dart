@@ -1,11 +1,11 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:westcardapp/businessLogic/blocs/auth/authenticationBloc/authentication_bloc.dart';
 import 'package:westcardapp/businessLogic/repositories/authRepository.dart';
-import 'package:westcardapp/utils/authUtils.dart';
 
 part 'activateaccount_event.dart';
 part 'activateaccount_state.dart';
@@ -26,18 +26,31 @@ class ActivateAccountBloc
   ) async* {
     if (event is ActivateAccountPressed) {
       yield ActivateAccountLoading();
-      final int response = await this
+      final dynamic response = await this
           .authRepository
           .activateAccount(event.email, event.activationCode);
+      final int statusCode = response.statusCode;
+      if (statusCode == 200)
+        yield ActivateAccountLoaded();
+      else if (statusCode == 400)
+        yield ActivateAccountFailed(errorText: 'Formato invalido');
+      else if (statusCode == 500 || statusCode == 503) {
+        if (this.isInvalidAccount(response))
+          yield ActivateAccountFailed(
+              errorText: 'Correo electronico o codigo invalido');
+        else
+          yield ActivateAccountFailed(errorText: 'Error de servidor');
+      } else
+        yield ActivateAccountFailed(errorText: 'Error inesperado');
+    }
+  }
 
-      if (response == 200) {
-        ActivateAccountLoaded();
-      } else if (response == 500 || response == 503)
-        ActivateAccountFailed(errorText: 'Server error');
-      else if (response == null)
-        ActivateAccountFailed(errorText: 'Connection error');
-      else
-        ActivateAccountFailed(errorText: 'Unknown error');
+  bool isInvalidAccount(dynamic response) {
+    try {
+      final dynamic responseDecoded = jsonDecode(response.body);
+      return responseDecoded['status'] == 'error';
+    } catch (e) {
+      return false;
     }
   }
 }
