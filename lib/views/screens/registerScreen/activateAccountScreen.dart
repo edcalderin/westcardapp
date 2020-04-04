@@ -98,7 +98,8 @@ class _ActivateAccountScreenState extends State<ActivateAccountScreen> {
   void activateOnPressed() {
     final String email = widget.email ?? this.email;
     this.activateAccountBloc.add(ActivateAccountPressed(
-        email: email.trim(), activationCode: this.activationCode.trim()));
+        email: email.trim().toLowerCase(),
+        activationCode: this.activationCode.trim().toUpperCase()));
   }
 
   void changeEmailEvent(String email) {

@@ -109,6 +109,7 @@ class _UserRegisterScreenState extends State<UserRegisterScreen> {
 
   void registerButtonPressed() {
     this.registerBloc.add(RegisterPressed(
-        email: this.email.trim(), password: this.plainPassword.trim()));
+        email: this.email.trim().toLowerCase(),
+        password: this.plainPassword.trim().toLowerCase()));
   }
 }

@@ -82,6 +82,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void signInOnPress(BuildContext context) {
     this.loginBloc.add(SignInPressed(
-        email: this.email.trim(), password: this.plainPassword.trim()));
+        email: this.email.trim().toLowerCase(),
+        password: this.plainPassword.trim().toLowerCase()));
   }
 }
