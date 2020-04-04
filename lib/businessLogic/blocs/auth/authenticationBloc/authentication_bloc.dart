@@ -4,7 +4,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:westcardapp/businessLogic/repositories/authRepository.dart';
 import 'package:westcardapp/utils/authUtils.dart';
-
+import 'package:westcardapp/utils/blocMessages.dart' as messages;
 part 'authentication_event.dart';
 part 'authentication_state.dart';
 
@@ -39,14 +39,11 @@ class AuthenticationBloc
         case 401:
           yield Unauthenticated();
           break;
-        case 500 | 503:
-          yield AuthenticationFailed(errorText: 'Server error');
-          break;
         case -1:
-          yield AuthenticationFailed(errorText: 'Connection error');
+          yield AuthenticationFailed(errorText: messages.CONNECTION_ERROR);
           break;
         default:
-          yield AuthenticationFailed(errorText: 'Unknown error');
+          yield AuthenticationFailed(errorText: messages.UNEXPECTED_ERROR);
       }
     } else
       yield Unauthenticated();
@@ -68,15 +65,13 @@ class AuthenticationBloc
         yield Unauthenticated();
         break;
       case 400:
-        yield AuthenticationFailed(errorText: 'Bad credentials');
-        break;
-      case 500 | 503:
-        yield AuthenticationFailed(errorText: 'Server error');
+        yield AuthenticationFailed(errorText: messages.INVALID_REQUEST);
         break;
       case -1:
-        yield AuthenticationFailed(errorText: 'Connection error');
+        yield AuthenticationFailed(errorText: messages.CONNECTION_ERROR);
         break;
       default:
+        yield AuthenticationFailed(errorText: messages.UNEXPECTED_ERROR);
     }
   }
 }

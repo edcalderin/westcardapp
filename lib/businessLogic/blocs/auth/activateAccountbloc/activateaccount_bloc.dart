@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:westcardapp/businessLogic/blocs/auth/authenticationBloc/authentication_bloc.dart';
 import 'package:westcardapp/businessLogic/repositories/authRepository.dart';
-
+import 'package:westcardapp/utils/blocMessages.dart' as messages;
 part 'activateaccount_event.dart';
 part 'activateaccount_state.dart';
 
@@ -33,15 +33,12 @@ class ActivateAccountBloc
       if (statusCode == 200)
         yield ActivateAccountLoaded();
       else if (statusCode == 400)
-        yield ActivateAccountFailed(errorText: 'Formato invalido');
-      else if (statusCode == 500 || statusCode == 503) {
-        if (this.isInvalidAccount(response))
-          yield ActivateAccountFailed(
-              errorText: 'Correo electronico o codigo invalido');
-        else
-          yield ActivateAccountFailed(errorText: 'Error de servidor');
-      } else
-        yield ActivateAccountFailed(errorText: 'Error inesperado');
+        yield ActivateAccountFailed(errorText: messages.FORMAT_ERROR);
+      else if ((statusCode == 500 || statusCode == 503) &&
+          this.isInvalidAccount(response))
+        yield ActivateAccountFailed(errorText: messages.ACTIVATION_DENIED);
+      else
+        yield ActivateAccountFailed(errorText: messages.UNEXPECTED_ERROR);
     }
   }
 

@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:westcardapp/businessLogic/blocs/auth/authenticationBloc/authentication_bloc.dart';
 import 'package:westcardapp/businessLogic/blocs/auth/loginBloc/login_string.dart';
 import 'package:westcardapp/businessLogic/repositories/authRepository.dart';
-
+import 'package:westcardapp/utils/blocMessages.dart' as messages;
 part 'login_event.dart';
 part 'login_state.dart';
 
@@ -29,24 +29,26 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     final dynamic response =
         await authRepository.signIn(event.email, event.password);
     final dynamic responseBody = jsonDecode(response.body);
-    if (response == null)
-      yield LoginFailed(errorText: CONNECTION_ERROR);
-    else if (response.statusCode == 200) {
+
+    if (response.statusCode == 200) {
       dynamic responseStatus = await this
           .authRepository
           .accountStatus(event.email, jsonDecode(response.body)['accessToken']);
       if (responseStatus.statusCode == 200) {
         if (this.isActiveAccount(responseStatus))
-          this.authenticationBloc
+          this
+              .authenticationBloc
               .add(SignedIn(accessToken: responseBody['accessToken']));
         else
-          yield LoginFailed(errorText: INVALID_STATUS);
+          yield LoginFailed(errorText: messages.INVALID_STATUS);
       } else
-        yield LoginFailed(errorText: SERVER_ERROR);
+        yield LoginFailed(errorText: messages.UNEXPECTED_ERROR);
     } else if (response.statusCode == 400)
-      yield LoginFailed(errorText: BAD_CREDENTIALS);
-    else if (response.statusCode == 500 || response == 503)
-      yield LoginFailed(errorText: SERVER_ERROR);
+      yield LoginFailed(errorText: messages.LOGIN_DENIED);
+    else if (response.statusCode == 500 || response.statusCode == 503)
+      yield LoginFailed(errorText: messages.UNEXPECTED_ERROR);
+    else
+      yield LoginFailed(errorText: messages.CONNECTION_ERROR);
   }
 
   bool isActiveAccount(dynamic response) {
