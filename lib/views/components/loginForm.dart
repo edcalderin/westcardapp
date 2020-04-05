@@ -1,21 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:westcardapp/businessLogic/blocs/auth/loginBloc/login_bloc.dart';
 import 'package:westcardapp/routes/const_routes.dart';
+import 'package:westcardapp/utils/authUtils.dart';
+import 'package:westcardapp/utils/common.dart';
 
-class LoginForm extends StatelessWidget {
-  String email;
-  String plainPassword;
-  Function buttonPressed;
-  Function changeEmailText;
-  Function changePasswordText;
-  LoginForm(
-      {@required this.changeEmailText,
-      @required this.changePasswordText,
-      @required this.email,
-      @required this.plainPassword,
-      @required this.buttonPressed});
+import 'loadingProgress.dart';
+
+class LoginForm extends StatefulWidget {
+  @override
+  _LoginFormState createState() => _LoginFormState();
+}
+
+class _LoginFormState extends State<LoginForm> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController plainPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    return BlocListener<LoginBloc, LoginState>(listener: (context, state) {
+      if (state is LoginFailed)
+        Common().showFlushBar(context: context, message: state.errorText);
+    }, child: BlocBuilder<LoginBloc, LoginState>(builder: (context, state) {
+      return Stack(children: <Widget>[
+        Opacity(
+            opacity: (state is LoginLoading) ? 0.5 : 1,
+            child: widgetLogin(context)),
+        (state is LoginLoading) ? LoadingProgress() : Container()
+      ]);
+    }));
+  }
+
+  Widget widgetLogin(BuildContext context) {
     return Stack(
       children: <Widget>[
         Center(
@@ -59,7 +75,7 @@ class LoginForm extends StatelessWidget {
                     data: Theme.of(context)
                         .copyWith(splashColor: Colors.transparent),
                     child: TextField(
-                      onChanged: (emailText) => this.changeEmailText(emailText),
+                      controller: emailController,
                       keyboardType: TextInputType.emailAddress,
                       autofocus: false,
                       style: TextStyle(fontSize: 18.0, color: Colors.black),
@@ -91,8 +107,7 @@ class LoginForm extends StatelessWidget {
                     data: Theme.of(context)
                         .copyWith(splashColor: Colors.transparent),
                     child: TextField(
-                      onChanged: (plainPasswordText) =>
-                          this.changePasswordText(plainPasswordText),
+                      controller: plainPasswordController,
                       obscureText: true,
                       autofocus: false,
                       style: TextStyle(fontSize: 18.0, color: Colors.black),
@@ -126,7 +141,7 @@ class LoginForm extends StatelessWidget {
                     color: Color.fromARGB(255, 45, 62, 80),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(25)),
-                    onPressed: () => this.buttonPressed(),
+                    onPressed: () => loginButtonPressed(),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -169,5 +184,11 @@ class LoginForm extends StatelessWidget {
         )
       ],
     );
+  }
+
+  void loginButtonPressed() {
+    BlocProvider.of<LoginBloc>(context).add(SignInPressed(
+        email: emailController.text.trim().toLowerCase(),
+        plainPassword: plainPasswordController.text));
   }
 }

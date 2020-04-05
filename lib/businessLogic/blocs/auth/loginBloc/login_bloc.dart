@@ -11,9 +11,11 @@ part 'login_event.dart';
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  AuthRepository authRepository;
-  AuthenticationBloc authenticationBloc;
-  LoginBloc({@required this.authRepository, @required this.authenticationBloc});
+  final AuthRepository authRepository;
+  final AuthenticationBloc authenticationBloc;
+  LoginBloc({@required this.authRepository, @required this.authenticationBloc})
+      : assert(authRepository != null),
+        assert(authenticationBloc != null);
   @override
   LoginState get initialState => LoginInitial();
 
@@ -27,7 +29,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   Stream<LoginState> mapToEventSignInPressed(SignInPressed event) async* {
     yield LoginLoading();
     final dynamic response =
-        await authRepository.signIn(event.email, event.password);
+        await authRepository.signIn(event.email, event.plainPassword);
     final dynamic responseBody = jsonDecode(response.body);
 
     if (response.statusCode == 200) {
@@ -35,11 +37,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           .authRepository
           .accountStatus(event.email, jsonDecode(response.body)['accessToken']);
       if (responseStatus.statusCode == 200) {
-        if (this.isActiveAccount(responseStatus))
+        if (this.isActiveAccount(responseStatus)) {
           this
               .authenticationBloc
               .add(SignedIn(accessToken: responseBody['accessToken']));
-        else
+        } else
           yield LoginFailed(errorText: messages.INVALID_STATUS);
       } else
         yield LoginFailed(errorText: messages.UNEXPECTED_ERROR);
