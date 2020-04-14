@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class RegisterForm extends StatelessWidget {
   final Function registerButtonPressed;
-  final Function changeEmailText;
-  final Function changePasswordText;
+  final TextEditingController emailTextController;
+  final TextEditingController plainPasswordController;
   RegisterForm(
       {@required this.registerButtonPressed,
-      @required this.changeEmailText,
-      @required this.changePasswordText});
+      @required this.emailTextController,
+      @required this.plainPasswordController});
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -53,8 +53,7 @@ class RegisterForm extends StatelessWidget {
                           data: Theme.of(context)
                               .copyWith(splashColor: Colors.transparent),
                           child: TextField(
-                            onChanged: (emailText) =>
-                                this.changeEmailText(emailText),
+                            controller: emailTextController,
                             keyboardType: TextInputType.emailAddress,
                             autofocus: false,
                             style:
@@ -85,8 +84,7 @@ class RegisterForm extends StatelessWidget {
                           data: Theme.of(context)
                               .copyWith(splashColor: Colors.transparent),
                           child: TextField(
-                            onChanged: (passwordText) =>
-                                this.changePasswordText(passwordText),
+                            controller: plainPasswordController,
                             autofocus: false,
                             style:
                                 TextStyle(fontSize: 22.0, color: Colors.black),

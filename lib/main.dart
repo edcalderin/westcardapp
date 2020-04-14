@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
         ),
         onGenerateRoute: Router.generateRoutes,
         home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
-            builder: (context, state) {
+            builder: (con0text, state) {
           if (state is Uninitialized)
             return SplashScreen();
           else if (state is AuthenticationLoading)

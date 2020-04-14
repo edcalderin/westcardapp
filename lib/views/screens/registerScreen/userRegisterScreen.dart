@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:westcardapp/businessLogic/blocs/auth/authenticationBloc/authentication_bloc.dart';
 import 'package:westcardapp/businessLogic/blocs/auth/registerBloc/register_bloc.dart';
 import 'package:westcardapp/businessLogic/repositories/authRepository.dart';
+import 'package:westcardapp/models/activationParams.dart';
 import 'package:westcardapp/routes/const_routes.dart';
 import 'package:westcardapp/utils/authUtils.dart';
 import 'package:westcardapp/utils/common.dart';
@@ -11,7 +12,9 @@ import 'package:westcardapp/views/components/loadingProgress.dart';
 import 'package:westcardapp/views/components/registerForm.dart';
 
 class UserRegisterScreen extends StatefulWidget {
-  UserRegisterScreen({Key key}) : super(key: key);
+  final AuthRepository authRepository;
+  UserRegisterScreen({Key key, @required this.authRepository})
+      : super(key: key);
 
   @override
   _UserRegisterScreenState createState() => _UserRegisterScreenState();
@@ -22,23 +25,29 @@ bool isSwitched = false;
 class _UserRegisterScreenState extends State<UserRegisterScreen> {
   RegisterBloc registerBloc;
   AuthenticationBloc authenticationBloc;
-  AuthRepository authRepository;
   String email;
   String plainPassword;
+  TextEditingController emailTextController;
+  TextEditingController plainPasswordController;
+
   @override
   void initState() {
     super.initState();
-    this.authRepository = AuthRepository();
     this.registerBloc = RegisterBloc(authRepository: this.authRepository);
+    this.emailTextController = TextEditingController();
+    this.plainPasswordController = TextEditingController();
     this.authenticationBloc =
         AuthenticationBloc(authRepository: this.authRepository);
   }
 
+  AuthRepository get authRepository => widget.authRepository;
   @override
   void dispose() {
     super.dispose();
     this.registerBloc.close();
     this.authenticationBloc.close();
+    this.emailTextController.dispose();
+    this.plainPasswordController.dispose();
   }
 
   @override
@@ -71,8 +80,11 @@ class _UserRegisterScreenState extends State<UserRegisterScreen> {
           bloc: this.registerBloc,
           listener: (context, state) {
             if (state is RegisterSuccessfull)
-              Navigator.of(context)
-                  .pushNamed(nextRegisterRoute, arguments: this.email);
+              Navigator.of(context).pushNamed(activationRoute,
+                  arguments: ActivationParams(
+                      email: emailTextController.text,
+                      plainPassword: plainPasswordController.text,
+                      authRepository: authRepository));
             else if (state is RegisterFailed)
               Common().showFlushBar(context: context, message: state.errorText);
           },
@@ -84,10 +96,8 @@ class _UserRegisterScreenState extends State<UserRegisterScreen> {
                   Opacity(
                     opacity: (state is RegisterLoading) ? 0.5 : 1,
                     child: RegisterForm(
-                        changeEmailText: (emailText) =>
-                            this.changeEmailText(emailText),
-                        changePasswordText: (passwordText) =>
-                            this.changePasswordText(passwordText),
+                        emailTextController: this.emailTextController,
+                        plainPasswordController: this.plainPasswordController,
                         registerButtonPressed: () =>
                             this.registerButtonPressed()),
                   ),
@@ -99,17 +109,9 @@ class _UserRegisterScreenState extends State<UserRegisterScreen> {
         ));
   }
 
-  void changeEmailText(String email) {
-    this.email = email;
-  }
-
-  void changePasswordText(String plainPassword) {
-    this.plainPassword = plainPassword;
-  }
-
   void registerButtonPressed() {
     this.registerBloc.add(RegisterPressed(
-        email: this.email.trim().toLowerCase(),
-        password: this.plainPassword.trim().toLowerCase()));
+        email: this.emailTextController.text.trim().toLowerCase(),
+        password: this.plainPasswordController.text.trim().toLowerCase()));
   }
 }

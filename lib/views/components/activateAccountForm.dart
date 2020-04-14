@@ -1,16 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:westcardapp/businessLogic/blocs/auth/activateAccountbloc/activateaccount_bloc.dart';
 import 'package:westcardapp/routes/const_routes.dart';
 
-class ActivateAccountForm extends StatelessWidget {
+class ActivateAccountForm extends StatefulWidget {
   final String email;
-  final Function changeEmail;
-  final Function activateOnPressed;
-  final Function changeCode;
+  final String plainPassword;
+  final ActivateAccountBloc activateAccountBloc;
+
   ActivateAccountForm(
       {@required this.email,
-      @required this.activateOnPressed,
-      @required this.changeEmail,
-      @required this.changeCode});
+      @required this.plainPassword,
+      @required this.activateAccountBloc});
+
+  @override
+  _ActivateAccountFormState createState() => _ActivateAccountFormState();
+}
+
+class _ActivateAccountFormState extends State<ActivateAccountForm> {
+  TextEditingController textCodeController;
+
+  TextEditingController textEmailController;
+  @override
+  void initState() {
+    super.initState();
+    this.textCodeController = TextEditingController();
+    this.textEmailController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    this.textEmailController.dispose();
+    this.textCodeController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +65,7 @@ class ActivateAccountForm extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      this.email == null
+                      this.widget.email == null
                           ? this.mailWidget(context)
                           : Container(),
                       Text('Codigo de activacion',
@@ -55,7 +77,7 @@ class ActivateAccountForm extends StatelessWidget {
                           data: Theme.of(context)
                               .copyWith(splashColor: Colors.transparent),
                           child: TextField(
-                            onChanged: (code) => this.changeCode(code),
+                            controller: textCodeController,
                             autofocus: false,
                             style:
                                 TextStyle(fontSize: 16.0, color: Colors.black),
@@ -136,7 +158,7 @@ class ActivateAccountForm extends StatelessWidget {
         child: Theme(
           data: Theme.of(context).copyWith(splashColor: Colors.transparent),
           child: TextField(
-            onChanged: (email) => this.changeEmail(email),
+            controller: textEmailController,
             autofocus: false,
             style: TextStyle(fontSize: 16.0, color: Colors.black),
             decoration: InputDecoration(
@@ -158,5 +180,13 @@ class ActivateAccountForm extends StatelessWidget {
         ),
       ),
     ]);
+  }
+
+  void activateOnPressed() {
+    final String email = this.widget.email ?? this.textEmailController.text;
+    this.widget.activateAccountBloc.add(ActivateAccountPressed(
+        email: email.trim().toLowerCase(),
+        plainPassword: this.widget.plainPassword,
+        activationCode: this.textCodeController.text.trim().toUpperCase()));
   }
 }

@@ -41,6 +41,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           this
               .authenticationBloc
               .add(SignedIn(accessToken: responseBody['accessToken']));
+          yield LoginInitial();
         } else
           yield LoginFailed(errorText: messages.INVALID_STATUS);
       } else

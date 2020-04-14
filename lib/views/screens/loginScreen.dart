@@ -7,7 +7,7 @@ import 'package:westcardapp/views/components/loginForm.dart';
 
 class LoginScreen extends StatelessWidget {
   final AuthRepository authRepository;
-  LoginScreen({Key key, @required this.authRepository}) : super(key: key);
+  LoginScreen({Key key, this.authRepository}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -15,7 +15,7 @@ class LoginScreen extends StatelessWidget {
           create: (context) => LoginBloc(
               authRepository: authRepository,
               authenticationBloc: BlocProvider.of<AuthenticationBloc>(context)),
-          child: LoginForm()),
+          child: LoginForm(authRepository: authRepository)),
     );
   }
 }

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:westcardapp/businessLogic/blocs/auth/authenticationBloc/authentication_bloc.dart';
 import 'package:westcardapp/views/screens/homeScreen.dart';
 import 'package:westcardapp/views/screens/loginScreen.dart';
 import 'package:westcardapp/views/screens/myCardsScreen.dart';
 import 'package:westcardapp/views/screens/registerScreen/activateAccountScreen.dart';
-import 'package:westcardapp/views/screens/registerScreen/registerConfirmScreen.dart';
 import 'package:westcardapp/views/screens/registerScreen/userRegisterScreen.dart';
 import 'package:westcardapp/views/screens/sharedCardsScreen.dart';
 import 'package:westcardapp/views/screens/userProfileScreen.dart';
@@ -14,19 +15,28 @@ class Router {
     final arguments = routeSettings.arguments;
     switch (routeSettings.name) {
       case loginRoute:
-        return MaterialPageRoute(builder: (_) => LoginScreen());
+        return MaterialPageRoute(
+            builder: (context) => BlocProvider.value(
+                value: BlocProvider.of<AuthenticationBloc>(context),
+                child: LoginScreen(authRepository: arguments)));
+        break;
       case homeScreenRoute:
         return MaterialPageRoute(builder: (_) => HomeScreen());
         break;
       case userRegisterRoute:
-        return MaterialPageRoute(builder: (_) => UserRegisterScreen());
-        break;
-      case nextRegisterRoute:
         return MaterialPageRoute(
-            builder: (_) => ActivateAccountScreen(email: arguments));
+            builder: (context) => BlocProvider.value(
+                  value: BlocProvider.of<AuthenticationBloc>(context),
+                  child: UserRegisterScreen(
+                    authRepository: arguments,
+                  ),
+                ));
         break;
-      case registerConfirmRoute:
-        return MaterialPageRoute(builder: (_) => RegisterConfirmScreen());
+      case activationRoute:
+        return MaterialPageRoute(
+            builder: (context) => BlocProvider.value(
+                value: BlocProvider.of<AuthenticationBloc>(context),
+                child: ActivateAccountScreen(activationParams: arguments)));
         break;
       case userProfileRoute:
         return MaterialPageRoute(builder: (_) => UserProfileScreen());

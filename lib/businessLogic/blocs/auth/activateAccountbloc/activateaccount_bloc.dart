@@ -30,9 +30,15 @@ class ActivateAccountBloc
           .authRepository
           .activateAccount(event.email, event.activationCode);
       final int statusCode = response.statusCode;
-      if (statusCode == 200)
-        yield ActivateAccountLoaded();
-      else if (statusCode == 400)
+      if (statusCode == 200) {
+        final dynamic responseSignIn =
+            await authRepository.signIn(event.email, event.plainPassword);
+        final dynamic responseBody = jsonDecode(responseSignIn.body);
+        this
+            .authenticationBloc
+            .add(SignedIn(accessToken: responseBody['accessToken']));
+        yield ActivateAccountInitial();
+      } else if (statusCode == 400)
         yield ActivateAccountFailed(errorText: messages.FORMAT_ERROR);
       else if ((statusCode == 500 || statusCode == 503) &&
           this.isInvalidAccount(response))

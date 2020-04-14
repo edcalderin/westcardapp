@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:westcardapp/businessLogic/blocs/auth/loginBloc/login_bloc.dart';
+import 'package:westcardapp/businessLogic/repositories/authRepository.dart';
 import 'package:westcardapp/routes/const_routes.dart';
 import 'package:westcardapp/utils/authUtils.dart';
 import 'package:westcardapp/utils/common.dart';
@@ -8,11 +9,14 @@ import 'package:westcardapp/utils/common.dart';
 import 'loadingProgress.dart';
 
 class LoginForm extends StatefulWidget {
+  final AuthRepository authRepository;
+  LoginForm({@required this.authRepository});
   @override
   _LoginFormState createState() => _LoginFormState();
 }
 
 class _LoginFormState extends State<LoginForm> {
+  AuthRepository get authRepository => widget.authRepository;
   final TextEditingController emailController = TextEditingController();
   final TextEditingController plainPasswordController = TextEditingController();
 
@@ -159,8 +163,8 @@ class _LoginFormState extends State<LoginForm> {
                 InkWell(
                   child: Text('Aun no estoy registrado',
                       style: TextStyle(color: Colors.white, fontSize: 18.0)),
-                  onTap: () =>
-                      Navigator.of(context).pushNamed(userRegisterRoute),
+                  onTap: () => Navigator.of(context)
+                      .pushNamed(userRegisterRoute, arguments: authRepository),
                 ),
                 SizedBox(
                   height: 10,
@@ -174,7 +178,7 @@ class _LoginFormState extends State<LoginForm> {
                 ),
                 InkWell(
                   onTap: () =>
-                      Navigator.of(context).pushNamed(nextRegisterRoute),
+                      Navigator.of(context).pushNamed(activationRoute),
                   child: Text('Activar cuenta',
                       style: TextStyle(color: Colors.white, fontSize: 16.0)),
                 ),
