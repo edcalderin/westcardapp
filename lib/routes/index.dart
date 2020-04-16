@@ -16,27 +16,20 @@ class Router {
     switch (routeSettings.name) {
       case loginRoute:
         return MaterialPageRoute(
-            builder: (context) => BlocProvider.value(
-                value: BlocProvider.of<AuthenticationBloc>(context),
-                child: LoginScreen(authRepository: arguments)));
+            builder: (_) => LoginScreen(authRepository: arguments));
         break;
       case homeScreenRoute:
         return MaterialPageRoute(builder: (_) => HomeScreen());
         break;
       case userRegisterRoute:
         return MaterialPageRoute(
-            builder: (context) => BlocProvider.value(
-                  value: BlocProvider.of<AuthenticationBloc>(context),
-                  child: UserRegisterScreen(
-                    authRepository: arguments,
-                  ),
-                ));
+            builder: (context) =>
+                UserRegisterScreen(authRepository: arguments));
         break;
       case activationRoute:
         return MaterialPageRoute(
-            builder: (context) => BlocProvider.value(
-                value: BlocProvider.of<AuthenticationBloc>(context),
-                child: ActivateAccountScreen(activationParams: arguments)));
+            builder: (context) =>
+                ActivateAccountScreen(activationParams: arguments));
         break;
       case userProfileRoute:
         return MaterialPageRoute(builder: (_) => UserProfileScreen());

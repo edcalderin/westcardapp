@@ -37,7 +37,7 @@ class ActivateAccountBloc
         this
             .authenticationBloc
             .add(SignedIn(accessToken: responseBody['accessToken']));
-        yield ActivateAccountInitial();
+        yield ActivateAccountLoaded();
       } else if (statusCode == 400)
         yield ActivateAccountFailed(errorText: messages.FORMAT_ERROR);
       else if ((statusCode == 500 || statusCode == 503) &&
