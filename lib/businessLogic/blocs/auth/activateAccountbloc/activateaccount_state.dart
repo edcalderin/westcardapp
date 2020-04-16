@@ -14,6 +14,11 @@ class ActivateAccountLoading extends ActivateAccountState {
   List<Object> get props => null;
 }
 
+class ActivateAccountLoaded extends ActivateAccountState {
+  @override
+  List<Object> get props => null;
+}
+
 class ActivateAccountFailed extends ActivateAccountState {
   final String errorText;
   const ActivateAccountFailed({@required this.errorText});

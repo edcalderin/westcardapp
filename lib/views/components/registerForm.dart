@@ -1,15 +1,77 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:westcardapp/businessLogic/blocs/auth/registerBloc/register_bloc.dart';
+import 'package:westcardapp/businessLogic/repositories/authRepository.dart';
+import 'package:westcardapp/models/activationParams.dart';
+import 'package:westcardapp/routes/const_routes.dart';
+import 'package:westcardapp/utils/common.dart';
 
-class RegisterForm extends StatelessWidget {
-  final Function registerButtonPressed;
-  final TextEditingController emailTextController;
-  final TextEditingController plainPasswordController;
-  RegisterForm(
-      {@required this.registerButtonPressed,
-      @required this.emailTextController,
-      @required this.plainPasswordController});
+import 'loadingProgress.dart';
+
+class RegisterForm extends StatefulWidget {
+  final AuthRepository authRepository;
+
+  RegisterForm({
+    @required this.authRepository,
+  });
+
+  @override
+  _RegisterFormState createState() => _RegisterFormState();
+}
+
+class _RegisterFormState extends State<RegisterForm> {
+  RegisterBloc registerBloc;
+  TextEditingController emailTextController;
+  TextEditingController plainPasswordController;
+  AuthRepository get authRepository => widget.authRepository;
+  @override
+  void initState() {
+    super.initState();
+    this.registerBloc = RegisterBloc(authRepository: authRepository);
+    this.emailTextController = TextEditingController();
+    this.plainPasswordController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    this.registerBloc.close();
+    this.emailTextController.dispose();
+    this.plainPasswordController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    return BlocListener<RegisterBloc, RegisterState>(
+      bloc: this.registerBloc,
+      listener: (context, state) {
+        if (state is RegisterSuccessfull)
+          Navigator.of(context).pushNamed(activationRoute,
+              arguments: ActivationParams(
+                  email: emailTextController.text,
+                  plainPassword: plainPasswordController.text,
+                  authRepository: authRepository));
+        else if (state is RegisterFailed)
+          Common().showFlushBar(context: context, message: state.errorText);
+      },
+      child: BlocBuilder<RegisterBloc, RegisterState>(
+        bloc: this.registerBloc,
+        builder: (context, state) {
+          return Stack(
+            children: <Widget>[
+              Opacity(
+                opacity: (state is RegisterLoading) ? 0.5 : 1,
+                child: registerForm(context),
+              ),
+              (state is RegisterLoading) ? LoadingProgress() : Container()
+            ],
+          );
+        },
+      ),
+    );
+  }
+
+  Widget registerForm(BuildContext context) {
     return Stack(
       children: <Widget>[
         Container(
@@ -152,5 +214,11 @@ class RegisterForm extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  void registerButtonPressed() {
+    this.registerBloc.add(RegisterPressed(
+        email: this.emailTextController.text.trim().toLowerCase(),
+        password: this.plainPasswordController.text.trim().toLowerCase()));
   }
 }

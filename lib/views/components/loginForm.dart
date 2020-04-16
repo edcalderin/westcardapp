@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:westcardapp/businessLogic/blocs/auth/loginBloc/login_bloc.dart';
 import 'package:westcardapp/businessLogic/repositories/authRepository.dart';
+import 'package:westcardapp/models/activationParams.dart';
 import 'package:westcardapp/routes/const_routes.dart';
 import 'package:westcardapp/utils/authUtils.dart';
 import 'package:westcardapp/utils/common.dart';
@@ -177,8 +178,8 @@ class _LoginFormState extends State<LoginForm> {
                   height: 45,
                 ),
                 InkWell(
-                  onTap: () =>
-                      Navigator.of(context).pushNamed(activationRoute),
+                  onTap: () => Navigator.of(context)
+                      .pushNamed(activationRoute, arguments: ActivationParams(authRepository: authRepository)),
                   child: Text('Activar cuenta',
                       style: TextStyle(color: Colors.white, fontSize: 16.0)),
                 ),
