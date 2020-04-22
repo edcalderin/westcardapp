@@ -5,10 +5,15 @@ abstract class ProfileEvent extends Equatable {
 }
 
 class GetProfile extends ProfileEvent {
-  final String param;
-  const GetProfile({@required this.param});
   @override
-  List<Object> get props => [param];
+  List<Object> get props => [];
+}
+
+class CreateProfile extends ProfileEvent {
+  final ProfileModel profileModel;
+  const CreateProfile({@required this.profileModel});
+  @override
+  List<Object> get props => [profileModel];
 }
 
 class UpdateProfile extends ProfileEvent {

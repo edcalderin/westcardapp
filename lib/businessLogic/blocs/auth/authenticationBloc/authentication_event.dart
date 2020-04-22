@@ -11,9 +11,10 @@ class AppStarted extends AuthenticationEvent {
 
 class SignedIn extends AuthenticationEvent {
   final String accessToken;
-  const SignedIn({@required this.accessToken});
+  final String email;
+  const SignedIn({@required this.accessToken, @required this.email});
   @override
-  List<Object> get props => [accessToken];
+  List<Object> get props => [accessToken, email];
 }
 
 class SignedOut extends AuthenticationEvent {
