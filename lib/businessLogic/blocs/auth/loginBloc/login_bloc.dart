@@ -38,9 +38,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           .accountStatus(event.email, jsonDecode(response.body)['accessToken']);
       if (responseStatus.statusCode == 200) {
         if (this.isActiveAccount(responseStatus)) {
-          this
-              .authenticationBloc
-              .add(SignedIn(accessToken: responseBody['accessToken']));
+          this.authenticationBloc.add(SignedIn(
+              accessToken: responseBody['accessToken'], email: event.email));
           yield LoginInitial();
         } else
           yield LoginFailed(errorText: messages.INVALID_STATUS);
