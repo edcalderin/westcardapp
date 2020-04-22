@@ -1,11 +1,9 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:westcardapp/businessLogic/repositories/profileRepository.dart';
 import 'package:westcardapp/models/profileModel.dart';
-import 'package:westcardapp/utils/authUtils.dart';
 import 'package:westcardapp/utils/blocMessages.dart';
 
 part 'profile_event.dart';
@@ -23,7 +21,9 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   ) async* {
     if (event is GetProfile)
       yield* mapEventToStateGetProfile(event);
-    else if (event is UpdateProfile) yield* mapEventToStateUpdateProfile(event);
+    else if (event is UpdateProfile)
+      yield* mapEventToStateUpdateProfile(event);
+    else if (event is CreateProfile) yield* mapEventToStateCreateProfile(event);
   }
 
   Stream<ProfileState> mapEventToStateGetProfile(GetProfile event) async* {
@@ -44,8 +44,23 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     final dynamic response =
         await this.profileRepository.updateProfile(event.profileModel);
     final int statusCode = response.statusCode;
-    if (statusCode == 200) {
-    } else if (statusCode == 500)
+    if (statusCode == 200)
+      yield ProfileLoaded(profileModel: event.profileModel);
+    else if (statusCode == 500)
+      yield ProfileFailed(errorText: UNEXPECTED_ERROR);
+    else
+      yield ProfileFailed(errorText: CONNECTION_ERROR);
+  }
+
+  Stream<ProfileState> mapEventToStateCreateProfile(
+      CreateProfile event) async* {
+    yield ProfileLoading();
+    final dynamic response =
+        await this.profileRepository.createProfile(event.profileModel);
+    final int statusCode = response.statusCode;
+    if (statusCode == 200)
+      yield ProfileLoaded(profileModel: event.profileModel);
+    else if (statusCode == 500)
       yield ProfileFailed(errorText: UNEXPECTED_ERROR);
     else
       yield ProfileFailed(errorText: CONNECTION_ERROR);
