@@ -58,7 +58,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                 child: Column(
                   children: <Widget>[
                     Container(
-                      margin: EdgeInsets.symmetric(vertical: 15),
+                      margin: EdgeInsets.symmetric(vertical: 20),
                       child: Text('Modificar datos de Perfil',
                           style: TextStyle(
                               color: Color.fromARGB(255, 45, 62, 80),
@@ -105,7 +105,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 20,
                     ),
                     Container(
                       margin: EdgeInsets.only(
@@ -148,7 +148,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 20,
                     ),
                     Container(
                       margin: EdgeInsets.only(
@@ -191,7 +191,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 20,
                     ),
                     Container(
                       margin: EdgeInsets.only(
@@ -234,7 +234,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 20,
                     ),
                     Container(
                       margin: EdgeInsets.only(
@@ -277,7 +277,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 20,
                     ),
                     Container(
                       margin: EdgeInsets.only(
@@ -320,7 +320,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 20,
                     ),
                     Container(
                       margin: EdgeInsets.only(
@@ -363,7 +363,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 20,
                     ),
                     Container(
                       margin: EdgeInsets.only(
@@ -406,7 +406,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 20,
                     ),
                     Container(
                       margin: EdgeInsets.only(
@@ -449,7 +449,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 20,
                     ),
                     Container(
                       margin: EdgeInsets.only(
@@ -492,7 +492,54 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 20,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(top: 15, bottom: 5),
+                      height: 40,
+                      width: MediaQuery.of(context).size.width * 0.95,
+                      child: RaisedButton(
+                        color: Color.fromARGB(255, 45, 62, 80),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5)),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Text('Enviar',
+                                  style: TextStyle(
+                                      fontSize: 18.0, color: Colors.white)),
+                              Icon(Icons.arrow_right,
+                                  size: 40, color: Colors.white),
+                            ]),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(top: 5, bottom: 5),
+                      height: 40,
+                      width: MediaQuery.of(context).size.width * 0.95,
+                      child: RaisedButton(
+                        color: Colors.grey,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5)),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Icon(Icons.arrow_left,
+                                  size: 40, color: Colors.white),
+                              Text('Cancelar     ',
+                                  style: TextStyle(
+                                      fontSize: 18.0, color: Colors.white)),
+                            ]),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
                     ),
                   ],
                 ),
