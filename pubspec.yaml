@@ -10,7 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   equatable: ^1.1.1
-  flutter_bloc: ^3.2.0
+  flutter_bloc: ^4.0.0
   http: ^0.12.0+4
   cupertino_icons: ^0.1.2
   beauty_textfield: ^0.0.1
