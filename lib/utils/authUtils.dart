@@ -4,8 +4,8 @@ import 'package:crypto/crypto.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-const KEY_TOKEN = 'ACCESS_TOKEN';
-const KEY_EMAIL = 'ACCESS_TOKEN';
+const KEY_TOKEN = 'KEY_ACCESS_TOKEN';
+const KEY_EMAIL = 'KEY_EMAIL';
 
 class AuthUtils {
   FlutterSecureStorage flutterSecureStorage;
