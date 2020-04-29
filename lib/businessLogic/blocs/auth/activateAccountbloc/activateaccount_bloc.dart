@@ -34,13 +34,12 @@ class ActivateAccountBloc
         final dynamic responseSignIn =
             await authRepository.signIn(event.email, event.plainPassword);
         final dynamic responseBody = jsonDecode(responseSignIn.body);
-        this
-            .authenticationBloc
-            .add(SignedIn(accessToken: responseBody['accessToken']));
+        this.authenticationBloc.add(SignedIn(
+            accessToken: responseBody['accessToken'], email: event.email));
         yield ActivateAccountLoaded();
       } else if (statusCode == 400)
         yield ActivateAccountFailed(errorText: messages.FORMAT_ERROR);
-      else if ((statusCode == 500 || statusCode == 503) &&
+      else if ([500, 503].contains(statusCode) &&
           this.isInvalidAccount(response))
         yield ActivateAccountFailed(errorText: messages.ACTIVATION_DENIED);
       else
