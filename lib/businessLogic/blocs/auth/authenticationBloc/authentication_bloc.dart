@@ -28,7 +28,8 @@ class AuthenticationBloc
   }
 
   Stream<AuthenticationState> mapToEventAppStared(AppStarted event) async* {
-    final String tokenSecureStorage = await authUtils.readSecureAuthData();
+    final dynamic secureData = await authUtils.readSecureAuthData();
+    final String tokenSecureStorage=secureData[1];
     if (tokenSecureStorage != null) {
       final int response =
           await this.authRepository.hasToken(tokenSecureStorage);

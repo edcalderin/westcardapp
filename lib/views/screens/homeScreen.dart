@@ -65,25 +65,34 @@ class _HomeScreenState extends State<HomeScreen> {
                               )),
                           child: Column(
                             children: <Widget>[
-                              Container(
-                                margin: EdgeInsets.only(top:19 , bottom: 19.5),
-                                child: Icon(
-                                  Icons.portrait,
-                                  size: 80,
-                                  color: Colors.white,
+                              Flexible(
+                                flex: 3,
+                                child: Container(
+                                  height:
+                                      MediaQuery.of(context).size.width * 0.30,
+                                  child: Icon(
+                                    Icons.portrait,
+                                    size: 80,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
-                              Container(
-                                height: 40,
-                                width: MediaQuery.of(context).size.width * 0.40,
-                                color: Color.fromARGB(255, 45, 62, 80),
+                              Flexible(
+                                flex: 1,
                                 child: Container(
-                                  margin: EdgeInsets.symmetric(vertical: 8),
-                                  child: Text(
-                                    'Mis Tarjetas',
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 16),
-                                    textAlign: TextAlign.center,
+                                  height:
+                                      MediaQuery.of(context).size.width * 0.10,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.40,
+                                  color: Color.fromARGB(255, 45, 62, 80),
+                                  child: Container(
+                                    margin: EdgeInsets.symmetric(vertical: 8),
+                                    child: Text(
+                                      'Mis Tarjetas',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 16),
+                                      textAlign: TextAlign.center,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -120,25 +129,34 @@ class _HomeScreenState extends State<HomeScreen> {
                               )),
                           child: Column(
                             children: <Widget>[
-                              Container(
-                                margin: EdgeInsets.only(top:19 , bottom: 19.5),
-                                child: Icon(
-                                  Icons.share,
-                                  size: 80,
-                                  color: Colors.white,
+                              Flexible(
+                                flex: 3,
+                                child: Container(
+                                  height:
+                                      MediaQuery.of(context).size.width * 0.30,
+                                  child: Icon(
+                                    Icons.share,
+                                    size: 80,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
-                              Container(
-                                height: 40,
-                                width: MediaQuery.of(context).size.width * 0.40,
-                                color: Color.fromARGB(255, 45, 62, 80),
+                              Flexible(
+                                flex: 1,
                                 child: Container(
-                                  margin: EdgeInsets.symmetric(vertical: 8),
-                                  child: Text(
-                                    'Mis Almacen',
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 16),
-                                    textAlign: TextAlign.center,
+                                  height:
+                                      MediaQuery.of(context).size.width * 0.10,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.40,
+                                  color: Color.fromARGB(255, 45, 62, 80),
+                                  child: Container(
+                                    margin: EdgeInsets.symmetric(vertical: 8),
+                                    child: Text(
+                                      'Mis Almacen',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 16),
+                                      textAlign: TextAlign.center,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -157,9 +175,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Colors.transparent,
                       child: InkWell(
                         splashColor: Colors.white,
-                        onTap: () {
-                          print("nueva");
-                        },
+                        onTap: () {},
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.40,
                           height: MediaQuery.of(context).size.width * 0.40,
@@ -181,25 +197,34 @@ class _HomeScreenState extends State<HomeScreen> {
                               )),
                           child: Column(
                             children: <Widget>[
-                              Container(
-                                margin: EdgeInsets.only(top:19 , bottom: 19.5),
-                                child: Icon(
-                                  Icons.add,
-                                  size: 80,
-                                  color: Colors.white,
+                              Flexible(
+                                flex: 3,
+                                child: Container(
+                                  height:
+                                      MediaQuery.of(context).size.width * 0.30,
+                                  child: Icon(
+                                    Icons.add,
+                                    size: 80,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
-                              Container(
-                                height: 40,
-                                width: MediaQuery.of(context).size.width * 0.40,
-                                color: Color.fromARGB(255, 45, 62, 80),
+                              Flexible(
+                                flex: 1,
                                 child: Container(
-                                  margin: EdgeInsets.symmetric(vertical: 8),
-                                  child: Text(
-                                    'Nueva Tarjeta',
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 16),
-                                    textAlign: TextAlign.center,
+                                  height:
+                                      MediaQuery.of(context).size.width * 0.10,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.40,
+                                  color: Color.fromARGB(255, 45, 62, 80),
+                                  child: Container(
+                                    margin: EdgeInsets.symmetric(vertical: 8),
+                                    child: Text(
+                                      'Nueva Tarjeta',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 16),
+                                      textAlign: TextAlign.center,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -212,9 +237,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Colors.transparent,
                       child: InkWell(
                         splashColor: Colors.white,
-                        onTap: () {
-                          print("scaner");
-                        },
+                        onTap: () {},
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.40,
                           height: MediaQuery.of(context).size.width * 0.40,
@@ -236,25 +259,34 @@ class _HomeScreenState extends State<HomeScreen> {
                               )),
                           child: Column(
                             children: <Widget>[
-                              Container(
-                                margin: EdgeInsets.only(top:19 , bottom: 19.5),
-                                child: Icon(
-                                  Icons.border_clear,
-                                  size: 80,
-                                  color: Colors.white,
+                              Flexible(
+                                flex: 3,
+                                child: Container(
+                                  height:
+                                      MediaQuery.of(context).size.width * 0.30,
+                                  child: Icon(
+                                    Icons.border_clear,
+                                    size: 80,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
-                              Container(
-                                height: 40,
-                                width: MediaQuery.of(context).size.width * 0.40,
-                                color: Color.fromARGB(255, 45, 62, 80),
+                              Flexible(
+                                flex: 1,
                                 child: Container(
-                                  margin: EdgeInsets.symmetric(vertical: 8),
-                                  child: Text(
-                                    'Escanear QR',
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 16),
-                                    textAlign: TextAlign.center,
+                                  height:
+                                      MediaQuery.of(context).size.width * 0.10,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.40,
+                                  color: Color.fromARGB(255, 45, 62, 80),
+                                  child: Container(
+                                    margin: EdgeInsets.symmetric(vertical: 8),
+                                    child: Text(
+                                      'Escanear QR',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 16),
+                                      textAlign: TextAlign.center,
+                                    ),
                                   ),
                                 ),
                               ),
