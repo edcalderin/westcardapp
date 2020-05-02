@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:westcardapp/businessLogic/blocs/auth/authenticationBloc/authentication_bloc.dart';
 import 'package:westcardapp/views/screens/homeScreen.dart';
 import 'package:westcardapp/views/screens/loginScreen.dart';
 import 'package:westcardapp/views/screens/myCardsScreen.dart';
+import 'package:westcardapp/views/screens/profile/userProfileScreen.dart';
 import 'package:westcardapp/views/screens/registerScreen/activateAccountScreen.dart';
 import 'package:westcardapp/views/screens/registerScreen/userRegisterScreen.dart';
 import 'package:westcardapp/views/screens/sharedCardsScreen.dart';
-import 'package:westcardapp/views/screens/userProfileScreen.dart';
 import 'const_routes.dart';
 
 class Router {
