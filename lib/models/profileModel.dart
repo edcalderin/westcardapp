@@ -1,5 +1,5 @@
 class ProfileModel {
-  String uuid;
+  int uuid;
   String email;
   String firstName;
   String lastName;
@@ -27,18 +27,18 @@ class ProfileModel {
       this.youtube});
 
   ProfileModel.fromJson(Map<String, dynamic> json) {
-    uuid = json['uuid'].toString();
+    uuid = json['uuid'];
     email = json['email'];
-    firstName = json['firstName'];
-    lastName = json['lastName'];
-    business = json['business'];
-    phone = json['phone'];
-    mobile = json['mobile'];
-    address = json['address'];
-    facebook = json['facebook'];
-    instagram = json['instagram'];
-    twitter = json['twitter'];
-    youtube = json['youtube'];
+    firstName = json['firstName'] ?? '';
+    lastName = json['lastName'] ?? '';
+    business = json['business'] ?? '';
+    phone = json['phone'] ?? '';
+    mobile = json['mobile'] ?? '';
+    address = json['address'] ?? '';
+    facebook = json['facebook'] ?? '';
+    instagram = json['instagram'] ?? '';
+    twitter = json['twitter'] ?? '';
+    youtube = json['youtube'] ?? '';
   }
 
   Map<String, dynamic> toJson() {

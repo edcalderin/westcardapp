@@ -18,7 +18,7 @@ class ProfileRepository extends BaseProfileRepository {
       final List<String> authData = await AuthUtils().readSecureAuthData();
       final String email = authData[0];
       final String accessToken = authData[1];
-      final String url = '$BASE_URL/api/profile/get/$email';
+      final String url = '${BASE_URL}api/profile/get/$email';
       final Map<String, String> _headers = {
         'Authorization': 'Bearer $accessToken'
       };
@@ -33,13 +33,14 @@ class ProfileRepository extends BaseProfileRepository {
   Future<dynamic> updateProfile(ProfileModel profileModel) async {
     try {
       final List<String> authData = await AuthUtils().readSecureAuthData();
-      final String email = authData[0];
       final String accessToken = authData[1];
       final Map<String, String> _headers = {
-        'Authorization': 'Bearer $accessToken'
+        'Authorization': 'Bearer $accessToken',
+        'Content-type': 'Application/json'
       };
-      final String url = '$BASE_URL/api/profile/update/';
-      final dynamic response = await http.put(url, headers: _headers);
+      final String url = '${BASE_URL}api/profile/update/';
+      final dynamic response = await http.put(url,
+          headers: _headers, body: jsonEncode(profileModel));
       return response;
     } catch (e) {
       return null;
@@ -52,9 +53,10 @@ class ProfileRepository extends BaseProfileRepository {
       final List<String> authData = await AuthUtils().readSecureAuthData();
       final String accessToken = authData[1];
       final Map<String, String> _headers = {
-        'Authorization': 'Bearer $accessToken'
+        'Authorization': 'Bearer $accessToken',
+        'Content-type': 'Application/json'
       };
-      final String url = '$BASE_URL/api/profile/create/';
+      final String url = '${BASE_URL}api/profile/create/';
       final dynamic response = await http.post(url,
           headers: _headers, body: jsonEncode(profileModel));
       return response;
