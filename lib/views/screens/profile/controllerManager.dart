@@ -7,21 +7,27 @@ class ControllerManager {
   ControllerManager({@required ProfileModel profileModel}) {
     controllersTxtFields = List<TextEditingController>();
     controllersTxtFields
-        .add(TextEditingController(text: profileModel.firstName));
+        .add(TextEditingController(text: profileModel?.firstName ?? ''));
     controllersTxtFields
-        .add(TextEditingController(text: profileModel.lastName));
-    controllersTxtFields.add(TextEditingController(text: profileModel.email));
+        .add(TextEditingController(text: profileModel?.lastName ?? ''));
     controllersTxtFields
-        .add(TextEditingController(text: profileModel.business));
-    controllersTxtFields.add(TextEditingController(text: profileModel.phone));
-    controllersTxtFields.add(TextEditingController(text: profileModel.mobile));
-    controllersTxtFields.add(TextEditingController(text: profileModel.address));
+        .add(TextEditingController(text: profileModel.email ?? ''));
     controllersTxtFields
-        .add(TextEditingController(text: profileModel.facebook));
+        .add(TextEditingController(text: profileModel?.business ?? ''));
     controllersTxtFields
-        .add(TextEditingController(text: profileModel.instagram));
-    controllersTxtFields.add(TextEditingController(text: profileModel.twitter));
-    controllersTxtFields.add(TextEditingController(text: profileModel.youtube));
+        .add(TextEditingController(text: profileModel?.phone ?? ''));
+    controllersTxtFields
+        .add(TextEditingController(text: profileModel?.mobile ?? ''));
+    controllersTxtFields
+        .add(TextEditingController(text: profileModel?.address ?? ''));
+    controllersTxtFields
+        .add(TextEditingController(text: profileModel?.facebook ?? ''));
+    controllersTxtFields
+        .add(TextEditingController(text: profileModel?.instagram ?? ''));
+    controllersTxtFields
+        .add(TextEditingController(text: profileModel?.twitter ?? ''));
+    controllersTxtFields
+        .add(TextEditingController(text: profileModel?.youtube ?? ''));
   }
 
   TextEditingController get txtFirstNameController => controllersTxtFields[0];
