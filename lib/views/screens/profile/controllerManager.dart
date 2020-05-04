@@ -41,26 +41,7 @@ class ControllerManager {
   TextEditingController get txtInstagramController => controllersTxtFields[8];
   TextEditingController get txtTwitterController => controllersTxtFields[9];
   TextEditingController get txtYoutubeController => controllersTxtFields[10];
-  /* set txtFullnameController(TextEditingController controller) =>
-      controllersTxtFields[0] = controller;
-  set txtRoleController(TextEditingController controller) =>
-      controllersTxtFields[1] = controller;
-  set txtAddressController(TextEditingController controller) =>
-      controllersTxtFields[2] = controller;
-  set txtCityController(TextEditingController controller) =>
-      controllersTxtFields[3] = controller;
-  set txtProvinceController(TextEditingController controller) =>
-      controllersTxtFields[4] = controller;
-  set txtCountryController(TextEditingController controller) =>
-      controllersTxtFields[5] = controller;
-  set txtPostalCodeController(TextEditingController controller) =>
-      controllersTxtFields[6] = controller;
-  set txtPhoneNumberController(TextEditingController controller) =>
-      controllersTxtFields[7] = controller;
-  set txtEmailController(TextEditingController controller) =>
-      controllersTxtFields[8] = controller;
-  set txtCompanyController(TextEditingController controller) =>
-      controllersTxtFields[9] = controller; */
+
   void disposeAll() {
     controllersTxtFields.forEach((controller) => controller.dispose());
   }
