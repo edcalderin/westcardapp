@@ -105,7 +105,8 @@ class _ActivateAccountFormState extends State<ActivateAccountForm> {
                         child: Theme(
                             data: Theme.of(context)
                                 .copyWith(splashColor: Colors.transparent),
-                            child: TextField(
+                            child: TextFormField(
+                                maxLength: 5,
                                 controller: textCodeController,
                                 autofocus: false,
                                 style: TextStyle(

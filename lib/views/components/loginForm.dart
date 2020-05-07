@@ -98,7 +98,7 @@ class _LoginFormState extends State<LoginForm> {
                     child: Theme(
                       data: Theme.of(context)
                           .copyWith(splashColor: Colors.transparent),
-                      child: TextField(
+                      child: TextFormField(
                         controller: emailController,
                         keyboardType: TextInputType.emailAddress,
                         autofocus: false,
@@ -130,7 +130,7 @@ class _LoginFormState extends State<LoginForm> {
                     child: Theme(
                       data: Theme.of(context)
                           .copyWith(splashColor: Colors.transparent),
-                      child: TextField(
+                      child: TextFormField(
                         controller: plainPasswordController,
                         obscureText: true,
                         autofocus: false,
