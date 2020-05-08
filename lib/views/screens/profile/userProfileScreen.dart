@@ -117,7 +117,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                     ),
                     width: MediaQuery.of(context).size.width * 0.90,
                     child: Text(
-                      'Primer nombre',
+                      'Nombre',
                       textAlign: TextAlign.left,
                       style: TextStyle(
                           color: Color.fromARGB(255, 45, 62, 80), fontSize: 16),
@@ -128,7 +128,12 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                     child: Theme(
                       data: Theme.of(context)
                           .copyWith(splashColor: Colors.transparent),
-                      child: TextField(
+                      child: TextFormField(
+                        validator: (String nombre) {
+                          if (nombre.isEmpty) {
+                            return 'Debe ingresar nombre';
+                          }
+                        },
                         controller:
                             controllerManager?.txtFirstNameController ?? null,
                         keyboardType: TextInputType.text,
@@ -137,7 +142,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                         decoration: InputDecoration(
                           filled: true,
                           fillColor: Colors.white,
-                          hintText: 'Nombre/s y apellido/s',
+                          hintText: 'Ingresar Nombre/s',
                           contentPadding: const EdgeInsets.only(
                               left: 20.0, bottom: 10, top: 10),
                           focusedBorder: OutlineInputBorder(
@@ -172,7 +177,12 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                     child: Theme(
                       data: Theme.of(context)
                           .copyWith(splashColor: Colors.transparent),
-                      child: TextField(
+                      child: TextFormField(
+                        validator: (String apellido) {
+                          if (apellido.isEmpty) {
+                            return 'Debe ingresar apellido';
+                          }
+                        },
                         controller:
                             controllerManager?.txtLastNameController ?? null,
                         keyboardType: TextInputType.text,
@@ -181,6 +191,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                         decoration: InputDecoration(
                           filled: true,
                           fillColor: Colors.white,
+                          hintText: 'Ingresar Apellido',
                           contentPadding: const EdgeInsets.only(
                               left: 20.0, bottom: 10, top: 10),
                           focusedBorder: OutlineInputBorder(
@@ -259,7 +270,12 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                     child: Theme(
                       data: Theme.of(context)
                           .copyWith(splashColor: Colors.transparent),
-                      child: TextField(
+                      child: TextFormField(
+                        validator: (String empresa) {
+                          if (empresa.isEmpty) {
+                            return 'Debe ingresar Compañia';
+                          }
+                        },
                         controller:
                             controllerManager?.txtBusinessController ?? null,
                         keyboardType: TextInputType.emailAddress,
@@ -391,7 +407,12 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                     child: Theme(
                       data: Theme.of(context)
                           .copyWith(splashColor: Colors.transparent),
-                      child: TextField(
+                      child: TextFormField(
+                        validator: (String direccion) {
+                          if (direccion.isEmpty) {
+                            return 'Debe ingresar direccion';
+                          }
+                        },
                         controller:
                             controllerManager?.txtAddressController ?? null,
                         keyboardType: TextInputType.text,
