@@ -6,3 +6,4 @@ const String activationRoute = 'activation';
 const String userProfileRoute = 'userProfile';
 const String myCardsRoute = 'myCards';
 const String sharedCardsRoute = 'sharedCards';
+const String createCardsRoute = 'createCards';

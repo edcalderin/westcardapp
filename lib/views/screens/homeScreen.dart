@@ -152,7 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   child: Container(
                                     margin: EdgeInsets.symmetric(vertical: 8),
                                     child: Text(
-                                      'Mis Almacen',
+                                      'Mi Almacen',
                                       style: TextStyle(
                                           color: Colors.white, fontSize: 16),
                                       textAlign: TextAlign.center,
@@ -175,7 +175,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Colors.transparent,
                       child: InkWell(
                         splashColor: Colors.white,
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pushNamed(context, myCardsRoute);
+                        },
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.40,
                           height: MediaQuery.of(context).size.width * 0.40,
