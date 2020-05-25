@@ -176,7 +176,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: InkWell(
                         splashColor: Colors.white,
                         onTap: () {
-                          Navigator.pushNamed(context, myCardsRoute);
+                          Navigator.pushNamed(context, createCardsRoute);
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.40,
