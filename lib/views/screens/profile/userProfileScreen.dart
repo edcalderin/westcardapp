@@ -83,6 +83,8 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
     );
   }
 
+  final _formKey = GlobalKey<FormState>();
+
   Widget profileForm() {
     return Stack(
       children: <Widget>[
@@ -100,567 +102,635 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
         Center(
           child: SingleChildScrollView(
             padding: EdgeInsets.only(bottom: (keyboard) ? 210 : 0),
-            child: Container(
-              width: MediaQuery.of(context).size.width * 0.90,
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 20),
-                    child: Text('Modificar datos de Perfil',
+            child: Form(
+              key: _formKey,
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.90,
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.symmetric(vertical: 20),
+                      child: Text('Modificar datos de Perfil',
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 45, 62, 80),
+                              fontSize: 18)),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(
+                        bottom: 5.0,
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.90,
+                      child: Text(
+                        'Nombre',
+                        textAlign: TextAlign.left,
                         style: TextStyle(
                             color: Color.fromARGB(255, 45, 62, 80),
-                            fontSize: 18)),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(
-                      bottom: 5.0,
+                            fontSize: 16),
+                      ),
                     ),
-                    width: MediaQuery.of(context).size.width * 0.90,
-                    child: Text(
-                      'Nombre',
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                          color: Color.fromARGB(255, 45, 62, 80), fontSize: 16),
+                    Container(
+                      // height: 36,
+                      child: Theme(
+                        data: Theme.of(context)
+                            .copyWith(splashColor: Colors.transparent),
+                        child: TextFormField(
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'Debe ingresar nombre';
+                            }
+                            return null;
+                          },
+                          controller:
+                              controllerManager?.txtFirstNameController ?? null,
+                          keyboardType: TextInputType.text,
+                          autofocus: false,
+                          style: TextStyle(fontSize: 18.0, color: Colors.black),
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.white,
+                            hintText: 'Ingresar Nombre/s',
+                            contentPadding: const EdgeInsets.symmetric(
+                                vertical: 10.0, horizontal: 10.0),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.red,width: 0.0),
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                            errorBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.red,width: 5.0),
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                  Container(
-                    height: 36,
-                    child: Theme(
-                      data: Theme.of(context)
-                          .copyWith(splashColor: Colors.transparent),
-                      child: TextFormField(
-                        validator: (String nombre) {
-                          if (nombre.isEmpty) {
-                            return 'Debe ingresar nombre';
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(
+                        bottom: 5.0,
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.90,
+                      child: Text(
+                        'Apellido',
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 45, 62, 80),
+                            fontSize: 16),
+                      ),
+                    ),
+                    Container(
+                      //height: 36,
+                      child: Theme(
+                        data: Theme.of(context)
+                            .copyWith(splashColor: Colors.transparent),
+                        child: TextFormField(
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'Debe ingresar apellido';
+                            }
+                            return null;
+                          },
+                          controller:
+                              controllerManager?.txtLastNameController ?? null,
+                          keyboardType: TextInputType.text,
+                          autofocus: false,
+                          style: TextStyle(fontSize: 18.0, color: Colors.black),
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.white,
+                            hintText: 'Ingresar Apellido',
+                            contentPadding: const EdgeInsets.symmetric(
+                                vertical: 10.0, horizontal: 10.0),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.red,width: 0.0),
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                            errorBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.red,width: 5.0),
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(
+                        bottom: 5.0,
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.90,
+                      child: Text(
+                        'Correo electronico',
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 45, 62, 80),
+                            fontSize: 16),
+                      ),
+                    ),
+                    Container(
+                      // height: 36,
+                      child: Theme(
+                        data: Theme.of(context)
+                            .copyWith(splashColor: Colors.transparent),
+                        child: TextFormField(
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'Debe ingresar email';
+                            }
+                            return null;
+                          },
+                          controller:
+                              controllerManager?.txtEmailController ?? null,
+                          keyboardType: TextInputType.emailAddress,
+                          autofocus: false,
+                          style: TextStyle(fontSize: 18.0, color: Colors.black),
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.white,
+                            hintText: 'sucorreo@suempresa.com',
+                            contentPadding: const EdgeInsets.symmetric(
+                                vertical: 10.0, horizontal: 10.0),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.red,width: 0.0),
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                            errorBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.red,width: 5.0),
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(
+                        bottom: 5.0,
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.90,
+                      child: Text(
+                        'Compañía',
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 45, 62, 80),
+                            fontSize: 16),
+                      ),
+                    ),
+                    Container(
+                      //height: 36,
+                      child: Theme(
+                        data: Theme.of(context)
+                            .copyWith(splashColor: Colors.transparent),
+                        child: TextFormField(
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'Debe ingresar Compañia';
+                            }
+                            return null;
+                          },
+                          controller:
+                              controllerManager?.txtBusinessController ?? null,
+                          keyboardType: TextInputType.emailAddress,
+                          autofocus: false,
+                          style: TextStyle(fontSize: 18.0, color: Colors.black),
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.white,
+                            hintText: 'Su compañia',
+                            contentPadding: const EdgeInsets.symmetric(
+                                vertical: 10.0, horizontal: 10.0),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.red,width: 0.0),
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                            errorBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.red,width: 5.0),
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(
+                        bottom: 5.0,
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.90,
+                      child: Text(
+                        'Telefono',
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 45, 62, 80),
+                            fontSize: 16),
+                      ),
+                    ),
+                    Container(
+                      //height: 36,
+                      child: Theme(
+                        data: Theme.of(context)
+                            .copyWith(splashColor: Colors.transparent),
+                        child: TextFormField(
+                          controller:
+                              controllerManager?.txtPhoneController ?? null,
+                          keyboardType: TextInputType.number,
+                          autofocus: false,
+                          style: TextStyle(fontSize: 18.0, color: Colors.black),
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.white,
+                            hintText: 'Telefono',
+                            contentPadding: const EdgeInsets.symmetric(
+                                vertical: 10.0, horizontal: 10.0),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(
+                        bottom: 5.0,
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.90,
+                      child: Text(
+                        'Celular',
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 45, 62, 80),
+                            fontSize: 16),
+                      ),
+                    ),
+                    Container(
+                      //height: 36,
+                      child: Theme(
+                        data: Theme.of(context)
+                            .copyWith(splashColor: Colors.transparent),
+                        child: TextFormField(
+                          controller:
+                              controllerManager?.txtMobileController ?? null,
+                          keyboardType: TextInputType.number,
+                          autofocus: false,
+                          style: TextStyle(fontSize: 18.0, color: Colors.black),
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.white,
+                            hintText: 'Celular',
+                            contentPadding: const EdgeInsets.symmetric(
+                                vertical: 10.0, horizontal: 10.0),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(
+                        bottom: 5.0,
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.90,
+                      child: Text(
+                        'Domicilio',
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 45, 62, 80),
+                            fontSize: 16),
+                      ),
+                    ),
+                    Container(
+                      // height: 36,
+                      child: Theme(
+                        data: Theme.of(context)
+                            .copyWith(splashColor: Colors.transparent),
+                        child: TextFormField(
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'Debe ingresar direccion';
+                            }
+                            return null;
+                          },
+                          controller:
+                              controllerManager?.txtAddressController ?? null,
+                          keyboardType: TextInputType.text,
+                          autofocus: false,
+                          style: TextStyle(fontSize: 18.0, color: Colors.black),
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.white,
+                            hintText: 'Calle, numero, piso, depto',
+                            contentPadding: const EdgeInsets.symmetric(
+                                vertical: 10.0, horizontal: 10.0),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.red,width: 0.0),
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                            errorBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.red,width: 5.0),
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(
+                        bottom: 5.0,
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.90,
+                      child: Text(
+                        'Facebook',
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 45, 62, 80),
+                            fontSize: 16),
+                      ),
+                    ),
+                    Container(
+                      // height: 36,
+                      child: Theme(
+                        data: Theme.of(context)
+                            .copyWith(splashColor: Colors.transparent),
+                        child: TextFormField(
+                          controller:
+                              controllerManager?.txtFacebookController ?? null,
+                          keyboardType: TextInputType.text,
+                          autofocus: false,
+                          style: TextStyle(fontSize: 18.0, color: Colors.black),
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.white,
+                            hintText: 'Facebook',
+                            contentPadding: const EdgeInsets.symmetric(
+                                vertical: 10.0, horizontal: 10.0),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(
+                        bottom: 5.0,
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.90,
+                      child: Text(
+                        'Instagram',
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 45, 62, 80),
+                            fontSize: 16),
+                      ),
+                    ),
+                    Container(
+                      //height: 36,
+                      child: Theme(
+                        data: Theme.of(context)
+                            .copyWith(splashColor: Colors.transparent),
+                        child: TextFormField(
+                          controller:
+                              controllerManager?.txtInstagramController ?? null,
+                          keyboardType: TextInputType.text,
+                          autofocus: false,
+                          style: TextStyle(fontSize: 18.0, color: Colors.black),
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.white,
+                            hintText: 'Instagram',
+                            contentPadding: const EdgeInsets.symmetric(
+                                vertical: 10.0, horizontal: 10.0),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(
+                        bottom: 5.0,
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.90,
+                      child: Text(
+                        'Twitter',
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 45, 62, 80),
+                            fontSize: 16),
+                      ),
+                    ),
+                    Container(
+                      // height: 36,
+                      child: Theme(
+                        data: Theme.of(context)
+                            .copyWith(splashColor: Colors.transparent),
+                        child: TextFormField(
+                          controller:
+                              controllerManager?.txtTwitterController ?? null,
+                          keyboardType: TextInputType.text,
+                          autofocus: false,
+                          style: TextStyle(fontSize: 18.0, color: Colors.black),
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.white,
+                            hintText: 'Twitter',
+                            contentPadding: const EdgeInsets.symmetric(
+                                vertical: 10.0, horizontal: 10.0),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(
+                        bottom: 5.0,
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.90,
+                      child: Text(
+                        'YouTube',
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 45, 62, 80),
+                            fontSize: 16),
+                      ),
+                    ),
+                    Container(
+                      // height: 36,
+                      child: Theme(
+                        data: Theme.of(context)
+                            .copyWith(splashColor: Colors.transparent),
+                        child: TextFormField(
+                          controller:
+                              controllerManager?.txtYoutubeController ?? null,
+                          keyboardType: TextInputType.number,
+                          autofocus: false,
+                          style: TextStyle(fontSize: 18.0, color: Colors.black),
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.white,
+                            hintText: 'YouTube',
+                            contentPadding: const EdgeInsets.symmetric(
+                                vertical: 10.0, horizontal: 10.0),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(top: 15, bottom: 5),
+                      height: 40,
+                      width: MediaQuery.of(context).size.width * 0.95,
+                      child: RaisedButton(
+                        color: Color.fromARGB(255, 45, 62, 80),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5)),
+                        onPressed: () {
+                          if (_formKey.currentState.validate()) {
+                            this.sendProfilePressed();
                           }
                         },
-                        controller:
-                            controllerManager?.txtFirstNameController ?? null,
-                        keyboardType: TextInputType.text,
-                        autofocus: false,
-                        style: TextStyle(fontSize: 18.0, color: Colors.black),
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white,
-                          hintText: 'Ingresar Nombre/s',
-                          contentPadding: const EdgeInsets.only(
-                              left: 20.0, bottom: 10, top: 10),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                            borderRadius: BorderRadius.circular(18),
-                          ),
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                            borderRadius: BorderRadius.circular(18),
-                          ),
-                        ),
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Text('Enviar',
+                                  style: TextStyle(
+                                      fontSize: 18.0, color: Colors.white)),
+                              Icon(Icons.arrow_right,
+                                  size: 40, color: Colors.white),
+                            ]),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(
-                      bottom: 5.0,
-                    ),
-                    width: MediaQuery.of(context).size.width * 0.90,
-                    child: Text(
-                      'Apellido',
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                          color: Color.fromARGB(255, 45, 62, 80), fontSize: 16),
-                    ),
-                  ),
-                  Container(
-                    height: 36,
-                    child: Theme(
-                      data: Theme.of(context)
-                          .copyWith(splashColor: Colors.transparent),
-                      child: TextFormField(
-                        validator: (String apellido) {
-                          if (apellido.isEmpty) {
-                            return 'Debe ingresar apellido';
-                          }
+                    Container(
+                      margin: EdgeInsets.only(top: 5, bottom: 5),
+                      height: 40,
+                      width: MediaQuery.of(context).size.width * 0.95,
+                      child: RaisedButton(
+                        color: Colors.grey,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5)),
+                        onPressed: () {
+                          Navigator.pop(context);
                         },
-                        controller:
-                            controllerManager?.txtLastNameController ?? null,
-                        keyboardType: TextInputType.text,
-                        autofocus: false,
-                        style: TextStyle(fontSize: 18.0, color: Colors.black),
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white,
-                          hintText: 'Ingresar Apellido',
-                          contentPadding: const EdgeInsets.only(
-                              left: 20.0, bottom: 10, top: 10),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                            borderRadius: BorderRadius.circular(18),
-                          ),
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                            borderRadius: BorderRadius.circular(18),
-                          ),
-                        ),
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Icon(Icons.arrow_left,
+                                  size: 40, color: Colors.white),
+                              Text('Cancelar     ',
+                                  style: TextStyle(
+                                      fontSize: 18.0, color: Colors.white)),
+                            ]),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(
-                      bottom: 5.0,
+                    SizedBox(
+                      height: 20,
                     ),
-                    width: MediaQuery.of(context).size.width * 0.90,
-                    child: Text(
-                      'Correo electronico',
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                          color: Color.fromARGB(255, 45, 62, 80), fontSize: 16),
-                    ),
-                  ),
-                  Container(
-                    height: 36,
-                    child: Theme(
-                      data: Theme.of(context)
-                          .copyWith(splashColor: Colors.transparent),
-                      child: TextField(
-                        controller:
-                            controllerManager?.txtEmailController ?? null,
-                        keyboardType: TextInputType.emailAddress,
-                        autofocus: false,
-                        style: TextStyle(fontSize: 18.0, color: Colors.black),
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white,
-                          hintText: 'sucorreo@suempresa.com',
-                          contentPadding: const EdgeInsets.only(
-                              left: 20.0, bottom: 10, top: 10),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                            borderRadius: BorderRadius.circular(18),
-                          ),
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                            borderRadius: BorderRadius.circular(18),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(
-                      bottom: 5.0,
-                    ),
-                    width: MediaQuery.of(context).size.width * 0.90,
-                    child: Text(
-                      'Compañía',
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                          color: Color.fromARGB(255, 45, 62, 80), fontSize: 16),
-                    ),
-                  ),
-                  Container(
-                    height: 36,
-                    child: Theme(
-                      data: Theme.of(context)
-                          .copyWith(splashColor: Colors.transparent),
-                      child: TextFormField(
-                        validator: (String empresa) {
-                          if (empresa.isEmpty) {
-                            return 'Debe ingresar Compañia';
-                          }
-                        },
-                        controller:
-                            controllerManager?.txtBusinessController ?? null,
-                        keyboardType: TextInputType.emailAddress,
-                        autofocus: false,
-                        style: TextStyle(fontSize: 18.0, color: Colors.black),
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white,
-                          hintText: 'Su compañia',
-                          contentPadding: const EdgeInsets.only(
-                              left: 20.0, bottom: 10, top: 10),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                            borderRadius: BorderRadius.circular(18),
-                          ),
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                            borderRadius: BorderRadius.circular(18),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(
-                      bottom: 5.0,
-                    ),
-                    width: MediaQuery.of(context).size.width * 0.90,
-                    child: Text(
-                      'Telefono',
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                          color: Color.fromARGB(255, 45, 62, 80), fontSize: 16),
-                    ),
-                  ),
-                  Container(
-                    height: 36,
-                    child: Theme(
-                      data: Theme.of(context)
-                          .copyWith(splashColor: Colors.transparent),
-                      child: TextField(
-                        controller:
-                            controllerManager?.txtPhoneController ?? null,
-                        keyboardType: TextInputType.number,
-                        autofocus: false,
-                        style: TextStyle(fontSize: 18.0, color: Colors.black),
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white,
-                          hintText: 'Telefono',
-                          contentPadding: const EdgeInsets.only(
-                              left: 20.0, bottom: 10, top: 10),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                            borderRadius: BorderRadius.circular(18),
-                          ),
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                            borderRadius: BorderRadius.circular(18),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(
-                      bottom: 5.0,
-                    ),
-                    width: MediaQuery.of(context).size.width * 0.90,
-                    child: Text(
-                      'Celular',
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                          color: Color.fromARGB(255, 45, 62, 80), fontSize: 16),
-                    ),
-                  ),
-                  Container(
-                    height: 36,
-                    child: Theme(
-                      data: Theme.of(context)
-                          .copyWith(splashColor: Colors.transparent),
-                      child: TextField(
-                        controller:
-                            controllerManager?.txtMobileController ?? null,
-                        keyboardType: TextInputType.number,
-                        autofocus: false,
-                        style: TextStyle(fontSize: 18.0, color: Colors.black),
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white,
-                          hintText: 'Celular',
-                          contentPadding: const EdgeInsets.only(
-                              left: 20.0, bottom: 10, top: 10),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                            borderRadius: BorderRadius.circular(18),
-                          ),
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                            borderRadius: BorderRadius.circular(18),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(
-                      bottom: 5.0,
-                    ),
-                    width: MediaQuery.of(context).size.width * 0.90,
-                    child: Text(
-                      'Domicilio',
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                          color: Color.fromARGB(255, 45, 62, 80), fontSize: 16),
-                    ),
-                  ),
-                  Container(
-                    height: 36,
-                    child: Theme(
-                      data: Theme.of(context)
-                          .copyWith(splashColor: Colors.transparent),
-                      child: TextFormField(
-                        validator: (String direccion) {
-                          if (direccion.isEmpty) {
-                            return 'Debe ingresar direccion';
-                          }
-                        },
-                        controller:
-                            controllerManager?.txtAddressController ?? null,
-                        keyboardType: TextInputType.text,
-                        autofocus: false,
-                        style: TextStyle(fontSize: 18.0, color: Colors.black),
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white,
-                          hintText: 'Calle, numero, piso, depto',
-                          contentPadding: const EdgeInsets.only(
-                              left: 20.0, bottom: 10, top: 10),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                            borderRadius: BorderRadius.circular(18),
-                          ),
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                            borderRadius: BorderRadius.circular(18),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(
-                      bottom: 5.0,
-                    ),
-                    width: MediaQuery.of(context).size.width * 0.90,
-                    child: Text(
-                      'Facebook',
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                          color: Color.fromARGB(255, 45, 62, 80), fontSize: 16),
-                    ),
-                  ),
-                  Container(
-                    height: 36,
-                    child: Theme(
-                      data: Theme.of(context)
-                          .copyWith(splashColor: Colors.transparent),
-                      child: TextField(
-                        controller:
-                            controllerManager?.txtFacebookController ?? null,
-                        keyboardType: TextInputType.text,
-                        autofocus: false,
-                        style: TextStyle(fontSize: 18.0, color: Colors.black),
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white,
-                          hintText: 'Facebook',
-                          contentPadding: const EdgeInsets.only(
-                              left: 20.0, bottom: 10, top: 10),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                            borderRadius: BorderRadius.circular(18),
-                          ),
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                            borderRadius: BorderRadius.circular(18),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(
-                      bottom: 5.0,
-                    ),
-                    width: MediaQuery.of(context).size.width * 0.90,
-                    child: Text(
-                      'Instagram',
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                          color: Color.fromARGB(255, 45, 62, 80), fontSize: 16),
-                    ),
-                  ),
-                  Container(
-                    height: 36,
-                    child: Theme(
-                      data: Theme.of(context)
-                          .copyWith(splashColor: Colors.transparent),
-                      child: TextField(
-                        controller:
-                            controllerManager?.txtInstagramController ?? null,
-                        keyboardType: TextInputType.text,
-                        autofocus: false,
-                        style: TextStyle(fontSize: 18.0, color: Colors.black),
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white,
-                          hintText: 'Instagram',
-                          contentPadding: const EdgeInsets.only(
-                              left: 20.0, bottom: 10, top: 10),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                            borderRadius: BorderRadius.circular(18),
-                          ),
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                            borderRadius: BorderRadius.circular(18),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(
-                      bottom: 5.0,
-                    ),
-                    width: MediaQuery.of(context).size.width * 0.90,
-                    child: Text(
-                      'Twitter',
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                          color: Color.fromARGB(255, 45, 62, 80), fontSize: 16),
-                    ),
-                  ),
-                  Container(
-                    height: 36,
-                    child: Theme(
-                      data: Theme.of(context)
-                          .copyWith(splashColor: Colors.transparent),
-                      child: TextField(
-                        controller:
-                            controllerManager?.txtTwitterController ?? null,
-                        keyboardType: TextInputType.text,
-                        autofocus: false,
-                        style: TextStyle(fontSize: 18.0, color: Colors.black),
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white,
-                          hintText: 'Twitter',
-                          contentPadding: const EdgeInsets.only(
-                              left: 20.0, bottom: 10, top: 10),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                            borderRadius: BorderRadius.circular(18),
-                          ),
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                            borderRadius: BorderRadius.circular(18),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(
-                      bottom: 5.0,
-                    ),
-                    width: MediaQuery.of(context).size.width * 0.90,
-                    child: Text(
-                      'YouTube',
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                          color: Color.fromARGB(255, 45, 62, 80), fontSize: 16),
-                    ),
-                  ),
-                  Container(
-                    height: 36,
-                    child: Theme(
-                      data: Theme.of(context)
-                          .copyWith(splashColor: Colors.transparent),
-                      child: TextField(
-                        controller:
-                            controllerManager?.txtYoutubeController ?? null,
-                        keyboardType: TextInputType.number,
-                        autofocus: false,
-                        style: TextStyle(fontSize: 18.0, color: Colors.black),
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white,
-                          hintText: 'YouTube',
-                          contentPadding: const EdgeInsets.only(
-                              left: 20.0, bottom: 10, top: 10),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                            borderRadius: BorderRadius.circular(18),
-                          ),
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                            borderRadius: BorderRadius.circular(18),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(top: 15, bottom: 5),
-                    height: 40,
-                    width: MediaQuery.of(context).size.width * 0.95,
-                    child: RaisedButton(
-                      color: Color.fromARGB(255, 45, 62, 80),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5)),
-                      onPressed: () => this.sendProfilePressed(),
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Text('Enviar',
-                                style: TextStyle(
-                                    fontSize: 18.0, color: Colors.white)),
-                            Icon(Icons.arrow_right,
-                                size: 40, color: Colors.white),
-                          ]),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(top: 5, bottom: 5),
-                    height: 40,
-                    width: MediaQuery.of(context).size.width * 0.95,
-                    child: RaisedButton(
-                      color: Colors.grey,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5)),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Icon(Icons.arrow_left,
-                                size: 40, color: Colors.white),
-                            Text('Cancelar     ',
-                                style: TextStyle(
-                                    fontSize: 18.0, color: Colors.white)),
-                          ]),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

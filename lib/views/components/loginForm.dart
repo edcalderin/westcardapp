@@ -99,6 +99,11 @@ class _LoginFormState extends State<LoginForm> {
                       data: Theme.of(context)
                           .copyWith(splashColor: Colors.transparent),
                       child: TextFormField(
+                        validator: (direccion) {
+                          if (direccion.isEmpty) {
+                            return 'Debe ingresar direccion';
+                          }
+                        },
                         controller: emailController,
                         keyboardType: TextInputType.emailAddress,
                         autofocus: false,
