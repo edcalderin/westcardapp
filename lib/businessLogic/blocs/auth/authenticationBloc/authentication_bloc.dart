@@ -28,7 +28,8 @@ class AuthenticationBloc
   }
 
   Stream<AuthenticationState> mapToEventAppStared(AppStarted event) async* {
-    final String tokenSecureStorage = await authUtils.readSecureToken();
+    final dynamic secureData = await authUtils.readSecureAuthData();
+    final String tokenSecureStorage=secureData[1];
     if (tokenSecureStorage != null) {
       final int response =
           await this.authRepository.hasToken(tokenSecureStorage);
@@ -51,13 +52,15 @@ class AuthenticationBloc
 
   Stream<AuthenticationState> mapToEventSignedIn(SignedIn event) async* {
     yield AuthenticationLoading();
-    await authUtils.writeSecureToken(event.accessToken);
+    await authUtils.writeSecureAuthData(
+        accessToken: event.accessToken, email: event.email);
     yield Authenticated();
   }
 
   Stream<AuthenticationState> mapToEventSignedOut(SignedOut event) async* {
     yield AuthenticationLoading();
-    final String accessToken = await authUtils.readSecureToken();
+    final List<String> dataAuth = await authUtils.readSecureAuthData();
+    final String accessToken = dataAuth[1];
     final dynamic response =
         await authRepository.signOut(event.email, accessToken);
     switch (response) {

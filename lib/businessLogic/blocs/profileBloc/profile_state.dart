@@ -15,14 +15,17 @@ class ProfileLoading extends ProfileState {
 }
 
 class ProfileLoaded extends ProfileState {
-  final String email, firstName, lastName, gender;
-  const ProfileLoaded(
-      {@required this.email,
-      @required this.firstName,
-      @required this.lastName,
-      @required this.gender});
+  final ProfileModel profileModel;
+  const ProfileLoaded({@required this.profileModel});
   @override
-  List<Object> get props => [email, firstName, lastName, gender];
+  List<Object> get props => [profileModel];
+}
+
+class ProfileUpgraded extends ProfileState {
+  final ProfileModel profileModel;
+  const ProfileUpgraded({@required this.profileModel});
+  @override
+  List<Object> get props => [profileModel];
 }
 
 class ProfileFailed extends ProfileState {

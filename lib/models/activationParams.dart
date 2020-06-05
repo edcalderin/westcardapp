@@ -6,7 +6,5 @@ class ActivationParams {
   final String plainPassword;
   final AuthRepository authRepository;
   ActivationParams(
-      {@required this.email,
-      @required this.plainPassword,
-      @required this.authRepository});
+      {this.email, this.plainPassword, @required this.authRepository});
 }

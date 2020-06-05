@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:westcardapp/businessLogic/blocs/auth/authenticationBloc/authentication_bloc.dart';
 import 'package:westcardapp/views/screens/homeScreen.dart';
 import 'package:westcardapp/views/screens/loginScreen.dart';
 import 'package:westcardapp/views/screens/myCardsScreen.dart';
+import 'package:westcardapp/views/screens/profile/userProfileScreen.dart';
 import 'package:westcardapp/views/screens/registerScreen/activateAccountScreen.dart';
 import 'package:westcardapp/views/screens/registerScreen/userRegisterScreen.dart';
 import 'package:westcardapp/views/screens/sharedCardsScreen.dart';
-import 'package:westcardapp/views/screens/userProfileScreen.dart';
 import 'const_routes.dart';
 
 class Router {
@@ -16,27 +14,20 @@ class Router {
     switch (routeSettings.name) {
       case loginRoute:
         return MaterialPageRoute(
-            builder: (context) => BlocProvider.value(
-                value: BlocProvider.of<AuthenticationBloc>(context),
-                child: LoginScreen(authRepository: arguments)));
+            builder: (_) => LoginScreen(authRepository: arguments));
         break;
       case homeScreenRoute:
         return MaterialPageRoute(builder: (_) => HomeScreen());
         break;
       case userRegisterRoute:
         return MaterialPageRoute(
-            builder: (context) => BlocProvider.value(
-                  value: BlocProvider.of<AuthenticationBloc>(context),
-                  child: UserRegisterScreen(
-                    authRepository: arguments,
-                  ),
-                ));
+            builder: (context) =>
+                UserRegisterScreen(authRepository: arguments));
         break;
       case activationRoute:
         return MaterialPageRoute(
-            builder: (context) => BlocProvider.value(
-                value: BlocProvider.of<AuthenticationBloc>(context),
-                child: ActivateAccountScreen(activationParams: arguments)));
+            builder: (context) =>
+                ActivateAccountScreen(activationParams: arguments));
         break;
       case userProfileRoute:
         return MaterialPageRoute(builder: (_) => UserProfileScreen());

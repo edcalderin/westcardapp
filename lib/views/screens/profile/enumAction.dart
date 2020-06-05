@@ -1,0 +1,1 @@
+enum ActionProfile { CREATE, UPDATE }
