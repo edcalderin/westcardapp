@@ -42,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: InkWell(
                         splashColor: Colors.white,
                         onTap: () {
-                          Navigator.pushNamed(context, myCardsRoute);
+                        
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.40,
@@ -106,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: InkWell(
                         splashColor: Colors.white,
                         onTap: () {
-                          Navigator.pushNamed(context, sharedCardsRoute);
+                         
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.40,
@@ -176,7 +176,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: InkWell(
                         splashColor: Colors.white,
                         onTap: () {
-                          Navigator.pushNamed(context, createCardsRoute);
+                          
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.40,
@@ -205,7 +205,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   height:
                                       MediaQuery.of(context).size.width * 0.30,
                                   child: Icon(
-                                    Icons.add,
+                                    Icons.person,
                                     size: 80,
                                     color: Colors.white,
                                   ),
@@ -222,7 +222,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   child: Container(
                                     margin: EdgeInsets.symmetric(vertical: 8),
                                     child: Text(
-                                      'Nueva Tarjeta',
+                                      'Mi Perfil',
                                       style: TextStyle(
                                           color: Colors.white, fontSize: 16),
                                       textAlign: TextAlign.center,
@@ -239,7 +239,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Colors.transparent,
                       child: InkWell(
                         splashColor: Colors.white,
-                        onTap: () {},
+                        onTap: () {
+                           
+                        },
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.40,
                           height: MediaQuery.of(context).size.width * 0.40,

@@ -52,7 +52,7 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
                     child: Stack(
                       children: <Widget>[
                         Image(
-                          image: AssetImage('lib/assets/freeCards/1.png'),
+                          image: AssetImage('lib/assets/freeCards/tarjeta_1/verde.png'),
                         ),
                         Positioned.fill(
                           child: Material(
@@ -71,7 +71,7 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
                     child: Stack(
                       children: <Widget>[
                         Image(
-                          image: AssetImage('lib/assets/freeCards/2.png'),
+                          image: AssetImage('lib/assets/freeCards/tarjeta_2/verde.png'),
                         ),
                         Positioned.fill(
                           child: Material(
@@ -90,7 +90,7 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
                     child: Stack(
                       children: <Widget>[
                         Image(
-                          image: AssetImage('lib/assets/freeCards/3.png'),
+                          image: AssetImage('lib/assets/freeCards/tarjeta_3/verde.png'),
                         ),
                         Positioned.fill(
                           child: Material(
@@ -109,7 +109,7 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
                     child: Stack(
                       children: <Widget>[
                         Image(
-                          image: AssetImage('lib/assets/freeCards/4.png'),
+                          image: AssetImage('lib/assets/freeCards/tarjeta_4/verde.png'),
                         ),
                         Positioned.fill(
                           child: Material(
@@ -128,7 +128,7 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
                     child: Stack(
                       children: <Widget>[
                         Image(
-                          image: AssetImage('lib/assets/freeCards/5.png'),
+                          image: AssetImage('lib/assets/freeCards/tarjeta_5/verde.png'),
                         ),
                         Positioned.fill(
                           child: Material(
@@ -147,7 +147,7 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
                     child: Stack(
                       children: <Widget>[
                         Image(
-                          image: AssetImage('lib/assets/freeCards/6.png'),
+                          image: AssetImage('lib/assets/freeCards/tarjeta_6/verde.png'),
                         ),
                         Positioned.fill(
                           child: Material(
@@ -160,235 +160,6 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 40.0),
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 20.0),
-                    child: Stack(
-                      children: <Widget>[
-                        Image(
-                          image: AssetImage('lib/assets/freeCards/7.png'),
-                        ),
-                        Positioned.fill(
-                          child: Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                              onTap: () {},
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 40.0),
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 20.0),
-                    child: Stack(
-                      children: <Widget>[
-                        Image(
-                          image: AssetImage('lib/assets/freeCards/8.png'),
-                        ),
-                        Positioned.fill(
-                          child: Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                              onTap: () {},
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 40.0),
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 20.0),
-                    child: Stack(
-                      children: <Widget>[
-                        Image(
-                          image: AssetImage('lib/assets/freeCards/9.png'),
-                        ),
-                        Positioned.fill(
-                          child: Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                              onTap: () {},
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 40.0),
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 20.0),
-                    child: Stack(
-                      children: <Widget>[
-                        Image(
-                          image: AssetImage('lib/assets/freeCards/10.png'),
-                        ),
-                        Positioned.fill(
-                          child: Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                              onTap: () {},
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 40.0),
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 20.0),
-                    child: Stack(
-                      children: <Widget>[
-                        Image(
-                          image: AssetImage('lib/assets/freeCards/11.png'),
-                        ),
-                        Positioned.fill(
-                          child: Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                              onTap: () {},
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 40.0),
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 20.0),
-                    child: Stack(
-                      children: <Widget>[
-                        Image(
-                          image: AssetImage('lib/assets/freeCards/12.png'),
-                        ),
-                        Positioned.fill(
-                          child: Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                              onTap: () {},
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 40.0),
-                                       Container(
-                    margin: EdgeInsets.symmetric(vertical: 20.0),
-                    child: Stack(
-                      children: <Widget>[
-                        Image(
-                          image: AssetImage('lib/assets/freeCards/13.png'),
-                        ),
-                        Positioned.fill(
-                          child: Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                              onTap: () {},
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 40.0),
-                                       Container(
-                    margin: EdgeInsets.symmetric(vertical: 20.0),
-                    child: Stack(
-                      children: <Widget>[
-                        Image(
-                          image: AssetImage('lib/assets/freeCards/14.png'),
-                        ),
-                        Positioned.fill(
-                          child: Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                              onTap: () {},
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 40.0),
-                                       Container(
-                    margin: EdgeInsets.symmetric(vertical: 20.0),
-                    child: Stack(
-                      children: <Widget>[
-                        Image(
-                          image: AssetImage('lib/assets/freeCards/15.png'),
-                        ),
-                        Positioned.fill(
-                          child: Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                              onTap: () {},
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 40.0),
-                                       Container(
-                    margin: EdgeInsets.symmetric(vertical: 20.0),
-                    child: Stack(
-                      children: <Widget>[
-                        Image(
-                          image: AssetImage('lib/assets/freeCards/16.png'),
-                        ),
-                        Positioned.fill(
-                          child: Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                              onTap: () {},
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 40.0),
-                                       Container(
-                    margin: EdgeInsets.symmetric(vertical: 20.0),
-                    child: Stack(
-                      children: <Widget>[
-                        Image(
-                          image: AssetImage('lib/assets/freeCards/17.png'),
-                        ),
-                        Positioned.fill(
-                          child: Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                              onTap: () {},
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 40.0),
-                                       Container(
-                    margin: EdgeInsets.symmetric(vertical: 20.0),
-                    child: Stack(
-                      children: <Widget>[
-                        Image(
-                          image: AssetImage('lib/assets/freeCards/18.png'),
-                        ),
-                        Positioned.fill(
-                          child: Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                              onTap: () {},
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 40.0),
                 ],
               ),
             ),

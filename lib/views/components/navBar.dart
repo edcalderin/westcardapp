@@ -22,7 +22,6 @@ class _NavbarState extends State<Navbar> {
           icon: Icons.portrait,
           title: 'Ver mis Tarjetas',
           routes: myCardsRoute),
-      Choice(icon: Icons.add, title: 'Crear nueva Tarjeta', routes: ''),
       Choice(
           icon: Icons.share,
           title: 'Tarjetas compartidas',
