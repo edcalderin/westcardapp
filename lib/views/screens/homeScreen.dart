@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:westcardapp/routes/const_routes.dart';
 import 'package:westcardapp/views/components/navBar.dart';
+import 'package:barcode_scan/barcode_scan.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);
@@ -10,6 +12,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  String barcode;
+  @override
+  void initState() {
+    barcode = '';
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -237,7 +246,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Colors.transparent,
                       child: InkWell(
                         splashColor: Colors.white,
-                        onTap: () {},
+                        onTap: () => scan(),
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.40,
                           height: MediaQuery.of(context).size.width * 0.40,
@@ -303,5 +312,26 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
     );
+  }
+
+  Future scan() async {
+    try {
+      final scanResult = await BarcodeScanner.scan();
+      final String barcode = scanResult.rawContent;
+      setState(() => this.barcode = barcode);
+    } on PlatformException catch (e) {
+      if (e.code == BarcodeScanner.cameraAccessDenied) {
+        setState(() {
+          this.barcode = 'The user did not grant the camera permission!';
+        });
+      } else {
+        setState(() => this.barcode = 'Unknown error: $e');
+      }
+    } on FormatException {
+      setState(() => this.barcode =
+          'null (User returned using the "back"-button before scanning anything. Result)');
+    } catch (e) {
+      setState(() => this.barcode = 'Unknown error: $e');
+    }
   }
 }
