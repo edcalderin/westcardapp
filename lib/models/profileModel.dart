@@ -26,19 +26,21 @@ class ProfileModel {
       this.twitter,
       this.youtube});
 
-  ProfileModel.fromJson(Map<String, dynamic> json) {
-    uuid = json['uuid'];
-    email = json['email'];
-    firstName = json['firstName'] ?? '';
-    lastName = json['lastName'] ?? '';
-    business = json['business'] ?? '';
-    phone = json['phone'] ?? '';
-    mobile = json['mobile'] ?? '';
-    address = json['address'] ?? '';
-    facebook = json['facebook'] ?? '';
-    instagram = json['instagram'] ?? '';
-    twitter = json['twitter'] ?? '';
-    youtube = json['youtube'] ?? '';
+  factory ProfileModel.fromJson(Map<String, dynamic> json) {
+    return ProfileModel(
+      uuid: json['uuid'] ?? '',
+      email: json['email'],
+      firstName: json['firstName'] ?? '',
+      lastName: json['lastName'] ?? '',
+      business: json['business'] ?? '',
+      phone: json['phone'] ?? '',
+      mobile: json['mobile'] ?? '',
+      address: json['address'] ?? '',
+      facebook: json['facebook'] ?? '',
+      instagram: json['instagram'] ?? '',
+      twitter: json['twitter'] ?? '',
+      youtube: json['youtube'] ?? '',
+    );
   }
 
   Map<String, dynamic> toJson() {
