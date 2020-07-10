@@ -42,21 +42,4 @@ class ProfileModel {
       youtube: json['youtube'] ?? '',
     );
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['uuid'] = this.uuid;
-    data['email'] = this.email;
-    data['firstName'] = this.firstName;
-    data['lastName'] = this.lastName;
-    data['business'] = this.business;
-    data['phone'] = this.phone;
-    data['mobile'] = this.mobile;
-    data['address'] = this.address;
-    data['facebook'] = this.facebook;
-    data['instagram'] = this.instagram;
-    data['twitter'] = this.twitter;
-    data['youtube'] = this.youtube;
-    return data;
-  }
 }

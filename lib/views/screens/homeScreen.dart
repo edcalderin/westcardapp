@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:westcardapp/routes/const_routes.dart';
 import 'package:westcardapp/views/components/navBar.dart';
 import 'package:barcode_scan/barcode_scan.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);
@@ -246,7 +247,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Colors.transparent,
                       child: InkWell(
                         splashColor: Colors.white,
-                        onTap: () => scan(),
+                        onTap: () => generateQR(),
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.40,
                           height: MediaQuery.of(context).size.width * 0.40,
@@ -334,4 +335,6 @@ class _HomeScreenState extends State<HomeScreen> {
       setState(() => this.barcode = 'Unknown error: $e');
     }
   }
+
+  void generateQR() {}
 }
