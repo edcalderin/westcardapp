@@ -1,6 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:westcardapp/models/cardModel.dart';
 import 'package:westcardapp/routes/const_routes.dart';
+import 'package:westcardapp/views/components/dialogComponent.dart';
 import 'package:westcardapp/views/components/navBar.dart';
+import 'package:barcode_scan/barcode_scan.dart';
+import 'package:westcardapp/utils/dialogTypes.dart' as dialogTypes;
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);
@@ -10,6 +17,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  String barcode;
+  @override
+  void initState() {
+    barcode = '';
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -237,7 +251,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Colors.transparent,
                       child: InkWell(
                         splashColor: Colors.white,
-                        onTap: () {},
+                        onTap: () => scan(),
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.40,
                           height: MediaQuery.of(context).size.width * 0.40,
@@ -303,5 +317,49 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
     );
+  }
+
+  Future scan() async {
+    try {
+      final scanResult = await BarcodeScanner.scan(options: ScanOptions());
+      final String barcode = scanResult.rawContent;
+      final cardDecoded = jsonDecode(barcode);
+      final CardModel cardModel = CardModel.fromJson(cardDecoded);
+      Navigator.of(context).pushNamed(previewCardRoute, arguments: cardModel);
+    } on PlatformException catch (e) {
+      if (e.code == BarcodeScanner.cameraAccessDenied) {
+        setState(() {
+          this.barcode = 'The user did not grant the camera permission!';
+        });
+      } else {
+        setState(() => this.barcode = 'Unknown error: $e');
+      }
+    } on FormatException {
+      setState(() => this.barcode =
+          'null (User returned using the "back"-button before scanning anything. Result)');
+    } catch (e) {
+      setState(() => this.barcode = 'Unknown error: $e');
+    }
+  }
+
+  void showQRDialog(BuildContext context) {
+    CardModel cm = CardModel(
+        cardType: 'tarjeta1',
+        color: 'amarillo',
+        firstName: 'Erick',
+        lastName: 'Calderin',
+        facebook: 'edcalderin');
+
+    showGeneralDialog(
+        context: context,
+        barrierLabel: "Barrier",
+        barrierDismissible: true,
+        barrierColor: Colors.black.withOpacity(0.5),
+        transitionDuration: Duration(milliseconds: 100),
+        pageBuilder: (_, __, ___) => DialogComponent(
+              cardModel: cm,
+              dialogType: dialogTypes.QR,
+              function: () {},
+            ));
   }
 }

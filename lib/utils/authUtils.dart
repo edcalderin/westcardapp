@@ -12,15 +12,21 @@ class AuthUtils {
   AuthUtils() {
     flutterSecureStorage = FlutterSecureStorage();
   }
-  Future<void> writeSecureAuthData({@required String email, @required String accessToken}) async {
+  Future<void> writeSecureAuthData(
+      {@required String email, @required String accessToken}) async {
     await flutterSecureStorage.write(key: KEY_TOKEN, value: accessToken);
     await flutterSecureStorage.write(key: KEY_EMAIL, value: email);
   }
 
   Future<List<String>> readSecureAuthData() async {
-    final String email = await flutterSecureStorage.read(key: KEY_EMAIL);
-    final String accessToken = await flutterSecureStorage.read(key: KEY_TOKEN);
-    return [email, accessToken];
+    try {
+      final String email = await flutterSecureStorage.read(key: KEY_EMAIL);
+      final String accessToken =
+          await flutterSecureStorage.read(key: KEY_TOKEN);
+      return [email, accessToken];
+    } catch (e) {
+      return ["", ""];
+    }
   }
 
   Future<void> removeSecureDataAuth() async {
