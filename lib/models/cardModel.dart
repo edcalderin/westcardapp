@@ -41,7 +41,7 @@ class CardModel extends ProfileModel {
     return CardModel(
       cardType: cardType,
       color: color,
-      uuid: profileModel.uuid ?? '',
+      uuid: profileModel.uuid,
       email: profileModel.email,
       firstName: profileModel.firstName ?? '',
       lastName: profileModel.lastName ?? '',
@@ -54,5 +54,23 @@ class CardModel extends ProfileModel {
       twitter: profileModel.twitter ?? '',
       youtube: profileModel.youtube ?? '',
     );
+  }
+  Map<String, Object> toJson() {
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['card_type'] = this.cardType;
+    data['color'] = this.color;
+    data['uuid'] = this.uuid;
+    data['email'] = this.email;
+    data['firstName'] = this.firstName;
+    data['lastName'] = this.lastName;
+    data['business'] = this.business;
+    data['phone'] = this.phone;
+    data['mobile'] = this.mobile;
+    data['address'] = this.address;
+    data['facebook'] = this.facebook;
+    data['instagram'] = this.instagram;
+    data['twitter'] = this.twitter;
+    data['youtube'] = this.youtube;
+    return data;
   }
 }
