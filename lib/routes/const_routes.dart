@@ -7,3 +7,4 @@ const String userProfileRoute = 'userProfile';
 const String myCardsRoute = 'myCards';
 const String sharedCardsRoute = 'sharedCards';
 const String previewCardRoute = 'previewCards';
+const String createCardRoute = 'createCard';

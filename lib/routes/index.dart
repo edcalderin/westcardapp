@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:westcardapp/views/screens/createCardScreen.dart';
 import 'package:westcardapp/views/screens/homeScreen.dart';
 import 'package:westcardapp/views/screens/loginScreen.dart';
 import 'package:westcardapp/views/screens/myCardsScreen.dart';
@@ -38,6 +39,9 @@ class Router {
         break;
       case sharedCardsRoute:
         return MaterialPageRoute(builder: (_) => SharerdCardsScreen());
+        break;
+      case createCardRoute:
+        return MaterialPageRoute(builder: (_) => CreateCardScreen());
         break;
       case previewCardRoute:
         return MaterialPageRoute(

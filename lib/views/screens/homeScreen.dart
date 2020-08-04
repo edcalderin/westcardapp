@@ -189,7 +189,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Colors.transparent,
                       child: InkWell(
                         splashColor: Colors.white,
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pushNamed(context, createCardRoute);
+                        },
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.40,
                           height: MediaQuery.of(context).size.width * 0.40,
