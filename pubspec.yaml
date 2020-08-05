@@ -36,6 +36,22 @@ flutter:
     - lib/assets/SplashScreen.png
     - lib/assets/freeCards/tarjeta_1/azul.png
     - lib/assets/freeCards/tarjeta_1/verde.png
+    - lib/assets/freeCards/tarjeta_1/rojo.png
+    - lib/assets/freeCards/tarjeta_2/azul.png
+    - lib/assets/freeCards/tarjeta_2/verde.png
+    - lib/assets/freeCards/tarjeta_2/rojo.png
+    - lib/assets/freeCards/tarjeta_3/azul.png
+    - lib/assets/freeCards/tarjeta_3/verde.png
+    - lib/assets/freeCards/tarjeta_3/rojo.png
+    - lib/assets/freeCards/tarjeta_4/azul.png
+    - lib/assets/freeCards/tarjeta_4/verde.png
+    - lib/assets/freeCards/tarjeta_4/rojo.png
+    - lib/assets/freeCards/tarjeta_5/azul.png
+    - lib/assets/freeCards/tarjeta_5/verde.png
+    - lib/assets/freeCards/tarjeta_5/rojo.png
+    - lib/assets/freeCards/tarjeta_6/azul.png
+    - lib/assets/freeCards/tarjeta_6/verde.png
+    - lib/assets/freeCards/tarjeta_6/rojo.png
   #  - images/a_dot_ham.jpeg
   # fonts:
   #   - family: Schyler
