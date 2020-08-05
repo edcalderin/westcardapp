@@ -48,7 +48,13 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
                   ),
                   SizedBox(height: 20.0),
                   Container(
-                    child: Text('Tarjeta 1 Azul'),
+                    child: Text(
+                      'Tarjeta 1 Azul',
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 45, 62, 80),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500),
+                    ),
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(vertical: 10.0),
@@ -88,7 +94,13 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
                   // ),
                   SizedBox(height: 15.0),
                   Container(
-                    child: Text('Tarjeta 1 Verde'),
+                    child: Text(
+                      'Tarjeta 1 Verde',
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 45, 62, 80),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500),
+                    ),
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(vertical: 15.0),
@@ -111,7 +123,13 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
                   ),
                   SizedBox(height: 15.0),
                   Container(
-                    child: Text('Tarjeta 1 Roja'),
+                    child: Text(
+                      'Tarjeta 1 Roja',
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 45, 62, 80),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500),
+                    ),
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(vertical: 15.0),
@@ -134,7 +152,13 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
                   ),
                   SizedBox(height: 15.0),
                   Container(
-                    child: Text('Tarjeta 2 Azul'),
+                    child: Text(
+                      'Tarjeta 2 Azul',
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 45, 62, 80),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500),
+                    ),
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(vertical: 15.0),
@@ -157,7 +181,13 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
                   ),
                   SizedBox(height: 15.0),
                   Container(
-                    child: Text('Tarjeta 2 Verde'),
+                    child: Text(
+                      'Tarjeta 2 Verde',
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 45, 62, 80),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500),
+                    ),
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(vertical: 15.0),
@@ -180,7 +210,13 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
                   ),
                   SizedBox(height: 15.0),
                   Container(
-                    child: Text('Tarjeta 2 Roja'),
+                    child: Text(
+                      'Tarjeta 2 Roja',
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 45, 62, 80),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500),
+                    ),
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(vertical: 15.0),
@@ -203,7 +239,13 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
                   ),
                   SizedBox(height: 10.0),
                   Container(
-                    child: Text('Tarjeta 3 Azul'),
+                    child: Text(
+                      'Tarjeta 3 Azul',
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 45, 62, 80),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500),
+                    ),
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(vertical: 15.0),
@@ -226,7 +268,13 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
                   ),
                   SizedBox(height: 10.0),
                   Container(
-                    child: Text('Tarjeta 3 Verde'),
+                    child: Text(
+                      'Tarjeta 3 Verde',
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 45, 62, 80),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500),
+                    ),
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(vertical: 15.0),
@@ -249,7 +297,13 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
                   ),
                   SizedBox(height: 10.0),
                   Container(
-                    child: Text('Tarjeta 3 Roja'),
+                    child: Text(
+                      'Tarjeta 3 Roja',
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 45, 62, 80),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500),
+                    ),
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(vertical: 15.0),
@@ -272,7 +326,13 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
                   ),
                   SizedBox(height: 10.0),
                   Container(
-                    child: Text('Tarjeta 4 Azul'),
+                    child: Text(
+                      'Tarjeta 4 Azul',
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 45, 62, 80),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500),
+                    ),
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(vertical: 15.0),
@@ -295,7 +355,13 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
                   ),
                   SizedBox(height: 10.0),
                   Container(
-                    child: Text('Tarjeta 4 Verde'),
+                    child: Text(
+                      'Tarjeta 4 Verde',
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 45, 62, 80),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500),
+                    ),
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(vertical: 15.0),
@@ -318,7 +384,13 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
                   ),
                   SizedBox(height: 10.0),
                   Container(
-                    child: Text('Tarjeta 4 Roja'),
+                    child: Text(
+                      'Tarjeta 4 Roja',
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 45, 62, 80),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500),
+                    ),
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(vertical: 15.0),
@@ -341,7 +413,13 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
                   ),
                   SizedBox(height: 10.0),
                   Container(
-                    child: Text('Tarjeta 5 Azul'),
+                    child: Text(
+                      'Tarjeta 5 Azul',
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 45, 62, 80),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500),
+                    ),
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(vertical: 15.0),
@@ -364,7 +442,13 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
                   ),
                   SizedBox(height: 10.0),
                   Container(
-                    child: Text('Tarjeta 5 Verde'),
+                    child: Text(
+                      'Tarjeta 5 Verde',
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 45, 62, 80),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500),
+                    ),
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(vertical: 15.0),
@@ -387,7 +471,13 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
                   ),
                   SizedBox(height: 10.0),
                   Container(
-                    child: Text('Tarjeta 5 Roja'),
+                    child: Text(
+                      'Tarjeta 5 Roja',
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 45, 62, 80),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500),
+                    ),
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(vertical: 15.0),
@@ -410,7 +500,13 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
                   ),
                   SizedBox(height: 10.0),
                   Container(
-                    child: Text('Tarjeta 6 Azul'),
+                    child: Text(
+                      'Tarjeta 6 Azul',
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 45, 62, 80),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500),
+                    ),
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(vertical: 15.0),
@@ -433,7 +529,13 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
                   ),
                   SizedBox(height: 10.0),
                   Container(
-                    child: Text('Tarjeta 6 Verde'),
+                    child: Text(
+                      'Tarjeta 6 Verde',
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 45, 62, 80),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500),
+                    ),
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(vertical: 15.0),
@@ -456,7 +558,13 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
                   ),
                   SizedBox(height: 10.0),
                   Container(
-                    child: Text('Tarjeta 6 Roja'),
+                    child: Text(
+                      'Tarjeta 6 Roja',
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 45, 62, 80),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500),
+                    ),
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(vertical: 15.0),
@@ -483,7 +591,13 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
                       children: <Widget>[
                         Container(
                           margin: EdgeInsets.only(right: 10),
-                          child: Text('Tarjeta 1'),
+                          child: Text(
+                            'Tarjeta 1',
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 45, 62, 80),
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500),
+                          ),
                         ),
                         Chip(
                           shape: RoundedRectangleBorder(
@@ -523,7 +637,13 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
                       children: <Widget>[
                         Container(
                           margin: EdgeInsets.only(right: 10),
-                          child: Text('Tarjeta 2'),
+                          child: Text(
+                            'Tarjeta 2',
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 45, 62, 80),
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500),
+                          ),
                         ),
                         Chip(
                           shape: RoundedRectangleBorder(
@@ -563,7 +683,13 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
                       children: <Widget>[
                         Container(
                           margin: EdgeInsets.only(right: 10),
-                          child: Text('Tarjeta 3'),
+                          child: Text(
+                            'Tarjeta 3',
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 45, 62, 80),
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500),
+                          ),
                         ),
                         Chip(
                           shape: RoundedRectangleBorder(
@@ -603,7 +729,13 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
                       children: <Widget>[
                         Container(
                           margin: EdgeInsets.only(right: 10),
-                          child: Text('Tarjeta 4'),
+                          child: Text(
+                            'Tarjeta 4',
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 45, 62, 80),
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500),
+                          ),
                         ),
                         Chip(
                           shape: RoundedRectangleBorder(
@@ -643,7 +775,13 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
                       children: <Widget>[
                         Container(
                           margin: EdgeInsets.only(right: 10),
-                          child: Text('Tarjeta 5'),
+                          child: Text(
+                            'Tarjeta 5',
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 45, 62, 80),
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500),
+                          ),
                         ),
                         Chip(
                           shape: RoundedRectangleBorder(
@@ -683,7 +821,13 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
                       children: <Widget>[
                         Container(
                           margin: EdgeInsets.only(right: 10),
-                          child: Text('Tarjeta 6'),
+                          child: Text(
+                            'Tarjeta 6',
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 45, 62, 80),
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500),
+                          ),
                         ),
                         Chip(
                           shape: RoundedRectangleBorder(
@@ -723,7 +867,13 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
                       children: <Widget>[
                         Container(
                           margin: EdgeInsets.only(right: 10),
-                          child: Text('Tarjeta 7'),
+                          child: Text(
+                            'Tarjeta 7',
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 45, 62, 80),
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500),
+                          ),
                         ),
                         Chip(
                           shape: RoundedRectangleBorder(
@@ -763,7 +913,13 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
                       children: <Widget>[
                         Container(
                           margin: EdgeInsets.only(right: 10),
-                          child: Text('Tarjeta 8'),
+                          child: Text(
+                            'Tarjeta 8',
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 45, 62, 80),
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500),
+                          ),
                         ),
                         Chip(
                           shape: RoundedRectangleBorder(
@@ -803,7 +959,13 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
                       children: <Widget>[
                         Container(
                           margin: EdgeInsets.only(right: 10),
-                          child: Text('Tarjeta 9'),
+                          child: Text(
+                            'Tarjeta 9',
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 45, 62, 80),
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500),
+                          ),
                         ),
                         Chip(
                           shape: RoundedRectangleBorder(
@@ -843,7 +1005,13 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
                       children: <Widget>[
                         Container(
                           margin: EdgeInsets.only(right: 10),
-                          child: Text('Tarjeta 10'),
+                          child: Text(
+                            'Tarjeta 10',
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 45, 62, 80),
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500),
+                          ),
                         ),
                         Chip(
                           shape: RoundedRectangleBorder(
