@@ -52,6 +52,16 @@ flutter:
     - lib/assets/freeCards/tarjeta_6/azul.png
     - lib/assets/freeCards/tarjeta_6/verde.png
     - lib/assets/freeCards/tarjeta_6/rojo.png
+    - lib/assets/premiumCards/1.jpg
+    - lib/assets/premiumCards/2.jpg
+    - lib/assets/premiumCards/3.jpg
+    - lib/assets/premiumCards/4.jpg
+    - lib/assets/premiumCards/5.jpg
+    - lib/assets/premiumCards/6.jpg
+    - lib/assets/premiumCards/7.jpg
+    - lib/assets/premiumCards/8.jpg
+    - lib/assets/premiumCards/9.jpg
+    - lib/assets/premiumCards/10.jpg
   #  - images/a_dot_ham.jpeg
   # fonts:
   #   - family: Schyler
