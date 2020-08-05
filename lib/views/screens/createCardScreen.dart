@@ -47,7 +47,43 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.symmetric(vertical: 20.0),
+                    margin: EdgeInsets.symmetric(vertical: 10.0),
+                    child: Stack(
+                      children: <Widget>[
+                        Image(
+                          image: AssetImage(
+                              'lib/assets/freeCards/tarjeta_1/azul.png'),
+                        ),
+                        Positioned.fill(
+                          child: Material(
+                            color: Colors.transparent,
+                            child: InkWell(
+                              onTap: () {},
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        // IconButton(
+                        //   icon: Icon(Icons.share),
+                        //   tooltip: 'Compartir',
+                        //   onPressed: () {},
+                        // ),
+                        IconButton(
+                          icon: Icon(Icons.delete, color: Colors.red),
+                          tooltip: 'Borrar',
+                          onPressed: () {},
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 10.0),
                     child: Stack(
                       children: <Widget>[
                         Image(
@@ -65,106 +101,102 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 40.0),
                   Container(
-                    margin: EdgeInsets.symmetric(vertical: 20.0),
-                    child: Stack(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Image(
-                          image: AssetImage(
-                              'lib/assets/freeCards/tarjeta_2/verde.png'),
-                        ),
-                        Positioned.fill(
-                          child: Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                              onTap: () {},
-                            ),
-                          ),
+                        // IconButton(
+                        //   icon: Icon(Icons.share),
+                        //   tooltip: 'Compartir',
+                        //   onPressed: () {},
+                        // ),
+                        IconButton(
+                          icon: Icon(Icons.delete, color: Colors.red),
+                          tooltip: 'Borrar',
+                          onPressed: () {},
                         ),
                       ],
                     ),
                   ),
-                  SizedBox(height: 40.0),
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 20.0),
-                    child: Stack(
-                      children: <Widget>[
-                        Image(
-                          image: AssetImage(
-                              'lib/assets/freeCards/tarjeta_3/verde.png'),
-                        ),
-                        Positioned.fill(
-                          child: Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                              onTap: () {},
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 40.0),
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 20.0),
-                    child: Stack(
-                      children: <Widget>[
-                        Image(
-                          image: AssetImage(
-                              'lib/assets/freeCards/tarjeta_4/verde.png'),
-                        ),
-                        Positioned.fill(
-                          child: Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                              onTap: () {},
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 40.0),
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 20.0),
-                    child: Stack(
-                      children: <Widget>[
-                        Image(
-                          image: AssetImage(
-                              'lib/assets/freeCards/tarjeta_5/verde.png'),
-                        ),
-                        Positioned.fill(
-                          child: Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                              onTap: () {},
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 40.0),
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 20.0),
-                    child: Stack(
-                      children: <Widget>[
-                        Image(
-                          image: AssetImage(
-                              'lib/assets/freeCards/tarjeta_6/verde.png'),
-                        ),
-                        Positioned.fill(
-                          child: Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                              onTap: () {},
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  // Container(
+                  //   margin: EdgeInsets.symmetric(vertical: 20.0),
+                  //   child: Stack(
+                  //     children: <Widget>[
+                  //       Image(
+                  //         image: AssetImage(
+                  //             'lib/assets/freeCards/tarjeta_3/azul.png'),
+                  //       ),
+                  //       Positioned.fill(
+                  //         child: Material(
+                  //           color: Colors.transparent,
+                  //           child: InkWell(
+                  //             onTap: () {},
+                  //           ),
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  // SizedBox(height: 40.0),
+                  // Container(
+                  //   margin: EdgeInsets.symmetric(vertical: 20.0),
+                  //   child: Stack(
+                  //     children: <Widget>[
+                  //       Image(
+                  //         image: AssetImage(
+                  //             'lib/assets/freeCards/tarjeta_4/verde.png'),
+                  //       ),
+                  //       Positioned.fill(
+                  //         child: Material(
+                  //           color: Colors.transparent,
+                  //           child: InkWell(
+                  //             onTap: () {},
+                  //           ),
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  // SizedBox(height: 40.0),
+                  // Container(
+                  //   margin: EdgeInsets.symmetric(vertical: 20.0),
+                  //   child: Stack(
+                  //     children: <Widget>[
+                  //       Image(
+                  //         image: AssetImage(
+                  //             'lib/assets/freeCards/tarjeta_5/verde.png'),
+                  //       ),
+                  //       Positioned.fill(
+                  //         child: Material(
+                  //           color: Colors.transparent,
+                  //           child: InkWell(
+                  //             onTap: () {},
+                  //           ),
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  // SizedBox(height: 40.0),
+                  // Container(
+                  //   margin: EdgeInsets.symmetric(vertical: 20.0),
+                  //   child: Stack(
+                  //     children: <Widget>[
+                  //       Image(
+                  //         image: AssetImage(
+                  //             'lib/assets/freeCards/tarjeta_6/verde.png'),
+                  //       ),
+                  //       Positioned.fill(
+                  //         child: Material(
+                  //           color: Colors.transparent,
+                  //           child: InkWell(
+                  //             onTap: () {},
+                  //           ),
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                 ],
               ),
             ),

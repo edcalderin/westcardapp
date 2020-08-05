@@ -34,7 +34,8 @@ flutter:
     - lib/assets/fondo_1.jpg
     - lib/assets/fondo_2.jpg
     - lib/assets/SplashScreen.png
-  #  - images/a_dot_burr.jpeg
+    - lib/assets/freeCards/tarjeta_1/azul.png
+    - lib/assets/freeCards/tarjeta_1/verde.png
   #  - images/a_dot_ham.jpeg
   # fonts:
   #   - family: Schyler
