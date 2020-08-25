@@ -186,5 +186,99 @@
       "#009a00",
       "#003d63"
     ]
+  },
+  {
+    "cardName": "card5",
+    "fields": {
+      "name": {
+        "left": 15.0,
+        "bottom": 175.0
+      },
+      "lastname": {
+        "left": 15.0,
+        "bottom": 175.0
+      },
+      "position": {
+        "left": 15.0,
+        "bottom": 160.0
+      },
+      "phone": {
+        "left": 30.0,
+        "bottom": 130.0
+      },
+      "address": {
+        "left": 30.0,
+        "bottom": 105.0
+      },
+      "web": {
+        "left": 30.0,
+        "bottom": 80.0
+      },
+      "email": {
+        "left": 30.0,
+        "bottom": 55.0
+      },
+      "company": {
+        "left": 15.0,
+        "bottom": 20.0
+      }
+    },
+    "colors": [
+      "blue",
+      "green",
+      "red"
+    ],
+    "rgbaColor": [
+      "#f10506",
+      "#009a00",
+      "#003d63"
+    ]
+  },
+  {
+    "cardName": "card6",
+    "fields": {
+      "name": {
+        "left": 15.0,
+        "bottom": 175.0
+      },
+      "lastname": {
+        "left": 15.0,
+        "bottom": 175.0
+      },
+      "position": {
+        "left": 15.0,
+        "bottom": 160.0
+      },
+      "phone": {
+        "left": 30.0,
+        "bottom": 130.0
+      },
+      "address": {
+        "left": 30.0,
+        "bottom": 105.0
+      },
+      "web": {
+        "left": 30.0,
+        "bottom": 80.0
+      },
+      "email": {
+        "left": 30.0,
+        "bottom": 55.0
+      },
+      "company": {
+        "left": 15.0,
+        "bottom": 20.0
+      }
+    },
+    "colors": [
+      "blue",
+      "green",
+      "red"
+    ],
+    "rgbaColor": [
+      "#f10506",
+      "#009a00",
+      "#003d63"
+    ]
   }
 ]

@@ -43,7 +43,6 @@ class BuilderCardsComponent extends StatelessWidget {
                     children: <Widget>[
                       Image(
                         image: AssetImage(
-                            //   'lib/assets/freeCards/card1/blue.png'),
                             'lib/assets/freeCards/$cardName/$element.png'),
                       ),
                       Positioned(
