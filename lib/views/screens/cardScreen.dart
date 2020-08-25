@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:westcardapp/views/components/builderCardsComponent.dart';
 import 'package:westcardapp/views/components/navBar.dart';
 
-class CreateCardScreen extends StatefulWidget {
-  CreateCardScreen({Key key}) : super(key: key);
-
+class CardScreen extends StatefulWidget {
+  CardScreen({this.title});
+  final String title;
   @override
-  _CreateCardScreenState createState() => _CreateCardScreenState();
+  _CardScreenState createState() => _CardScreenState();
 }
 
-class _CreateCardScreenState extends State<CreateCardScreen> {
+class _CardScreenState extends State<CardScreen> {
   Future<List<Map<String, dynamic>>> getCardItems() async {
     var assetItems =
         await DefaultAssetBundle.of(context).loadString('lib/views/cards.json');
@@ -41,27 +41,28 @@ class _CreateCardScreenState extends State<CreateCardScreen> {
           Container(
             margin: EdgeInsets.symmetric(horizontal: 26),
             width: MediaQuery.of(context).size.width * 0.90,
-            child:
-                //Column(
-                //   children: <Widget>[
-                // Padding(
-                //   padding: const EdgeInsets.only(top: 30.0),
-                //   child: Text(
-                //     'Seleccione una plantilla para la nueva tarjeta.',
-                //     textAlign: TextAlign.center,
-                //     style: TextStyle(
-                //         color: Color.fromARGB(255, 45, 62, 80),
-                //         fontSize: 18,
-                //         fontWeight: FontWeight.w500),
-                //   ),
-                // ),
-                FutureBuilder(
-                    future: getCardItems(),
-                    builder: (context, snapshot) {
-                      return BuilderCardsComponent(mapCards: snapshot.data);
-                    }),
-            // ],
-            // ),
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(top: 30.0, bottom: 10.0),
+                  child: Text(
+                    widget.title,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 45, 62, 80),
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500),
+                  ),
+                ),
+                Expanded(
+                  child: FutureBuilder(
+                      future: getCardItems(),
+                      builder: (context, snapshot) {
+                        return BuilderCardsComponent(mapCards: snapshot.data);
+                      }),
+                ),
+              ],
+            ),
           )
         ],
       ),

@@ -56,7 +56,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: InkWell(
                         splashColor: Colors.white,
                         onTap: () {
-                          Navigator.pushNamed(context, myCardsRoute);
+                          Navigator.pushNamed(context, cardRoute,
+                              arguments: 'Mis tarjetas');
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.40,
@@ -166,7 +167,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   child: Container(
                                     margin: EdgeInsets.symmetric(vertical: 8),
                                     child: Text(
-                                      'Mis Almacen',
+                                      'Mi Almacen',
                                       style: TextStyle(
                                           color: Colors.white, fontSize: 16),
                                       textAlign: TextAlign.center,
@@ -190,7 +191,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: InkWell(
                         splashColor: Colors.white,
                         onTap: () {
-                          Navigator.pushNamed(context, createCardRoute);
+                          Navigator.pushNamed(context, cardRoute,
+                              arguments:
+                                  'Seleccione una plantilla para la nueva tarjeta.');
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.40,

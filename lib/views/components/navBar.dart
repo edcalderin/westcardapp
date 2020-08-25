@@ -19,9 +19,7 @@ class _NavbarState extends State<Navbar> {
     choices = <Choice>[
       Choice(icon: Icons.person, title: 'Mi Perfil', routes: userProfileRoute),
       Choice(
-          icon: Icons.portrait,
-          title: 'Ver mis Tarjetas',
-          routes: myCardsRoute),
+          icon: Icons.portrait, title: 'Ver mis Tarjetas', routes: cardRoute),
       Choice(icon: Icons.add, title: 'Crear nueva Tarjeta', routes: ''),
       Choice(
           icon: Icons.share,
